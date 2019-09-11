@@ -21,7 +21,9 @@ class SignUpForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     const user = merge({}, this.state);
-    this.props.processForm(user);
+    this.props.processForm(user).then( () => (
+      this.props.history.push('/')
+    ));
   }
 
   // renderErrors() {
@@ -40,12 +42,10 @@ class SignUpForm extends React.Component {
     return (
       <div className="signup-form-cont">
         <form onSubmit={this.handleSubmit} className="signup-form-box">
-          Create account
-          <br/>
-          Please {this.props.formType} or {this.props.navLink}
+          <p className="create-account">Create account</p>
+          {/* Please {this.props.formType} */}
           {/* {this.renderErrors()} */}
           <div className="signup-form">
-            <br/>
             <label>Username:
               <input type="text"
                 value={this.state.username}

@@ -19,7 +19,9 @@ class LogInForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     const user = Object.assign({}, this.state);
-    this.props.processForm(user);
+    this.props.processForm(user).then( () => (
+      this.props.history.goBack()
+    ));
   }
 
   // renderErrors() {
@@ -38,12 +40,11 @@ class LogInForm extends React.Component {
     return (
       <div className="login-form-cont">
         <form onSubmit={this.handleSubmit} className="login-form-box">
-          SIGN IN
-          <br/>
-          Please {this.props.formType} or {this.props.navLink}
+          <p className="sign-in">Sign In</p>
+          <p className="to-continue">to continue to ViewTube</p>
+          Please {this.props.formType}
           {/* {this.renderErrors()} */}
           <div className="login-form">
-            <br/>
             <label>Username:
               <input type="text"
                 value={this.state.username}
