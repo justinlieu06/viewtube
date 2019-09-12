@@ -1,0 +1,48 @@
+.greeting-login-signup {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.greeting-header {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.greeting-link:link, .greeting-link:visited, .greeting-button {
+  color: #3EA6FF;
+  background-color: #232323;
+  border: 1px solid #3EA6FF;
+  font-size: 14px;
+  font-family: roboto, arial, sans-serif;
+  padding: 9px;
+  margin: 10px;
+  text-decoration: none;
+}
+
+.greeting-link:hover, .greeting-link:active, .greeting-button:hover {
+  color: pink;
+  border: 1px solid pink;
+}
+
+.greeting-username {
+  margin-top: 10px;
+  color: white;
+  font-size: 20px;
+  font-family: roboto, arial, sans-serif;
+  padding-left: 12px;
+  padding-top: 5px;
+
+  // circle
+  width: 23px;
+  height: 30px;
+  border: 1px solid white;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.greeting-profile {
+  color: white;
+  padding-top: 12px;
+  padding-right: 15px;
+}
+ 

@@ -9,24 +9,38 @@ class LogInForm extends React.Component {
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.demoLogIn = this.demoLogIn.bind(this);
+    this.pressSignIn = this.pressSignIn.bind(this);
+  }
+
+  pressSignIn(){
+    const user = Object.assign({}, this.state);
+    this.props.logIn(user).then( () => (
+      this.props.history.push('/')
+    ));
+    // this.props.logIn(user).then( () => (
+    //   this.props.history.goBack()
+    // ));
   }
 
   demoLogIn(e){
     e.preventDefault();
+    //INSTANT DEMO LOGIN:
+    // this.state = {
+    //   username: 'DemoUser',
+    //   password: '123456'
+    // };
 
-    this.state = {
-      username: 'DemoUser',
-      password: '123456'
-    };
+    const fillIn = (string, field) => () => {
+      if (string.length > 0) {
+        this.setState({ [field]: this.state[field] + string[0] });
+        setTimeout(fillIn(string.slice(1), field), 75);
+      }
+    }
+  
+    fillIn('DemoUser', 'username')();
+    fillIn('123456', 'password')();
 
-    // let name = 'DemoUser'.split('');
-    // while (name.length !== 0){
-    //   console.log(name);
-    //   setTimeout(()=> {
-    //     this.setState({ username: this.state.username + name })
-    //   }, 1000);
-    //   name.shift();
-    // }
+    setTimeout(this.pressSignIn, 1100);
   }
 
   update(field) {
@@ -37,10 +51,7 @@ class LogInForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    const user = Object.assign({}, this.state);
-    this.props.logIn(user).then( () => (
-      this.props.history.goBack()
-    ));
+    this.pressSignIn();
   }
 
   renderErrors() {
@@ -63,7 +74,7 @@ class LogInForm extends React.Component {
     return (
       <div className="login-form-div">
         <form onSubmit={this.handleSubmit} className="login-form">
-          <p className="viewtube">ViewTube</p>
+          <p className="viewtube" >ViewTube</p>
           <p className="login-header">Sign In</p>
           <p className="login-subheader">to continue to ViewTube</p>
           <br />

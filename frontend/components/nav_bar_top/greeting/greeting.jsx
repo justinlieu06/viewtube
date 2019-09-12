@@ -3,17 +3,17 @@ import { Link } from 'react-router-dom';
 
 const Greeting = ({ currentUser, logout }) => {
   const sessionLinks = () => (
-    <nav className="login-signup">
-      <Link to="/login">Login</Link>
-      &nbsp;or&nbsp;
-      <Link to="/signup">Sign up!</Link>
-    </nav>
+    <div className="greeting-login-signup">
+      <Link to="/signup" className="greeting-link"><i className="fas fa-user-circle"></i> Sign up</Link>
+      <Link to="/login" className="greeting-link"><i className="fas fa-user-circle"></i> Login</Link>
+    </div>
   );
   const personalGreeting = () => (
-    <hgroup className="header-group">
-      <h2 className="header-name">Hi, {currentUser.username}!</h2>
-      <button className="header-button" onClick={logout}>Log Out</button>
-    </hgroup>
+    <div className="greeting-header">
+      {/* <div className="header-name" className="greeting-username">{currentUser.username.slice(0, 1)}</div> */}
+      <button className="greeting-button" onClick={logout}>Log Out</button>
+      <div className="greeting-profile"><i className="fas fa-user-circle fa-2x"></i></div>
+    </div>
   );
 
   return currentUser ? personalGreeting() : sessionLinks();

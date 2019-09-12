@@ -5,10 +5,11 @@ import SignUpFormContainer from './nav_bar_top/session_form/signup_form_containe
 import LogInFormContainer from './nav_bar_top/session_form/login_form_container';
 import Splash from './splash';
 import { AuthRoute, ProtectedRoute } from '../util/route_utils';
+import Modal from './nav_bar_side/modal';
 
 const App = ({ children }) => (
   <div>
-    <h1>ViewTube Baby!</h1>
+    {/* <Modal /> */}
     <Switch>
       <AuthRoute exact path='/signup' component={SignUpFormContainer} />
       <AuthRoute exact path='/login' component={LogInFormContainer} />

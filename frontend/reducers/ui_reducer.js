@@ -1,13 +1,7 @@
-let defaultState = {
+import { combineReducers } from 'redux';
 
-}
+import modal from './modal_reducer';
 
-const uiReducer = (oldState = defaultState, action) => {
-  Object.freeze(oldState);
-  switch(action.type){
-    default:
-      return oldState;
-  }
-}
-
-export default uiReducer;
+export default combineReducers({
+  modal
+});
