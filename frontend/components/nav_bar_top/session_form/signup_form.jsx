@@ -21,58 +21,76 @@ class SignUpForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     const user = merge({}, this.state);
-    this.props.processForm(user).then( () => (
+    this.props.signUp(user).then( () => (
       this.props.history.push('/')
     ));
   }
 
-  // renderErrors() {
-  //   return(
-  //     <ul>
-  //       {this.props.errors.map((error, i) => (
-  //         <li key={`error-${i}`}>
-  //           {error}
-  //         </li>
-  //       ))}
-  //     </ul>
-  //   );
-  // }
+  renderErrors() {
+    return(
+      <ul>
+        {this.props.errors.map((error, i) => (
+          <li key={`error-${i}`}>
+            {error}
+          </li>
+        ))}
+      </ul>
+    );
+  }
+
+  componentDidMount() {
+    this.props.clearErrors();
+  }
 
   render() {
     return (
-      <div className="signup-form-cont">
-        <form onSubmit={this.handleSubmit} className="signup-form-box">
-          <p className="create-account">Create account</p>
-          {/* Please {this.props.formType} */}
-          {/* {this.renderErrors()} */}
-          <div className="signup-form">
-            <label>Username:
+      <div className="signup-form-div">
+        <form onSubmit={this.handleSubmit} className="signup-form">
+          <p className="viewtube">ViewTube</p>
+          <p className="signup-header">Create your ViewTube Account</p>
+          <p className="signup-subheader">to continue to ViewTube</p>
+          <br />
+          <div className="s-form">
+
+            <div className="div-input">
               <input type="text"
                 value={this.state.username}
                 onChange={this.update('username')}
-                className="signup-input"
+                className="input-login"
+                placeholder="Username"
               />
-            </label>
+            </div>
             <br/>
-            <label>Email:
+            <div className="div-input">
               <input type="email"
               value={this.state.email}
               onChange={this.update('email')}
-              className="signup-input"
+              className="input-login"
+              placeholder="Email"
               />
-            </label>
+            </div>
             <br />
-            <label>Password:
+            <div className="div-input">
               <input type="password"
                 value={this.state.password}
                 onChange={this.update('password')}
-                className="signup-input"
+                className="input-login"
+                placeholder="Password"
               />
-            </label>
-            <br/>
-            <input className="session-submit" type="submit" value={this.props.formType} />
+            </div>
+            <div className="login-errors"> {this.renderErrors()} </div>
+
+            {/* <div className="password-requirements"> Password must be 6 or more characters. </div> */}
+
+            <div className="signup-form-buttons">
+              {this.props.navLink}
+              <input className="session-submit" type="submit" value="Sign Up" />
+            </div>
           </div>
         </form>
+        
+        <span className="login-footer-left">English (United States) </span>
+        <span className="login-footer-right">Help Privacy Terms</span>
       </div>
     );
   }

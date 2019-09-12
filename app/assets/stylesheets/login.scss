@@ -1,0 +1,116 @@
+.login-form-div {
+  padding: 75px;
+  width: 448px;
+  margin: auto;
+}
+
+.login-form {
+  border-radius: 25px;
+  border: 1px solid grey;
+  width: 448px;
+  height: 500px;
+  margin: auto;
+}
+
+.login-header {
+  text-align: center;
+  color: #202124;
+  padding-bottom: 0;
+  padding-top: 30px;
+  font-family: 'Google Sans','Noto Sans Myanmar UI',arial,sans-serif;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 1.3333;
+}
+
+.login-subheader {
+  text-align: center;
+  color: #202124;
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: .1px;
+  line-height: 1.5;
+}
+
+.div-input {
+  margin: auto;
+  width: 75%;
+}
+
+.input-login {
+  width: 100%;
+  font-size: 26px;
+}
+
+.viewtube {
+  padding-top: 35px;
+  font-family: Impact, Charcoal, sans-serif;
+  font-size: 16px;
+  color: white;
+  text-align: center;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
+.session-submit {
+  background-color: #1a73e8;
+  color: white;
+  line-height: 1.4286;
+  font-size: 18px;
+  border: none;
+}
+
+.login-errors {
+  padding-top: 4px;
+  height: 30px;
+  color: red;
+  font-size: 12px;
+  margin: auto;
+  width: 70%;
+}
+
+.demo-div {
+  font-family: roboto,'Noto Sans Myanmar UI',arial,sans-serif;
+  font-size: 14px;
+  color: #202124;
+  line-height: 1.3;
+  margin: auto;
+  width: 340px;
+}
+
+.demo-button {
+  color: #1a73e8;
+  line-height: 1.4286;
+  width: 84px;
+  font-size: 14px;
+  border: none;
+}
+
+.login-form-buttons {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 100px;
+  color: #1a73e8;
+  line-height: 1.4286;
+  margin: auto;
+  width: 75%;
+  font-size: 18px;
+  border: none;
+}
+
+.login-footer-left {
+  font-family: roboto,'Noto Sans Myanmar UI',arial,sans-serif;
+  font-size: 12px;
+  color: #202124;
+  padding-top: 2px;
+  float: left;
+  padding-left: 10px;
+}
+
+.login-footer-right {
+  font-family: roboto,'Noto Sans Myanmar UI',arial,sans-serif;
+  font-size: 12px;
+  color: #202124;
+  padding-top: 2px;
+  float: right;
+  padding-right: 10px;
+}

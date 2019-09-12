@@ -8,6 +8,25 @@ class LogInForm extends React.Component {
       password: ''
     };
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.demoLogIn = this.demoLogIn.bind(this);
+  }
+
+  demoLogIn(e){
+    e.preventDefault();
+
+    this.state = {
+      username: 'DemoUser',
+      password: '123456'
+    };
+
+    // let name = 'DemoUser'.split('');
+    // while (name.length !== 0){
+    //   console.log(name);
+    //   setTimeout(()=> {
+    //     this.setState({ username: this.state.username + name })
+    //   }, 1000);
+    //   name.shift();
+    // }
   }
 
   update(field) {
@@ -19,51 +38,70 @@ class LogInForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     const user = Object.assign({}, this.state);
-    this.props.processForm(user).then( () => (
+    this.props.logIn(user).then( () => (
       this.props.history.goBack()
     ));
   }
 
-  // renderErrors() {
-  //   return(
-  //     <ul>
-  //       {this.props.errors.map((error, i) => (
-  //         <li key={`error-${i}`}>
-  //           {error}
-  //         </li>
-  //       ))}
-  //     </ul>
-  //   );
-  // }
+  renderErrors() {
+    return(
+      <ul>
+        {this.props.errors.map((error, i) => (
+          <li key={`error-${i}`}>
+            {error}
+          </li>
+        ))}
+      </ul>
+    );
+  }
+
+  componentDidMount() {
+    this.props.clearErrors();
+  }
 
   render() {
     return (
-      <div className="login-form-cont">
-        <form onSubmit={this.handleSubmit} className="login-form-box">
-          <p className="sign-in">Sign In</p>
-          <p className="to-continue">to continue to ViewTube</p>
-          Please {this.props.formType}
-          {/* {this.renderErrors()} */}
-          <div className="login-form">
-            <label>Username:
+      <div className="login-form-div">
+        <form onSubmit={this.handleSubmit} className="login-form">
+          <p className="viewtube">ViewTube</p>
+          <p className="login-header">Sign In</p>
+          <p className="login-subheader">to continue to ViewTube</p>
+          <br />
+          
+          <div className="l-form">
+            <div className="div-input">
               <input type="text"
                 value={this.state.username}
                 onChange={this.update('username')}
-                className="login-input"
+                className="input-login"
+                placeholder="Username"
               />
-            </label>
+            </div>
             <br/>
-            <label>Password:
+            <div className="div-input">
               <input type="password"
                 value={this.state.password}
                 onChange={this.update('password')}
-                className="login-input"
+                className="input-login"
+                placeholder="Password"
               />
-            </label>
-            <br/>
-            <input className="session-submit" type="submit" value={this.props.formType} />
+            </div>
+            <div className="login-errors"> {this.renderErrors()} </div>
+            
+            <div className="demo-div"> Don't want to use your own account? Try Demo mode to sign 
+            in with a public account.<input className="demo-button" type="submit" 
+            value="Demo login" onClick={this.demoLogIn} />
+            </div>
+            <br />
+            <div className="login-form-buttons">
+              {this.props.navLink}
+              <input className="session-submit" type="submit" value="Sign In" />
+            </div>
+
           </div>
         </form>
+        <span className="login-footer-left">English (United States) </span>
+        <span className="login-footer-right">Help Privacy Terms</span>
       </div>
     );
   }
