@@ -5,7 +5,8 @@ const NavBarSide = props => {
 
   return (
     <div className="NavBarSide">
-      jdsalfjsalfdsaf
+      {props.closeModal}
+      <div className="viewtube">ViewTube</div>
     </div>
   )
 };

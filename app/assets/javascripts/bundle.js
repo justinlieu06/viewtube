@@ -332,7 +332,9 @@ __webpack_require__.r(__webpack_exports__);
 var NavBarSide = function NavBarSide(props) {
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "NavBarSide"
-  }, "jdsalfjsalfdsaf");
+  }, props.closeModal, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "viewtube"
+  }, "ViewTube"));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (NavBarSide);
@@ -373,9 +375,14 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
         return dispatch(Object(_actions_modal_actions__WEBPACK_IMPORTED_MODULE_2__["openModal"])('navBarSide'));
       }
     }, "HAM"),
-    closeModal: function closeModal() {
-      return dispatch(Object(_actions_modal_actions__WEBPACK_IMPORTED_MODULE_2__["closeModal"])());
-    }
+    closeModal: react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
+      className: "hamburger",
+      onClick: function onClick() {
+        return dispatch(Object(_actions_modal_actions__WEBPACK_IMPORTED_MODULE_2__["closeModal"])());
+      }
+    }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("i", {
+      className: "fas fa-bars"
+    }))
   };
 };
 
@@ -494,11 +501,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var NavBarTop = function NavBarTop(props) {
-  var burger = props.otherNav; // let ham = props.closeModal;
-
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "top-nav"
-  }, burger, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_greeting_greeting_container__WEBPACK_IMPORTED_MODULE_1__["default"], null));
+  }, props.otherNav, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_greeting_greeting_container__WEBPACK_IMPORTED_MODULE_1__["default"], null));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (NavBarTop);

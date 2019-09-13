@@ -13,8 +13,13 @@ const mapDispatchToProps = dispatch => ({
   otherNav: ( 
     <button onClick={() => dispatch(openModal('navBarSide'))}>
       HAM
-    </button>),
-  closeModal: () => dispatch(closeModal())
+    </button>
+  ),
+  closeModal: (
+    <button className="hamburger" onClick={() => dispatch(closeModal())}>
+      <i className="fas fa-bars"></i>  
+    </button>
+  )
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(NavBarSide);
