@@ -16,7 +16,7 @@ const mapDispatchToProps = dispatch => ({
     </button>
   ),
   closeModal: (
-    <button className="hamburger" onClick={() => dispatch(closeModal())}>
+    <button className="close-hamburger" onClick={() => dispatch(closeModal())}>
       <i className="fas fa-bars"></i>  
     </button>
   )

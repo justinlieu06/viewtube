@@ -6,10 +6,11 @@ import Modal from './nav_bar_side/modal';
 
 const Splash = () => {
   return (
-    <div>
+    <div className="splash">
       <NavBarTopContainer />
       {/* <NavBarSideContainer /> */}
       <Modal />
+      <div className="splash-wrapper"></div>
     </div>
   );
 };

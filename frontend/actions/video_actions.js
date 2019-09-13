@@ -6,8 +6,9 @@ export const DELETE_VIDEO = 'DELETE_VIDEO';
 export const RECEIVE_VIDEO_ERRORS = 'RECEIVE_VIDEO_ERRORS';
 export const CLEAR_ERRORS = 'CLEAR_ERRORS';
 
-const receiveAllVideos = () => ({
+const receiveAllVideos = videos => ({
   type: RECEIVE_ALL_VIDEOS,
+  videos
 });
 
 const receiveVideo = video => ({
@@ -29,8 +30,38 @@ const clearErrors = () => ({
   type: CLEAR_ERRORS,
 });
 
-// export const fetchVideos = () => dispatch => (
+export const fetchVideos = () => dispatch => (
+  VideoAPIUtil.fetchVideos().then(videos => (dispatch(receiveAllVideos(videos))
+  ), err => (
+    dispatch(receiveErrors(err.responseJSON))
+  ))
+);
 
-// );
+export const fetchVideo = id => dispatch => (
+  VideoAPIUtil.fetchVideo(id).then(video => (dispatch(receiveVideo(video))
+  ), err => (
+    dispatch(receiveErrors(err.responseJSON))
+  ))
+);
 
+export const createVideo = video => dispatch => (
+  VideoAPIUtil.createVideo(video).then(video => (dispatch(receiveVideo(video))
+  ), err => (
+    dispatch(receiveErrors(err.responseJSON))
+  ))
+);
+
+export const updateVideo = video => dispatch => (
+  VideoAPIUtil.updateVideo(video).then(video => (dispatch(receiveVideo(video))
+  ), err => (
+    dispatch(receiveErrors(err.responseJSON))
+  ))
+);
+
+export const deleteVideo = id => dispatch => (
+  VideoAPIUtil.deleteVideo(id).then(video => (dispatch(deleteVideo(id))
+  ), err => (
+    dispatch(receiveErrors(err.responseJSON))
+  ))
+);
 

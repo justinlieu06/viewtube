@@ -8,7 +8,15 @@ const NavBarTop = props => {
       {/* <div className="hamburger" onClick={props.openModal}>
         <i className="fas fa-bars"></i>
       </div> */}
-      {props.otherNav}
+      <div>
+        {props.otherNav}
+        <div className="youtube-icon"><i className="fab fa-youtube fa-rotate-180 fa-2x"></i></div>
+        <div className="nav-viewtube">ViewTube</div>
+      </div> 
+      <form>
+        <input type="text" value="placeholder" />
+        <button value="submit" />
+      </form>  
       <GreetingContainer />
     </div>
   );

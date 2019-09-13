@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const Greeting = ({ currentUser, logout }) => {
   const sessionLinks = () => (
     <div className="greeting-login-signup">
-      <Link to="/signup" className="greeting-link"><i className="fas fa-user-circle"></i> Sign up</Link>
+      {/* <Link to="/signup" className="greeting-link"><i className="fas fa-user-circle"></i> Sign up</Link> */}
       <Link to="/login" className="greeting-link"><i className="fas fa-user-circle"></i> Login</Link>
     </div>
   );

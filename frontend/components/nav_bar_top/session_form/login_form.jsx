@@ -84,7 +84,7 @@ class LogInForm extends React.Component {
               <input type="text"
                 value={this.state.username}
                 onChange={this.update('username')}
-                className="input-login"
+                className="login-input"
                 placeholder="Username"
               />
             </div>
@@ -93,8 +93,8 @@ class LogInForm extends React.Component {
               <input type="password"
                 value={this.state.password}
                 onChange={this.update('password')}
-                className="input-login"
                 placeholder="Password"
+                className="login-input"
               />
             </div>
             <div className="login-errors"> {this.renderErrors()} </div>

@@ -11,7 +11,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   otherNav: ( 
-    <button className="hamburger" onClick={() => dispatch(openModal('navbarside'))}>
+    <button className="open-hamburger" onClick={() => dispatch(openModal('navbarside'))}>
       <i className="fas fa-bars"></i>  
     </button>),
   closeModal: () => dispatch(closeModal()),

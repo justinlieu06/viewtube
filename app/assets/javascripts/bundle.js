@@ -333,7 +333,11 @@ var NavBarSide = function NavBarSide(props) {
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "NavBarSide"
   }, props.closeModal, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "viewtube"
+    className: "youtube-icon"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+    className: "fab fa-youtube fa-rotate-180 fa-2x"
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "nav-viewtube"
   }, "ViewTube"));
 };
 
@@ -376,7 +380,7 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
       }
     }, "HAM"),
     closeModal: react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
-      className: "hamburger",
+      className: "close-hamburger",
       onClick: function onClick() {
         return dispatch(Object(_actions_modal_actions__WEBPACK_IMPORTED_MODULE_2__["closeModal"])());
       }
@@ -413,11 +417,6 @@ var Greeting = function Greeting(_ref) {
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "greeting-login-signup"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-      to: "/signup",
-      className: "greeting-link"
-    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-      className: "fas fa-user-circle"
-    }), " Sign up"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
       to: "/login",
       className: "greeting-link"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
@@ -503,7 +502,18 @@ __webpack_require__.r(__webpack_exports__);
 var NavBarTop = function NavBarTop(props) {
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "top-nav"
-  }, props.otherNav, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_greeting_greeting_container__WEBPACK_IMPORTED_MODULE_1__["default"], null));
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, props.otherNav, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "youtube-icon"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+    className: "fab fa-youtube fa-rotate-180 fa-2x"
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "nav-viewtube"
+  }, "ViewTube")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "text",
+    value: "placeholder"
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    value: "submit"
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_greeting_greeting_container__WEBPACK_IMPORTED_MODULE_1__["default"], null));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (NavBarTop);
@@ -539,7 +549,7 @@ var mapStateToProps = function mapStateToProps(state) {
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
     otherNav: react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
-      className: "hamburger",
+      className: "open-hamburger",
       onClick: function onClick() {
         return dispatch(Object(_actions_modal_actions__WEBPACK_IMPORTED_MODULE_3__["openModal"])('navbarside'));
       }
@@ -698,7 +708,7 @@ function (_React$Component) {
         type: "text",
         value: this.state.username,
         onChange: this.update('username'),
-        className: "input-login",
+        className: "login-input",
         placeholder: "Username"
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "div-input"
@@ -706,8 +716,8 @@ function (_React$Component) {
         type: "password",
         value: this.state.password,
         onChange: this.update('password'),
-        className: "input-login",
-        placeholder: "Password"
+        placeholder: "Password",
+        className: "login-input"
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "login-errors"
       }, " ", this.renderErrors(), " "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -896,7 +906,7 @@ function (_React$Component) {
         type: "text",
         value: this.state.username,
         onChange: this.update('username'),
-        className: "input-login",
+        className: "login-input",
         placeholder: "Username"
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "div-input"
@@ -904,7 +914,7 @@ function (_React$Component) {
         type: "email",
         value: this.state.email,
         onChange: this.update('email'),
-        className: "input-login",
+        className: "login-input",
         placeholder: "Email"
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "div-input"
@@ -912,7 +922,7 @@ function (_React$Component) {
         type: "password",
         value: this.state.password,
         onChange: this.update('password'),
-        className: "input-login",
+        className: "login-input",
         placeholder: "Password"
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "login-errors"
@@ -1033,7 +1043,11 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var Splash = function Splash() {
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_nav_bar_top_nav_bar_top_container__WEBPACK_IMPORTED_MODULE_1__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_nav_bar_side_modal__WEBPACK_IMPORTED_MODULE_3__["default"], null));
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "splash"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_nav_bar_top_nav_bar_top_container__WEBPACK_IMPORTED_MODULE_1__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_nav_bar_side_modal__WEBPACK_IMPORTED_MODULE_3__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "splash-wrapper"
+  }));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Splash);
@@ -34767,7 +34781,7 @@ function warning(message) {
 /*!***************************************************************!*\
   !*** ./node_modules/react-router-dom/esm/react-router-dom.js ***!
   \***************************************************************/
-/*! exports provided: MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext, BrowserRouter, HashRouter, Link, NavLink */
+/*! exports provided: BrowserRouter, HashRouter, Link, NavLink, MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
