@@ -48,7 +48,7 @@ export const createVideo = video => dispatch => {
   return(
   VideoAPIUtil.createVideo(video)
   .then(video => {
-    debugger
+    // debugger
     dispatch(receiveVideo(video))
   })
   .fail(err => {

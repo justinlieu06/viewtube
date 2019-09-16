@@ -274,7 +274,7 @@ var fetchVideo = function fetchVideo(id) {
 var createVideo = function createVideo(video) {
   return function (dispatch) {
     return _util_video_api_util__WEBPACK_IMPORTED_MODULE_0__["createVideo"](video).then(function (video) {
-      debugger;
+      // debugger
       dispatch(receiveVideo(video));
     }).fail(function (err) {
       dispatch(receiveErrors(err.responseJSON));
