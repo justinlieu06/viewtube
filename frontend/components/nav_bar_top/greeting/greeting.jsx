@@ -11,7 +11,13 @@ const Greeting = ({ currentUser, logout }) => {
   const personalGreeting = () => (
     <div className="greeting-header">
       {/* <div className="header-name" className="greeting-username">{currentUser.username.slice(0, 1)}</div> */}
-      <Link to="/upload" className="upload-link"><i className="fas fa-video"></i></Link>
+      <div className="upload-wrap">
+        <Link to="/upload" className="upload-link"><i className="fas fa-video"></i></Link>
+        <div className="upload-description">
+          <span>Create a video</span>
+        </div>
+      </div>
+
       <button className="greeting-button" onClick={logout}>Log Out</button>
       <div className="greeting-profile"><i className="fas fa-user-circle fa-2x"></i></div>
     </div>

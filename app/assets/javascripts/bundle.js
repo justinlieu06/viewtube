@@ -274,9 +274,10 @@ var fetchVideo = function fetchVideo(id) {
 var createVideo = function createVideo(video) {
   return function (dispatch) {
     return _util_video_api_util__WEBPACK_IMPORTED_MODULE_0__["createVideo"](video).then(function (video) {
-      return dispatch(receiveVideo(video));
-    }, function (err) {
-      return dispatch(receiveErrors(err.responseJSON));
+      debugger;
+      dispatch(receiveVideo(video));
+    }).fail(function (err) {
+      dispatch(receiveErrors(err.responseJSON));
     });
   };
 };
@@ -542,12 +543,16 @@ var Greeting = function Greeting(_ref) {
   var personalGreeting = function personalGreeting() {
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "greeting-header"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "upload-wrap"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
       to: "/upload",
       className: "upload-link"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
       className: "fas fa-video"
-    })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "upload-description"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Create a video"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
       className: "greeting-button",
       onClick: logout
     }, "Log Out"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -1227,7 +1232,11 @@ function (_React$Component) {
       video: null,
       videoFile: null,
       thumbnail: null,
-      thumbnailFile: null
+      thumbnailFile: null,
+      titleError: '',
+      descriptionError: '',
+      videoError: '',
+      thumbnailError: ''
     };
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
     _this.update = _this.update.bind(_assertThisInitialized(_this));
@@ -1246,7 +1255,8 @@ function (_React$Component) {
       formData.append('video[title]', this.state.title);
       formData.append('video[description]', this.state.description);
       formData.append('video[video]', this.state.videoFile);
-      formData.append('video[thumbnail]', this.state.thumbnailFile); // $.ajax({
+      formData.append('video[thumbnail]', this.state.thumbnailFile); // debugger
+      // $.ajax({
       //   url: `/api/videos`,
       //   type: `POST`,
       //   data: formData,
@@ -1259,11 +1269,41 @@ function (_React$Component) {
       //   return;
       // }
 
-      this.props.createVideo(formData).then(function () {
-        _this2.setState();
+      if (this.state.title.length === 0) {
+        this.setState({
+          titleError: 'Title field cannot be blank'
+        });
+      }
 
-        _this2.props.history.push('/');
-      });
+      if (this.state.description.length === 0) {
+        this.setState({
+          descriptionError: 'Description field cannot be blank'
+        });
+      }
+
+      if (this.state.videoFile === null) {
+        this.setState({
+          videoError: 'Video must be uploaded'
+        });
+      }
+
+      if (this.state.thumbnailFile === null) {
+        this.setState({
+          thumbnailError: 'Thumbnail must be uploaded'
+        });
+      }
+
+      if (this.state.title.length !== 0 && this.state.description.length !== 0 && this.state.videoFile !== null && this.state.thumbnailFile !== null) {
+        this.props.createVideo(formData).then(function () {
+          console.log(formData);
+
+          _this2.setState();
+
+          _this2.props.history.push('/');
+        });
+      } else {
+        console.log("Upload unsuccessful");
+      }
     }
   }, {
     key: "update",
@@ -1350,7 +1390,15 @@ function (_React$Component) {
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "submit",
         value: "Upload Video"
-      }), this.renderErrors()));
+      }), this.renderErrors(), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "upload-errors"
+      }, this.state.titleError), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "upload-errors"
+      }, this.state.descriptionError), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "upload-errors"
+      }, this.state.videoError), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "upload-errors"
+      }, this.state.thumbnailError)));
     }
   }]);
 

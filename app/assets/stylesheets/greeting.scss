@@ -6,6 +6,7 @@
 .greeting-header {
   display: flex;
   justify-content: flex-end;
+  align-content: space-between;
 }
 
 .greeting-link:link, .greeting-link:visited, .greeting-button {
@@ -20,31 +21,54 @@
 }
 
 .greeting-link:hover, .greeting-link:active, .greeting-button:hover {
-  color: pink;
-  border: 1px solid pink;
+  color: white;
+  border: 1px solid white;
 }
 
 .upload-link:link, .upload-link:visited {
   color: white;
-  padding: 9px;
-  margin: 10px;
 }
 
-.greeting-username {
-  margin-top: 10px;
-  color: white;
-  font-size: 20px;
-  font-family: roboto, arial, sans-serif;
-  padding-left: 12px;
-  padding-top: 5px;
-
-  // circle
-  width: 23px;
-  height: 30px;
-  border: 1px solid white;
-  border-radius: 50%;
-  display: inline-block;
+.upload-wrap {
+  margin-top: 19px;
+  margin-right: 20px;
+  position: relative;
+  height: 0px;
 }
+
+.upload-wrap .upload-description {
+  display: none;
+  position: absolute;
+  background-color: grey;
+  padding: 5px;
+  width: 94px;
+  margin-top: 30px;
+  font-size: 14px;
+  font-family: sans-serif;
+  color: lightgrey;
+  text-align:center;
+  transform: translate(-32px)
+}
+
+.upload-wrap:hover .upload-description {
+  display: block;
+}
+
+// .greeting-username {
+//   margin-top: 10px;
+//   color: white;
+//   font-size: 20px;
+//   font-family: roboto, arial, sans-serif;
+//   padding-left: 12px;
+//   padding-top: 5px;
+
+//   // circle
+//   width: 23px;
+//   height: 30px;
+//   border: 1px solid white;
+//   border-radius: 50%;
+//   display: inline-block;
+// }
 
 .greeting-profile {
   color: white;
