@@ -16,7 +16,7 @@ export const createVideo = video => (
   $.ajax({
     url: `/api/videos`,
     type: `POST`,
-    data: {video},
+    data: video,
     contentType: false,
     processData: false
   })

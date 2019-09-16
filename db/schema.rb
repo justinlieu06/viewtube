@@ -82,7 +82,7 @@ ActiveRecord::Schema.define(version: 2019_09_12_173835) do
     t.string "description", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["author_id"], name: "index_videos_on_author_id", unique: true
+    t.index ["author_id"], name: "index_videos_on_author_id"
     t.index ["title"], name: "index_videos_on_title", unique: true
   end
 

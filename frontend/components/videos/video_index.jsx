@@ -6,7 +6,11 @@ class VideoIndex extends React.Component {
     this.props.fetchVideos();
   }
 
-
+  render(){
+    <div>
+      
+    </div>
+  }
 }
 
 export default VideoIndex;

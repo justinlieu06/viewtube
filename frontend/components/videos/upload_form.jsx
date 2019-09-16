@@ -27,6 +27,13 @@ class UploadForm extends React.Component {
     formData.append('video[description]', this.state.description);
     formData.append('video[video]', this.state.videoFile);
     formData.append('video[thumbnail]', this.state.thumbnailFile);
+    // $.ajax({
+    //   url: `/api/videos`,
+    //   type: `POST`,
+    //   data: formData,
+    //   contentType: false,
+    //   processData: false
+    // });
     this.props.createVideo(formData).then(
       () => {
         this.setState();
@@ -84,7 +91,7 @@ class UploadForm extends React.Component {
       <div>
         <form onSubmit={this.handleSubmit}>
           <input type="file" accept="video/mp4" onChange={this.updateVideo} />
-          <input type="file" accept="image/png, image/jpeg" onChange={this.updatePoster} />
+          <input type="file" accept="image/png, image/jpeg" onChange={this.updateThumbnail} />
           <input type="text" placeholder="Title" onChange={this.update('title')} />
           <input type="text" placeholder="Description" onChange={this.update('description')} />
           <input type="submit" value="Upload Video" />

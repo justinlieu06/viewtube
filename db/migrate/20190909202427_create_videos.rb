@@ -7,7 +7,7 @@ class CreateVideos < ActiveRecord::Migration[5.2]
 
       t.timestamps
     end
-    add_index :videos, :author_id, unique: true
     add_index :videos, :title, unique: true
+    add_index :videos, :author_id
   end
 end
