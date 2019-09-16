@@ -13,6 +13,13 @@ class Api::VideosController < ApplicationController
   end
 
   def create
+    if params[:video][:url] == "null"
+      render json: ["Please select video"], status: 406
+      return nil
+    elsif params[:video][:thumbnail] == "null"
+      render json: ["Please select thumbnail"], status: 406
+      return nil
+    end
     @video = Video.new(video_params)
     @video.author_id = current_user.id
     if @video.save
@@ -43,7 +50,7 @@ class Api::VideosController < ApplicationController
 
   private
   def video_params
-    params.require(:video).permit(:title, :description, :author_id, :video_url, :poster)
+    params.require(:video).permit(:title, :description, :author_id, :url, :thumbnail)
   end
 
 end

@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import UploadForm from './video_upload_form';
+import UploadForm from './upload_form';
 import { createVideo, clearErrors } from '../../actions/video_actions';
 
 const mapStateToProps = state => ({

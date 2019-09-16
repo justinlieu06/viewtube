@@ -7,7 +7,7 @@ import LogInForm from './login_form';
 const mapStateToProps = state => ({
   errors: state.errors.sessionErrors,
   formType: 'login',
-  navLink: <Link to="/signup">Create account</Link>
+  navLink: <Link to="/signup" className="form-link">Create account</Link>
 });
 
 const mapDispatchToProps = dispatch => ({

@@ -83,7 +83,7 @@ class SignUpForm extends React.Component {
             {/* <div className="password-requirements"> Password must be 6 or more characters. </div> */}
 
             <div className="signup-form-buttons">
-              {this.props.navLink}
+              <div className="form-link">{this.props.navLink}</div>
               <input className="session-submit" type="submit" value="Sign Up" />
             </div>
           </div>

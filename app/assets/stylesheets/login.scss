@@ -6,7 +6,7 @@
 
 .login-form {
   border-radius: 25px;
-  border: 1px solid grey;
+  border: 1px solid lightgrey;
   width: 448px;
   height: 500px;
   margin: auto;
@@ -27,6 +27,7 @@
   text-align: center;
   color: #202124;
   font-size: 16px;
+  font-family: sans-serif, 'Roboto Condensed';
   font-weight: 400;
   letter-spacing: .1px;
   line-height: 1.5;
@@ -44,13 +45,26 @@
   padding-left: 10px;
 }
 
+.login-input:focus {
+  box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+  border: 1px solid rgba(81, 203, 238, 1);
+}
+
+.login-input:focus::placeholder {
+  font-size: 0px;
+}
+
 .viewtube {
   padding-top: 35px;
   font-family: Impact, Charcoal, sans-serif;
   font-size: 20px;
-  color: white;
+  // color: white;
   text-align: center;
-  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+  // text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+
+  background: linear-gradient(to right, orange , yellow, green, cyan, blue, violet);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .session-submit {
@@ -120,4 +134,9 @@
   padding-top: 2px;
   float: right;
   padding-right: 10px;
+}
+
+.form-link:visited, .form-link:hover, .form-link:active, .form-link:link {
+  color: #1a73e8;
+  text-decoration: none;
 }

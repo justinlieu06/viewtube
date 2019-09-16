@@ -8,12 +8,16 @@ class UploadForm extends React.Component {
     this.state = {
       title: '',
       description: '',
+      video: null,
       videoFile: null,
-      videoUrl: null
+      thumbnail: null,
+      thumbnailFile: null,
+
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.update = this.update.bind(this);
     this.updateVideo = this.updateVideo.bind(this);
+    this.updateThumbnail = this.updateThumbnail.bind(this);
   }
 
   handleSubmit(e){
@@ -21,7 +25,8 @@ class UploadForm extends React.Component {
     const formData = new FormData();
     formData.append('video[title]', this.state.title);
     formData.append('video[description]', this.state.description);
-    formData.append('video[videoUrl]', this.state.videoFile);
+    formData.append('video[video]', this.state.videoFile);
+    formData.append('video[thumbnail]', this.state.thumbnailFile);
     this.props.createVideo(formData).then(
       () => {
         this.setState();
@@ -40,13 +45,34 @@ class UploadForm extends React.Component {
     const file = e.currentTarget.files[0];
     const reader = new FileReader();
     reader.onloadend = () => {
-      this.setState({ videoUrl: reader.result, videoFile: file });
+      this.setState({ video: reader.result, videoFile: file });
     }
     if (file) {
       reader.readAsDataURL(file);
-    } else {
-      this.setState({ videoUrl: "", videoFile: null});
     }
+  }
+
+  updateThumbnail(e) {
+    const file = e.currentTarget.files[0];
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      this.setState({ thumbnail: reader.result, thumbnailFile: file });
+    }
+    if (file) {
+      reader.readAsDataURL(file);
+    }
+  }
+
+  renderErrors() {
+    return(
+      <ul>
+        {this.props.errors.map((error, i) => (
+          <li key={`error-${i}`}>
+            {error}
+          </li>
+        ))}
+      </ul>
+    );
   }
 
   componentDidMount() {
@@ -57,12 +83,12 @@ class UploadForm extends React.Component {
     return(
       <div>
         <form onSubmit={this.handleSubmit}>
-          <label htmlFor="upload-mp4"
-            className="form-upload-icon">
-            <i className="fas fa-play-circle"></i>
-          </label>
           <input type="file" accept="video/mp4" onChange={this.updateVideo} />
-
+          <input type="file" accept="image/png, image/jpeg" onChange={this.updatePoster} />
+          <input type="text" placeholder="Title" onChange={this.update('title')} />
+          <input type="text" placeholder="Description" onChange={this.update('description')} />
+          <input type="submit" value="Upload Video" />
+          {this.renderErrors()}
         </form>
       </div>
     )

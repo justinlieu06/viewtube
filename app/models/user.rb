@@ -17,9 +17,10 @@ class User < ApplicationRecord
   validates :username, :session_token, :email, uniqueness: true
   validates :password, length: { minimum: 6, allow_nil: true }
 
-  has_many :videos,
-    foreign_key: :author_id,
-    class_name: 'Video'
+  # has_many :videos,
+  #   foreign_key: :author_id,
+  #   class_name: 'Video'
+  has_many_attached :videos
 
   has_many :likes,
     foreign_key: :author_id,

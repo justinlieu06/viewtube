@@ -192,6 +192,115 @@ var logOut = function logOut() {
 
 /***/ }),
 
+/***/ "./frontend/actions/video_actions.js":
+/*!*******************************************!*\
+  !*** ./frontend/actions/video_actions.js ***!
+  \*******************************************/
+/*! exports provided: RECEIVE_ALL_VIDEOS, RECEIVE_VIDEO, DELETE_VIDEO, RECEIVE_VIDEO_ERRORS, CLEAR_ERRORS, clearErrors, fetchVideos, fetchVideo, createVideo, updateVideo, deleteVideo */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_ALL_VIDEOS", function() { return RECEIVE_ALL_VIDEOS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_VIDEO", function() { return RECEIVE_VIDEO; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DELETE_VIDEO", function() { return DELETE_VIDEO; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_VIDEO_ERRORS", function() { return RECEIVE_VIDEO_ERRORS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CLEAR_ERRORS", function() { return CLEAR_ERRORS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "clearErrors", function() { return clearErrors; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchVideos", function() { return fetchVideos; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchVideo", function() { return fetchVideo; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createVideo", function() { return createVideo; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "updateVideo", function() { return updateVideo; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "deleteVideo", function() { return deleteVideo; });
+/* harmony import */ var _util_video_api_util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util/video_api_util */ "./frontend/util/video_api_util.js");
+
+var RECEIVE_ALL_VIDEOS = 'RECEIVE_ALL_VIDEOS';
+var RECEIVE_VIDEO = 'RECEIVE_VIDEO';
+var DELETE_VIDEO = 'DELETE_VIDEO';
+var RECEIVE_VIDEO_ERRORS = 'RECEIVE_VIDEO_ERRORS';
+var CLEAR_ERRORS = 'CLEAR_ERRORS';
+
+var receiveAllVideos = function receiveAllVideos(videos) {
+  return {
+    type: RECEIVE_ALL_VIDEOS,
+    videos: videos
+  };
+};
+
+var receiveVideo = function receiveVideo(video) {
+  return {
+    type: RECEIVE_VIDEO,
+    video: video
+  };
+};
+
+var removeVideo = function removeVideo(video) {
+  return {
+    type: DELETE_VIDEO,
+    videoId: video.id
+  };
+};
+
+var receiveErrors = function receiveErrors(errors) {
+  return {
+    type: RECEIVE_VIDEO_ERRORS,
+    errors: errors
+  };
+};
+
+var clearErrors = function clearErrors() {
+  return {
+    type: CLEAR_ERRORS
+  };
+};
+var fetchVideos = function fetchVideos() {
+  return function (dispatch) {
+    return _util_video_api_util__WEBPACK_IMPORTED_MODULE_0__["fetchVideos"]().then(function (videos) {
+      return dispatch(receiveAllVideos(videos));
+    }, function (err) {
+      return dispatch(receiveErrors(err.responseJSON));
+    });
+  };
+};
+var fetchVideo = function fetchVideo(id) {
+  return function (dispatch) {
+    return _util_video_api_util__WEBPACK_IMPORTED_MODULE_0__["fetchVideo"](id).then(function (video) {
+      return dispatch(receiveVideo(video));
+    }, function (err) {
+      return dispatch(receiveErrors(err.responseJSON));
+    });
+  };
+};
+var createVideo = function createVideo(video) {
+  return function (dispatch) {
+    return _util_video_api_util__WEBPACK_IMPORTED_MODULE_0__["createVideo"](video).then(function (video) {
+      return dispatch(receiveVideo(video));
+    }, function (err) {
+      return dispatch(receiveErrors(err.responseJSON));
+    });
+  };
+};
+var updateVideo = function updateVideo(video) {
+  return function (dispatch) {
+    return _util_video_api_util__WEBPACK_IMPORTED_MODULE_0__["updateVideo"](video).then(function (video) {
+      return dispatch(receiveVideo(video));
+    }, function (err) {
+      return dispatch(receiveErrors(err.responseJSON));
+    });
+  };
+};
+var deleteVideo = function deleteVideo(id) {
+  return function (dispatch) {
+    return _util_video_api_util__WEBPACK_IMPORTED_MODULE_0__["deleteVideo"](id).then(function (video) {
+      return dispatch(removeVideo(video));
+    }, function (err) {
+      return dispatch(receiveErrors(err.responseJSON));
+    });
+  };
+};
+
+/***/ }),
+
 /***/ "./frontend/components/app.jsx":
 /*!*************************************!*\
   !*** ./frontend/components/app.jsx ***!
@@ -208,12 +317,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _nav_bar_top_session_form_login_form_container__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./nav_bar_top/session_form/login_form_container */ "./frontend/components/nav_bar_top/session_form/login_form_container.js");
 /* harmony import */ var _splash__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./splash */ "./frontend/components/splash.jsx");
 /* harmony import */ var _util_route_utils__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../util/route_utils */ "./frontend/util/route_utils.jsx");
-/* harmony import */ var _nav_bar_side_modal__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./nav_bar_side/modal */ "./frontend/components/nav_bar_side/modal.jsx");
+/* harmony import */ var _videos_upload_form_container__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./videos/upload_form_container */ "./frontend/components/videos/upload_form_container.js");
 
 
 
 
 
+ // import Modal from './nav_bar_side/modal';
 
 
 
@@ -227,6 +337,9 @@ var App = function App(_ref) {
     exact: true,
     path: "/login",
     component: _nav_bar_top_session_form_login_form_container__WEBPACK_IMPORTED_MODULE_3__["default"]
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_utils__WEBPACK_IMPORTED_MODULE_5__["ProtectedRoute"], {
+    path: "/upload",
+    component: _videos_upload_form_container__WEBPACK_IMPORTED_MODULE_6__["default"]
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
     exact: true,
     path: "/",
@@ -508,12 +621,7 @@ var NavBarTop = function NavBarTop(props) {
     className: "fab fa-youtube fa-rotate-180 fa-2x"
   })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "nav-viewtube"
-  }, "ViewTube")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-    type: "text",
-    value: "placeholder"
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-    value: "submit"
-  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_greeting_greeting_container__WEBPACK_IMPORTED_MODULE_1__["default"], null));
+  }, "ViewTube")), "#PUT FORM CONTAINER HERE", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_greeting_greeting_container__WEBPACK_IMPORTED_MODULE_1__["default"], null));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (NavBarTop);
@@ -774,7 +882,8 @@ var mapStateToProps = function mapStateToProps(state) {
     errors: state.errors.sessionErrors,
     formType: 'login',
     navLink: react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
-      to: "/signup"
+      to: "/signup",
+      className: "form-link"
     }, "Create account")
   };
 };
@@ -928,7 +1037,9 @@ function (_React$Component) {
         className: "login-errors"
       }, " ", this.renderErrors(), " "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "signup-form-buttons"
-      }, this.props.navLink, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "form-link"
+      }, this.props.navLink), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         className: "session-submit",
         type: "submit",
         value: "Sign Up"
@@ -973,7 +1084,8 @@ var mapStateToProps = function mapStateToProps(state) {
     errors: state.errors.sessionErrors,
     formType: 'signup',
     navLink: react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
-      to: "/login"
+      to: "/login",
+      className: "form-link"
     }, "Sign in instead")
   };
 };
@@ -1051,6 +1163,220 @@ var Splash = function Splash() {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Splash);
+
+/***/ }),
+
+/***/ "./frontend/components/videos/upload_form.jsx":
+/*!****************************************************!*\
+  !*** ./frontend/components/videos/upload_form.jsx ***!
+  \****************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _nav_bar_top_nav_bar_top_container__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../nav_bar_top/nav_bar_top_container */ "./frontend/components/nav_bar_top/nav_bar_top_container.js");
+/* harmony import */ var _nav_bar_side_nav_bar_side_container__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../nav_bar_side/nav_bar_side_container */ "./frontend/components/nav_bar_side/nav_bar_side_container.js");
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+
+var UploadForm =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(UploadForm, _React$Component);
+
+  function UploadForm(props) {
+    var _this;
+
+    _classCallCheck(this, UploadForm);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(UploadForm).call(this, props));
+    _this.state = {
+      title: '',
+      description: '',
+      video: null,
+      videoFile: null,
+      thumbnail: null,
+      thumbnailFile: null
+    };
+    _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
+    _this.update = _this.update.bind(_assertThisInitialized(_this));
+    _this.updateVideo = _this.updateVideo.bind(_assertThisInitialized(_this));
+    _this.updateThumbnail = _this.updateThumbnail.bind(_assertThisInitialized(_this));
+    return _this;
+  }
+
+  _createClass(UploadForm, [{
+    key: "handleSubmit",
+    value: function handleSubmit(e) {
+      var _this2 = this;
+
+      e.preventDefault();
+      var formData = new FormData();
+      formData.append('video[title]', this.state.title);
+      formData.append('video[description]', this.state.description);
+      formData.append('video[video]', this.state.videoFile);
+      formData.append('video[thumbnail]', this.state.thumbnailFile);
+      this.props.createVideo(formData).then(function () {
+        _this2.setState();
+
+        _this2.props.history.push('/');
+      });
+    }
+  }, {
+    key: "update",
+    value: function update(field) {
+      var _this3 = this;
+
+      return function (e) {
+        return _this3.setState(_defineProperty({}, field, e.currentTarget.value));
+      };
+    }
+  }, {
+    key: "updateVideo",
+    value: function updateVideo(e) {
+      var _this4 = this;
+
+      var file = e.currentTarget.files[0];
+      var reader = new FileReader();
+
+      reader.onloadend = function () {
+        _this4.setState({
+          video: reader.result,
+          videoFile: file
+        });
+      };
+
+      if (file) {
+        reader.readAsDataURL(file);
+      }
+    }
+  }, {
+    key: "updateThumbnail",
+    value: function updateThumbnail(e) {
+      var _this5 = this;
+
+      var file = e.currentTarget.files[0];
+      var reader = new FileReader();
+
+      reader.onloadend = function () {
+        _this5.setState({
+          thumbnail: reader.result,
+          thumbnailFile: file
+        });
+      };
+
+      if (file) {
+        reader.readAsDataURL(file);
+      }
+    }
+  }, {
+    key: "renderErrors",
+    value: function renderErrors() {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, this.props.errors.map(function (error, i) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+          key: "error-".concat(i)
+        }, error);
+      }));
+    }
+  }, {
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.props.clearErrors();
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+        onSubmit: this.handleSubmit
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "file",
+        accept: "video/mp4",
+        onChange: this.updateVideo
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "file",
+        accept: "image/png, image/jpeg",
+        onChange: this.updatePoster
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "text",
+        placeholder: "Title",
+        onChange: this.update('title')
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "text",
+        placeholder: "Description",
+        onChange: this.update('description')
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "submit",
+        value: "Upload Video"
+      }), this.renderErrors()));
+    }
+  }]);
+
+  return UploadForm;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+/* harmony default export */ __webpack_exports__["default"] = (UploadForm);
+
+/***/ }),
+
+/***/ "./frontend/components/videos/upload_form_container.js":
+/*!*************************************************************!*\
+  !*** ./frontend/components/videos/upload_form_container.js ***!
+  \*************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _upload_form__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./upload_form */ "./frontend/components/videos/upload_form.jsx");
+/* harmony import */ var _actions_video_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/video_actions */ "./frontend/actions/video_actions.js");
+
+
+
+
+var mapStateToProps = function mapStateToProps(state) {
+  return {
+    currentUser: state.entities.users[state.session.id],
+    errors: state.errors.videoErrors
+  };
+};
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return {
+    createVideo: function createVideo(video) {
+      return dispatch(Object(_actions_video_actions__WEBPACK_IMPORTED_MODULE_2__["createVideo"])(video));
+    },
+    clearErrors: function clearErrors() {
+      return dispatch(Object(_actions_video_actions__WEBPACK_IMPORTED_MODULE_2__["clearErrors"])());
+    }
+  };
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mapStateToProps, mapDispatchToProps)(_upload_form__WEBPACK_IMPORTED_MODULE_1__["default"]));
 
 /***/ }),
 
@@ -1136,12 +1462,13 @@ var entitiesReducer = Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
 /* harmony import */ var _session_errors_reducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./session_errors_reducer */ "./frontend/reducers/session_errors_reducer.js");
+/* harmony import */ var _videos_errors_reducer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./videos_errors_reducer */ "./frontend/reducers/videos_errors_reducer.js");
 
- // import videoErrorReducer from './videos_errors_reducer';
+
 
 var errorsReducer = Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"])({
-  sessionErrors: _session_errors_reducer__WEBPACK_IMPORTED_MODULE_1__["default"] // videoErrors: videoErrorReducer
-
+  sessionErrors: _session_errors_reducer__WEBPACK_IMPORTED_MODULE_1__["default"],
+  videoErrors: _videos_errors_reducer__WEBPACK_IMPORTED_MODULE_2__["default"]
 });
 /* harmony default export */ __webpack_exports__["default"] = (errorsReducer);
 
@@ -1335,6 +1662,40 @@ var usersReducer = function usersReducer() {
 
 /***/ }),
 
+/***/ "./frontend/reducers/videos_errors_reducer.js":
+/*!****************************************************!*\
+  !*** ./frontend/reducers/videos_errors_reducer.js ***!
+  \****************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _actions_video_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/video_actions */ "./frontend/actions/video_actions.js");
+
+
+var videoErrorReducer = function videoErrorReducer() {
+  var oldState = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+  Object.freeze(oldState);
+
+  switch (action.type) {
+    case _actions_video_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_VIDEO_ERRORS"]:
+      // return action.errors;
+      return [];
+
+    case _actions_video_actions__WEBPACK_IMPORTED_MODULE_0__["CLEAR_ERRORS"]:
+      return [];
+
+    default:
+      return oldState;
+  }
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (videoErrorReducer);
+
+/***/ }),
+
 /***/ "./frontend/store/store.js":
 /*!*********************************!*\
   !*** ./frontend/store/store.js ***!
@@ -1455,6 +1816,61 @@ var logIn = function logIn(user) {
 var logOut = function logOut(user) {
   return $.ajax({
     url: "/api/session",
+    type: "DELETE"
+  });
+};
+
+/***/ }),
+
+/***/ "./frontend/util/video_api_util.js":
+/*!*****************************************!*\
+  !*** ./frontend/util/video_api_util.js ***!
+  \*****************************************/
+/*! exports provided: fetchVideos, fetchVideo, createVideo, updateVideo, deleteVideo */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchVideos", function() { return fetchVideos; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchVideo", function() { return fetchVideo; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createVideo", function() { return createVideo; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "updateVideo", function() { return updateVideo; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "deleteVideo", function() { return deleteVideo; });
+var fetchVideos = function fetchVideos() {
+  return $.ajax({
+    url: "/api/videos",
+    type: "GET"
+  });
+};
+var fetchVideo = function fetchVideo(id) {
+  return $.ajax({
+    url: "/api/videos/".concat(id),
+    type: "GET"
+  });
+};
+var createVideo = function createVideo(video) {
+  return $.ajax({
+    url: "/api/videos",
+    type: "POST",
+    data: {
+      video: video
+    },
+    contentType: false,
+    processData: false
+  });
+};
+var updateVideo = function updateVideo(video) {
+  return $.ajax({
+    url: "/api/videos/".concat(video.id),
+    type: "PATCH",
+    data: {
+      video: video
+    }
+  });
+};
+var deleteVideo = function deleteVideo(id) {
+  return $.ajax({
+    url: "/api/videos/".concat(id),
     type: "DELETE"
   });
 };
@@ -34781,7 +35197,7 @@ function warning(message) {
 /*!***************************************************************!*\
   !*** ./node_modules/react-router-dom/esm/react-router-dom.js ***!
   \***************************************************************/
-/*! exports provided: BrowserRouter, HashRouter, Link, NavLink, MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext */
+/*! exports provided: MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext, BrowserRouter, HashRouter, Link, NavLink */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

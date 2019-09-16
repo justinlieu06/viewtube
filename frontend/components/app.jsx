@@ -5,14 +5,15 @@ import SignUpFormContainer from './nav_bar_top/session_form/signup_form_containe
 import LogInFormContainer from './nav_bar_top/session_form/login_form_container';
 import Splash from './splash';
 import { AuthRoute, ProtectedRoute } from '../util/route_utils';
-import Modal from './nav_bar_side/modal';
-
+// import Modal from './nav_bar_side/modal';
+import UploadFormContainer from './videos/upload_form_container'
 const App = ({ children }) => (
   <div>
     {/* <Modal /> */}
     <Switch>
       <AuthRoute exact path='/signup' component={SignUpFormContainer} />
       <AuthRoute exact path='/login' component={LogInFormContainer} />
+      <ProtectedRoute path="/upload" component={UploadFormContainer} />
       <Route exact path='/' component={Splash} />
       <Redirect to='/' component={Splash} />
     </Switch>

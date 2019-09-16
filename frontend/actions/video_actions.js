@@ -16,7 +16,7 @@ const receiveVideo = video => ({
   video
 });
 
-const deleteVideo = id => ({
+const removeVideo = video => ({
   type: DELETE_VIDEO,
   videoId: video.id
 });
@@ -26,7 +26,7 @@ const receiveErrors = errors => ({
   errors: errors
 });
 
-const clearErrors = () => ({
+export const clearErrors = () => ({
   type: CLEAR_ERRORS,
 });
 
@@ -59,7 +59,7 @@ export const updateVideo = video => dispatch => (
 );
 
 export const deleteVideo = id => dispatch => (
-  VideoAPIUtil.deleteVideo(id).then(video => (dispatch(deleteVideo(id))
+  VideoAPIUtil.deleteVideo(id).then(video => (dispatch(removeVideo(video))
   ), err => (
     dispatch(receiveErrors(err.responseJSON))
   ))

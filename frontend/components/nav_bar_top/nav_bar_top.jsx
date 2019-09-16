@@ -13,10 +13,9 @@ const NavBarTop = props => {
         <div className="youtube-icon"><i className="fab fa-youtube fa-rotate-180 fa-2x"></i></div>
         <div className="nav-viewtube">ViewTube</div>
       </div> 
-      <form>
-        <input type="text" value="placeholder" />
-        <button value="submit" />
-      </form>  
+      
+      #PUT FORM CONTAINER HERE
+      
       <GreetingContainer />
     </div>
   );

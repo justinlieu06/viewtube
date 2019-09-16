@@ -39,5 +39,6 @@ class Video < ApplicationRecord
     foreign_key: :video_id,
     class_name: 'Comment'
 
-  # has_one_attached :video_url
+  has_one_attached :video
+  has_one_attached :thumbnail
 end
