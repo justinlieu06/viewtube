@@ -23,7 +23,7 @@ class Api::VideosController < ApplicationController
     end
     @video = Video.new(video_params)
     @video.author_id = current_user.id
-    if @video.save
+    if @video.save!
       render :show
     else
       render json: @video.errors.full_messages, status: 406

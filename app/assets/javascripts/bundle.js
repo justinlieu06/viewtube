@@ -542,7 +542,12 @@ var Greeting = function Greeting(_ref) {
   var personalGreeting = function personalGreeting() {
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "greeting-header"
-    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+      to: "/upload",
+      className: "upload-link"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+      className: "fas fa-video"
+    })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
       className: "greeting-button",
       onClick: logout
     }, "Log Out"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -1248,6 +1253,11 @@ function (_React$Component) {
       //   contentType: false,
       //   processData: false
       // });
+      // debugger
+      // if (this.props.errors > 0){
+      //   console.log("Cannot upload");
+      //   return;
+      // }
 
       this.props.createVideo(formData).then(function () {
         _this2.setState();
@@ -1822,8 +1832,7 @@ var videoErrorReducer = function videoErrorReducer() {
 
   switch (action.type) {
     case _actions_video_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_VIDEO_ERRORS"]:
-      // return action.errors;
-      return [];
+      return action.errors;
 
     case _actions_video_actions__WEBPACK_IMPORTED_MODULE_0__["CLEAR_ERRORS"]:
       return [];

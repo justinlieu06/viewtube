@@ -34,6 +34,11 @@ class UploadForm extends React.Component {
     //   contentType: false,
     //   processData: false
     // });
+    // debugger
+    // if (this.props.errors > 0){
+    //   console.log("Cannot upload");
+    //   return;
+    // }
     this.props.createVideo(formData).then(
       () => {
         this.setState();
