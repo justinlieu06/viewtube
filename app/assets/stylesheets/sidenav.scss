@@ -40,7 +40,44 @@
   width: 10px;
 }
 
-.youtube-icon {
-  color: #1a73e8;
+.viewtube-icon {
+  // color: #1a73e8;
+  color: #3EA6FF;
   transform: translate(65px, -32px);
+}
+
+.side-link:hover, .side-link:visited, .side-link:active, .side-link:link, .side-link:focus{
+  color: white;
+  text-decoration: none;
+}
+
+.side-a:hover, .side-a:visited, .side-a:active, .side-a:link, .side-a:focus{
+  color: white;
+  text-decoration: none;
+}
+
+.side-link-wrapper:hover {
+  height: 40px;
+  background-color: #AAAAAA;
+}
+
+.side-icon-text {
+  display: flex;
+  justify-content: space-evenly;
+  width: 60%;
+  padding-top: 10px;
+}
+
+.side-text {
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  margin-top: auto;
+  text-align: center;
+}
+
+.side-title {
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  color: white;
+  padding-left: 20px;
 }

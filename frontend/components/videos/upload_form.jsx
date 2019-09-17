@@ -122,6 +122,9 @@ class UploadForm extends React.Component {
       <button className="upload-button" onClick={this.handleSubmit} disabled >
         <div className="loader"></div>
       </button> :
+      // <button onClick={this.handleSubmit} disabled >
+      // <div className="loader"></div>
+      // </button> 
       <button className="upload-button" onClick={this.handleSubmit} >
         Publish
       </button>;
@@ -150,12 +153,14 @@ class UploadForm extends React.Component {
             <textarea className="desc-inp" type="text" placeholder="Description" onChange={this.update('description')} />
           </div>
           {this.renderErrors()}
-          <p className="upload-errors">{this.state.titleError}</p>
-          <p className="upload-errors">{this.state.descriptionError}</p>
-          <p className="upload-errors">{this.state.videoError}</p>
-          <p className="upload-errors">{this.state.thumbnailError}</p>
+          <div className="upload-errors">
+            <p>{this.state.titleError}</p>
+            <p>{this.state.descriptionError}</p>
+            <p>{this.state.videoError}</p>
+            <p>{this.state.thumbnailError}</p>
+          </div>
 
-          {uploadButton}
+          <div className="upload-button-wrapper">{uploadButton}</div>
         </form>
       </div>
     )
