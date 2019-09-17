@@ -119,15 +119,12 @@ class UploadForm extends React.Component {
 
   render() {
     let uploadButton = this.state.loading ?
-      <button className="upload-button" onClick={this.handleSubmit} disabled >
-        <div className="loader"></div>
-      </button> :
       <button className="loading-button" onClick={this.handleSubmit} disabled >
       <div className="loader"></div>
+      </button> :
+      <button className="upload-button" onClick={this.handleSubmit} >
+        Publish
       </button>;
-      // <button className="upload-button" onClick={this.handleSubmit} >
-      //   Publish
-      // </button>;
     return(
       <div className="upload-wrapper">
         <NavBarTopContainer />

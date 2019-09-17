@@ -32447,3 +32447,43 @@ Processing by StaticPagesController#root as HTML
 Completed 200 OK in 94ms (Views: 92.9ms | ActiveRecord: 0.2ms)
 
 
+Started GET "/" for ::1 at 2019-09-17 15:14:27 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "hTgmEsvDeeajqkLTeDR6Bg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8
+  Rendered api/users/_user.json.jbuilder (0.6ms)
+  Rendered static_pages/root.html.erb within layouts/application (2.8ms)
+Completed 200 OK in 117ms (Views: 115.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for ::1 at 2019-09-17 15:17:33 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "hTgmEsvDeeajqkLTeDR6Bg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8
+  Rendered api/users/_user.json.jbuilder (0.4ms)
+  Rendered static_pages/root.html.erb within layouts/application (5.3ms)
+Completed 200 OK in 115ms (Views: 112.0ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/" for ::1 at 2019-09-17 15:17:39 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "hTgmEsvDeeajqkLTeDR6Bg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8
+  Rendered api/users/_user.json.jbuilder (0.5ms)
+  Rendered static_pages/root.html.erb within layouts/application (3.1ms)
+Completed 200 OK in 55ms (Views: 52.7ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for ::1 at 2019-09-17 15:20:46 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "hTgmEsvDeeajqkLTeDR6Bg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8
+  Rendered api/users/_user.json.jbuilder (0.3ms)
+  Rendered static_pages/root.html.erb within layouts/application (2.5ms)
+Completed 200 OK in 404ms (Views: 401.8ms | ActiveRecord: 0.2ms)
+
+

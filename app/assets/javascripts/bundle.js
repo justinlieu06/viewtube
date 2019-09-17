@@ -1448,21 +1448,15 @@ function (_React$Component) {
     key: "render",
     value: function render() {
       var uploadButton = this.state.loading ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "upload-button",
-        onClick: this.handleSubmit,
-        disabled: true
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "loader"
-      })) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "loading-button",
         onClick: this.handleSubmit,
         disabled: true
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "loader"
-      })); // <button className="upload-button" onClick={this.handleSubmit} >
-      //   Publish
-      // </button>;
-
+      })) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "upload-button",
+        onClick: this.handleSubmit
+      }, "Publish");
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "upload-wrapper"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_nav_bar_top_nav_bar_top_container__WEBPACK_IMPORTED_MODULE_1__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_nav_bar_side_modal__WEBPACK_IMPORTED_MODULE_3__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
