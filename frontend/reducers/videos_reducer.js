@@ -10,8 +10,8 @@ const videoReducer = (oldState = {}, action) => {
   switch (action.type) {
     case RECEIVE_ALL_VIDEOS:
       return action.videos;
-    case RECEIVE_VIDEO: // only fires when user hard refresh the show page
-      newState[action.video.id] = action.video;
+    case RECEIVE_VIDEO:
+      newState[action.video.video.id] = action.video.video;
       return newState;
     case DELETE_VIDEO:
       delete newState[action.videoId];

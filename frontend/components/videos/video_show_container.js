@@ -3,7 +3,6 @@ import { fetchVideo, deleteVideo } from '../../actions/video_actions';
 import VideoShow from './video_show';
 
 const mapStateToProps = (state, ownProps) => {
-  debugger
   return {
     video: state.entities.videos[ownProps.match.params.videoId],
     currentUser: state.entities.users[state.session.id],

@@ -6,8 +6,8 @@ const NavBarSide = props => {
   return (
     <div className="NavBarSide">
       {props.closeModal}
-      <div className="youtube-icon"><i className="fab fa-youtube fa-rotate-180 fa-2x"></i></div>
-      <div className="nav-viewtube">ViewTube</div>
+      <Link to={`/`}><div className="youtube-icon"><i className="fab fa-youtube fa-rotate-180 fa-2x"></i></div></Link>
+      <Link to={`/`}><div className="nav-viewtube">ViewTube</div></Link>
     </div>
   )
 };

@@ -10,8 +10,8 @@ const NavBarTop = props => {
       </div> */}
       <div>
         {props.otherNav}
-        <div className="youtube-icon"><i className="fab fa-youtube fa-rotate-180 fa-2x"></i></div>
-        <div className="nav-viewtube">ViewTube</div>
+        <Link to={`/`}><div className="youtube-icon"><i className="fab fa-youtube fa-rotate-180 fa-2x"></i></div></Link>
+        <Link to={`/`}><div className="nav-viewtube">ViewTube</div></Link>
       </div> 
       
       #PUT FORM CONTAINER HERE

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import NavBarTopContainer from '../nav_bar_top/nav_bar_top_container'
+import NavBarTopContainer from '../nav_bar_top/nav_bar_top_container';
+import Modal from '../nav_bar_side/modal';
 
 class VideoShow extends React.Component {
   constructor(props) {
@@ -8,11 +9,10 @@ class VideoShow extends React.Component {
     this.state = {
       video: this.props.video,
     }
-    console.log("hi");
-
   }
 
   componentDidMount(){
+    this.props.fetchVideo(this.props.match.params.videoId);
   }
 
   renderErrors() {
@@ -28,11 +28,32 @@ class VideoShow extends React.Component {
   }
 
   render(){
-    // debugger
+    if (this.props.video === undefined){
+      return null;
+    }
     return(
-      <video key={this.state.video.id} width='300px' height='300px' className='video-show-player' controls>
-        <source src={this.state.video.video} type="video/mp4" />
-      </video>
+      <div className="vid-show">
+        <NavBarTopContainer />
+        <Modal />
+
+        <div className="outer-vid-wrapper">
+          <div className="vid-wrapper">
+            <video key={this.props.video.id} width='300px' className='video-show-player' controls>
+              <source src={this.props.video.video} type="video/mp4" />
+            </video>
+
+            {/* <span className="vid-title">
+              {this.props.video.title}
+            </span> */}
+          </div>
+
+          <div className="vid-index-wrapper">
+            TO DO: LIST OF VIDS
+          </div>
+        </div>
+
+        <div className="vid-show-wrapper"></div>
+      </div>
     )
   }
 }

@@ -1,6 +1,7 @@
 import React from 'react';
 import NavBarTopContainer from '../nav_bar_top/nav_bar_top_container';
 import NavBarSideContainer from '../nav_bar_side/nav_bar_side_container';
+import Modal from '../nav_bar_side/modal';
 
 class UploadForm extends React.Component {
   constructor(props) {
@@ -15,7 +16,8 @@ class UploadForm extends React.Component {
       titleError: '',
       descriptionError: '',
       videoError: '',
-      thumbnailError: ''
+      thumbnailError: '',
+      loading: false
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.update = this.update.bind(this);
@@ -57,11 +59,12 @@ class UploadForm extends React.Component {
     }
     if (this.state.title.length !== 0 && this.state.description.length !== 0 && 
       this.state.videoFile !== null && this.state.thumbnailFile !== null){
+      this.setState({ loading: true});
       this.props.createVideo(formData)
       .then(
         () => {
           console.log(formData);
-          this.setState();
+          this.setState({ loading: false });
           this.props.history.push('/');
         },
       )
@@ -115,19 +118,44 @@ class UploadForm extends React.Component {
   }
 
   render() {
+    let uploadButton = this.state.loading ?
+      <button className="upload-button" onClick={this.handleSubmit} disabled >
+        <div className="loader"></div>
+      </button> :
+      <button className="upload-button" onClick={this.handleSubmit} >
+        Publish
+      </button>;
     return(
-      <div>
-        <form onSubmit={this.handleSubmit}>
-          <input type="file" accept="video/mp4" onChange={this.updateVideo} />
-          <input type="file" accept="image/png, image/jpeg" onChange={this.updateThumbnail} />
-          <input type="text" placeholder="Title" onChange={this.update('title')} />
-          <input type="text" placeholder="Description" onChange={this.update('description')} />
-          <input type="submit" value="Upload Video" />
+      <div className="upload-div">
+        <NavBarTopContainer />
+        <Modal />
+        <form className="upload-form">
+          <div className="video-upload">
+            <label htmlFor="upload-mp4"
+              className="form-upload-icon">
+              <i className="fas fa-play-circle"></i>
+            </label>
+            <input type="file" accept="video/mp4" onChange={this.updateVideo} />
+          </div>
+
+          <div className="thumbnail-upload">
+            <input className="thumb-inp" type="file" accept="image/png, image/jpeg" onChange={this.updateThumbnail} />
+          </div>
+
+          <div className="title-upload">
+            <input className="title-inp" type="text" placeholder="Title" onChange={this.update('title')} />
+          </div>
+
+          <div className="description-upload">
+            <textarea className="desc-inp" type="text" placeholder="Description" onChange={this.update('description')} />
+          </div>
           {this.renderErrors()}
           <p className="upload-errors">{this.state.titleError}</p>
           <p className="upload-errors">{this.state.descriptionError}</p>
           <p className="upload-errors">{this.state.videoError}</p>
           <p className="upload-errors">{this.state.thumbnailError}</p>
+
+          {uploadButton}
         </form>
       </div>
     )

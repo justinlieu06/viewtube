@@ -4,7 +4,8 @@ const videoErrorReducer = (oldState=[], action) => {
   Object.freeze(oldState);
   switch (action.type){
     case RECEIVE_VIDEO_ERRORS:
-      return action.errors;
+      return [];
+      // return action.errors;
     case CLEAR_ERRORS:
       return [];
     default:

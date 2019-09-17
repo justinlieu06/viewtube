@@ -448,13 +448,17 @@ __webpack_require__.r(__webpack_exports__);
 var NavBarSide = function NavBarSide(props) {
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "NavBarSide"
-  }, props.closeModal, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, props.closeModal, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+    to: "/"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "youtube-icon"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
     className: "fab fa-youtube fa-rotate-180 fa-2x"
-  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+    to: "/"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "nav-viewtube"
-  }, "ViewTube"));
+  }, "ViewTube")));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (NavBarSide);
@@ -627,13 +631,17 @@ __webpack_require__.r(__webpack_exports__);
 var NavBarTop = function NavBarTop(props) {
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "top-nav"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, props.otherNav, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, props.otherNav, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
+    to: "/"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "youtube-icon"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
     className: "fab fa-youtube fa-rotate-180 fa-2x"
-  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
+    to: "/"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "nav-viewtube"
-  }, "ViewTube")), "#PUT FORM CONTAINER HERE", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_greeting_greeting_container__WEBPACK_IMPORTED_MODULE_1__["default"], null));
+  }, "ViewTube"))), "#PUT FORM CONTAINER HERE", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_greeting_greeting_container__WEBPACK_IMPORTED_MODULE_1__["default"], null));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (NavBarTop);
@@ -1191,6 +1199,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _nav_bar_top_nav_bar_top_container__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../nav_bar_top/nav_bar_top_container */ "./frontend/components/nav_bar_top/nav_bar_top_container.js");
 /* harmony import */ var _nav_bar_side_nav_bar_side_container__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../nav_bar_side/nav_bar_side_container */ "./frontend/components/nav_bar_side/nav_bar_side_container.js");
+/* harmony import */ var _nav_bar_side_modal__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../nav_bar_side/modal */ "./frontend/components/nav_bar_side/modal.jsx");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -1210,6 +1219,7 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
 
 
 
@@ -1236,7 +1246,8 @@ function (_React$Component) {
       titleError: '',
       descriptionError: '',
       videoError: '',
-      thumbnailError: ''
+      thumbnailError: '',
+      loading: false
     };
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
     _this.update = _this.update.bind(_assertThisInitialized(_this));
@@ -1294,10 +1305,15 @@ function (_React$Component) {
       }
 
       if (this.state.title.length !== 0 && this.state.description.length !== 0 && this.state.videoFile !== null && this.state.thumbnailFile !== null) {
+        this.setState({
+          loading: true
+        });
         this.props.createVideo(formData).then(function () {
           console.log(formData);
 
-          _this2.setState();
+          _this2.setState({
+            loading: false
+          });
 
           _this2.props.history.push('/');
         });
@@ -1369,28 +1385,53 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
-        onSubmit: this.handleSubmit
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      var uploadButton = this.state.loading ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "upload-button",
+        onClick: this.handleSubmit,
+        disabled: true
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "loader"
+      })) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "upload-button",
+        onClick: this.handleSubmit
+      }, "Publish");
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "upload-div"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_nav_bar_top_nav_bar_top_container__WEBPACK_IMPORTED_MODULE_1__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_nav_bar_side_modal__WEBPACK_IMPORTED_MODULE_3__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+        className: "upload-form"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "video-upload"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        htmlFor: "upload-mp4",
+        className: "form-upload-icon"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fas fa-play-circle"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "file",
         accept: "video/mp4",
         onChange: this.updateVideo
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "thumbnail-upload"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        className: "thumb-inp",
         type: "file",
         accept: "image/png, image/jpeg",
         onChange: this.updateThumbnail
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "title-upload"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        className: "title-inp",
         type: "text",
         placeholder: "Title",
         onChange: this.update('title')
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "description-upload"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
+        className: "desc-inp",
         type: "text",
         placeholder: "Description",
         onChange: this.update('description')
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        type: "submit",
-        value: "Upload Video"
-      }), this.renderErrors(), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+      })), this.renderErrors(), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         className: "upload-errors"
       }, this.state.titleError), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         className: "upload-errors"
@@ -1398,7 +1439,7 @@ function (_React$Component) {
         className: "upload-errors"
       }, this.state.videoError), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         className: "upload-errors"
-      }, this.state.thumbnailError)));
+      }, this.state.thumbnailError), uploadButton));
     }
   }]);
 
@@ -1460,6 +1501,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 /* harmony import */ var _nav_bar_top_nav_bar_top_container__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../nav_bar_top/nav_bar_top_container */ "./frontend/components/nav_bar_top/nav_bar_top_container.js");
+/* harmony import */ var _nav_bar_side_modal__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../nav_bar_side/modal */ "./frontend/components/nav_bar_side/modal.jsx");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -1482,6 +1524,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
 var VideoShow =
 /*#__PURE__*/
 function (_React$Component) {
@@ -1496,13 +1539,14 @@ function (_React$Component) {
     _this.state = {
       video: _this.props.video
     };
-    console.log("hi");
     return _this;
   }
 
   _createClass(VideoShow, [{
     key: "componentDidMount",
-    value: function componentDidMount() {}
+    value: function componentDidMount() {
+      this.props.fetchVideo(this.props.match.params.videoId);
+    }
   }, {
     key: "renderErrors",
     value: function renderErrors() {
@@ -1515,16 +1559,28 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      // debugger
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("video", {
-        key: this.state.video.id,
+      if (this.props.video === undefined) {
+        return null;
+      }
+
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "vid-show"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_nav_bar_top_nav_bar_top_container__WEBPACK_IMPORTED_MODULE_2__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_nav_bar_side_modal__WEBPACK_IMPORTED_MODULE_3__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "outer-vid-wrapper"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "vid-wrapper"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("video", {
+        key: this.props.video.id,
         width: "300px",
-        height: "300px",
         className: "video-show-player",
         controls: true
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("source", {
-        src: this.state.video.video,
+        src: this.props.video.video,
         type: "video/mp4"
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "vid-index-wrapper"
+      }, "TO DO: LIST OF VIDS")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "vid-show-wrapper"
       }));
     }
   }]);
@@ -1553,7 +1609,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
-  debugger;
   return {
     video: state.entities.videos[ownProps.match.params.videoId],
     currentUser: state.entities.users[state.session.id],
@@ -1880,7 +1935,8 @@ var videoErrorReducer = function videoErrorReducer() {
 
   switch (action.type) {
     case _actions_video_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_VIDEO_ERRORS"]:
-      return action.errors;
+      return [];
+    // return action.errors;
 
     case _actions_video_actions__WEBPACK_IMPORTED_MODULE_0__["CLEAR_ERRORS"]:
       return [];
@@ -1917,8 +1973,7 @@ var videoReducer = function videoReducer() {
       return action.videos;
 
     case _actions_video_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_VIDEO"]:
-      // only fires when user hard refresh the show page
-      newState[action.video.id] = action.video;
+      newState[action.video.video.id] = action.video.video;
       return newState;
 
     case _actions_video_actions__WEBPACK_IMPORTED_MODULE_0__["DELETE_VIDEO"]:
