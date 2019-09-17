@@ -122,17 +122,20 @@ class UploadForm extends React.Component {
       <button className="upload-button" onClick={this.handleSubmit} disabled >
         <div className="loader"></div>
       </button> :
-      // <button onClick={this.handleSubmit} disabled >
-      // <div className="loader"></div>
-      // </button> 
-      <button className="upload-button" onClick={this.handleSubmit} >
-        Publish
+      <button className="loading-button" onClick={this.handleSubmit} disabled >
+      <div className="loader"></div>
       </button>;
+      // <button className="upload-button" onClick={this.handleSubmit} >
+      //   Publish
+      // </button>;
     return(
-      <div className="upload-div">
+      <div className="upload-wrapper">
         <NavBarTopContainer />
         <Modal />
+
         <form className="upload-form">
+
+          {/* VIDEO UPLOAD */}
           <div className="video-upload">
             <label htmlFor="upload-mp4"
               className="form-upload-icon">
@@ -141,14 +144,17 @@ class UploadForm extends React.Component {
             <input type="file" accept="video/mp4" onChange={this.updateVideo} />
           </div>
 
+          {/* THUMBNAIL UPLOAD */}
           <div className="thumbnail-upload">
             <input className="thumb-inp" type="file" accept="image/png, image/jpeg" onChange={this.updateThumbnail} />
           </div>
 
+          {/* TITLE UPLOAD */}
           <div className="title-upload">
             <input className="title-inp" type="text" placeholder="Title" onChange={this.update('title')} />
           </div>
 
+          {/* DESCRIPTION UPLOAD */}
           <div className="description-upload">
             <textarea className="desc-inp" type="text" placeholder="Description" onChange={this.update('description')} />
           </div>
@@ -160,6 +166,7 @@ class UploadForm extends React.Component {
             <p>{this.state.thumbnailError}</p>
           </div>
 
+          {/* UPLOAD BUTTON */}
           <div className="upload-button-wrapper">{uploadButton}</div>
         </form>
       </div>

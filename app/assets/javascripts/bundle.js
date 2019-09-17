@@ -1453,15 +1453,18 @@ function (_React$Component) {
         disabled: true
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "loader"
-      })) : // <button onClick={this.handleSubmit} disabled >
-      // <div className="loader"></div>
-      // </button> 
-      react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "upload-button",
-        onClick: this.handleSubmit
-      }, "Publish");
+      })) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "loading-button",
+        onClick: this.handleSubmit,
+        disabled: true
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "loader"
+      })); // <button className="upload-button" onClick={this.handleSubmit} >
+      //   Publish
+      // </button>;
+
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "upload-div"
+        className: "upload-wrapper"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_nav_bar_top_nav_bar_top_container__WEBPACK_IMPORTED_MODULE_1__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_nav_bar_side_modal__WEBPACK_IMPORTED_MODULE_3__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         className: "upload-form"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -1608,7 +1611,11 @@ function (_React$Component) {
           video: video
         });
       });
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "video-index-outer-wrapper"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "recommended"
+      }, "Recommended"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
         className: "video-index-wrapper"
       }, videos));
     }
@@ -1675,7 +1682,8 @@ var VideoIndexItem = function VideoIndexItem(_ref) {
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "index-item-wrapper"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-    to: "/watch/".concat(video.id)
+    to: "/watch/".concat(video.id),
+    className: "vid-index-item-link"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
     src: video.thumbnail,
     width: "210",
@@ -1684,9 +1692,9 @@ var VideoIndexItem = function VideoIndexItem(_ref) {
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "video-description"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "index-item-title"
+    className: "vid-index-item-title"
   }, video.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "index-item-author"
+    className: "vid-index-item-author"
   }, video.author)))));
 };
 

@@ -1,5 +1,7 @@
-.upload-div {
-
+.upload-wrapper {
+  width: 100%;
+  height: 100%;
+  background-color: green;
 }
 
 .upload-form {
@@ -92,4 +94,10 @@
   background-color: #3EA6FF;
   padding: 5px;
   width: 100%;
+}
+
+.loading-button {
+  width: 100%;
+  padding: 5px;
+  background-color: #3EA6FF;
 }

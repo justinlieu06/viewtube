@@ -14,7 +14,8 @@ class VideoIndex extends React.Component {
     ));
     
     return (
-      <div >
+      <div className="video-index-outer-wrapper">
+        <div className="recommended">Recommended</div>
         <ul className="video-index-wrapper">
           {videos}
         </ul>
