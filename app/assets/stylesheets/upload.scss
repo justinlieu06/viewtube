@@ -1,5 +1,6 @@
 .upload-wrapper {
   margin: 0px;
+  margin-top: 50px;
   padding: 0px;
   // background-color: green;
 }
@@ -16,6 +17,7 @@
 .upload-left {
   width: 45%;
   border: solid lightgrey 1px;
+
 }
 
 .upload-right {
@@ -163,4 +165,10 @@ fa-file-upload{
   text-align: center;
   transform: translate(0px, 40px);
   font-family: sans-serif, Arial;
+}
+
+.upload-art {
+  height: 200px;
+  width: 350px;
+  transform: translate(238px, -320px);
 }

@@ -1321,11 +1321,11 @@ function (_React$Component) {
       }
 
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "video-index-outer-wrapper"
+        className: "side-index-outer-wrapper"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "recommended"
       }, "Recommended"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
-        className: "video-index-wrapper"
+        className: "side-index-wrapper"
       }, videos));
     }
   }]);
@@ -1642,7 +1642,10 @@ function (_React$Component) {
         className: "upload-errors"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, this.state.titleError), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, this.state.descriptionError), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, this.state.videoError), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, this.state.thumbnailError)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "upload-button-wrapper"
-      }, uploadButton)))));
+      }, uploadButton), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: window.uploadArtURL,
+        className: "upload-art"
+      })))));
     }
   }]);
 

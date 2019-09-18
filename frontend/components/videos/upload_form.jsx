@@ -189,6 +189,7 @@ class UploadForm extends React.Component {
             {/* UPLOAD BUTTON */}
             <div className="upload-button-wrapper">{uploadButton}</div>
 
+            <img src={window.uploadArtURL} className="upload-art"/>
 
           </div>
 

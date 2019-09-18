@@ -19,9 +19,9 @@ class SideIndex extends React.Component {
     }
     
     return (
-      <div className="video-index-outer-wrapper">
+      <div className="side-index-outer-wrapper">
         <div className="recommended">Recommended</div>
-        <ul className="video-index-wrapper">
+        <ul className="side-index-wrapper">
           {videos}
         </ul>
       </div>
