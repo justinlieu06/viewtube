@@ -10,6 +10,7 @@ const VideoIndexItem = ({ video }) => {
           <div className="video-description">
             <div className="vid-index-item-title">{video.title}</div>
             <div className="vid-index-item-author">{video.author}</div>
+            <div className="vid-index-item-author">{video.published}</div>
           </div>
         </div>
       </Link>

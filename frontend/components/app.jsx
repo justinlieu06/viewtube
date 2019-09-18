@@ -18,7 +18,7 @@ const App = ({ children }) => (
       <ProtectedRoute path="/upload" component={UploadFormContainer} />
       <Route path="/watch/:videoId" component={VideoShowContainer} />
       <Route exact path='/' component={Splash} />
-      {/* <Redirect to='/' component={Splash} /> */}
+      <Redirect to='/' component={Splash} />
     </Switch>
   </div>
 );

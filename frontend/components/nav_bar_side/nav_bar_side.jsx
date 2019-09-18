@@ -24,7 +24,7 @@ const NavBarSide = props => {
       <Link to={`/upload`} className="side-link">
         <div className="side-link-wrapper">
           <div className="side-icon-text">
-            <i class="fas fa-video"></i>
+            <i className="fas fa-video"></i>
             <div className="side-text">Upload</div>
           </div>
         </div>
@@ -38,7 +38,7 @@ const NavBarSide = props => {
       <a href="https://github.com/JustinLieu06" className="side-a" target="_blank">
         <div className="side-link-wrapper">
           <div className="side-icon-text">
-            <i class="fab fa-github"></i>
+            <i className="fab fa-github"></i>
             <div className="side-text">Github</div>
           </div>
         </div>
@@ -50,7 +50,7 @@ const NavBarSide = props => {
       <a href="https://www.linkedin.com/in/justin-lieu-024744150/" className="side-a" target="_blank">
         <div className="side-link-wrapper">
           <div className="side-icon-text">
-            <i class="fab fa-linkedin"></i>
+            <i className="fab fa-linkedin"></i>
             <div className="side-text">Linkedin</div>
           </div>
         </div>
@@ -62,7 +62,7 @@ const NavBarSide = props => {
       <a href="https://www.youtube.com/" className="side-a" target="_blank">
         <div className="side-link-wrapper">
           <div className="side-icon-text">
-            <i class="fab fa-youtube"></i>
+            <i className="fab fa-youtube"></i>
             <div className="side-text">Original</div>
           </div>
         </div>

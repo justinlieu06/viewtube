@@ -38,17 +38,25 @@ class VideoShow extends React.Component {
 
         <div className="outer-vid-wrapper">
           <div className="vid-wrapper">
-            <video key={this.props.video.id} width='300px' className='video-show-player' controls>
+            <video key={this.props.video.id} width='100%' className='video-show-player' controls>
               <source src={this.props.video.video} type="video/mp4" />
             </video>
-
-            {/* <span className="vid-title">
-              {this.props.video.title}
-            </span> */}
           </div>
-
-          <div className="vid-index-wrapper">
-            TO DO: LIST OF VIDS
+        </div>
+        <div className="vid-info">
+          <div className="vid-title">
+            {this.props.video.title}
+          </div>
+          <div className="vid-published">
+            {this.props.video.published}
+          </div>
+          <hr />
+          <div className="vid-username">
+            <i className="fas fa-user-circle fa-3x"></i>
+            {this.props.video.username}
+          </div>
+          <div className="vid-description">
+            {this.props.video.description}
           </div>
         </div>
 

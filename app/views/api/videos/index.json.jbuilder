@@ -5,6 +5,7 @@
       json.author video.user.username
       json.video url_for(video.video)
       json.thumbnail url_for(video.thumbnail)
+      json.published video.created_at.strftime("%B %d, %Y")
     end
   end
 end

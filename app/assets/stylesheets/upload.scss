@@ -1,30 +1,41 @@
 .upload-wrapper {
-  width: 100%;
-  height: 100%;
   margin: 0px;
   padding: 0px;
-  background-color: green;
+  // background-color: green;
 }
 
 .upload-form {
-  border: solid black 1px;
-  width: 448px;
-  height: 500px;
+  transform: translate(0px, 50px);
   margin: auto;
+  width: 1000px;
+  height: 500px;
+  border: solid lightgrey 1px;
+  display: flex;
+}
+
+.upload-left {
+  width: 45%;
+  border: solid lightgrey 1px;
+}
+
+.upload-right {
+  width: 65%;
+  border: solid lightgrey 1px;
 }
 
 .upload-errors {
   color: red;
-  font-size: 12px;
+  font-size: 14px;
   font-family: Impact;
-  margin: auto;
-  width: 50%;
+  width: 40%;
   font-family: sans-serif;
+  transform: translate(60px, -150px);
+  height: 150px;
 }
 
 .loader {
-  border: 2px solid #f3f3f3; /* Light grey */
-  border-top: 2px solid #3498db; /* Blue */
+  border: 2px solid #f3f3f3;
+  border-top: 2px solid #3EA6FF;
   border-radius: 50%;
   width: 15px;
   height: 15px;
@@ -37,30 +48,43 @@
   100% { transform: rotate(360deg); }
 }
 
-.video-upload {
-  width: 75%;
+.video-upload, .thumbnail-upload {
+  width: 95px;
+  height: 128px;
   margin: auto;
-  // display: none;
+  transform: translate(0px, 20px);
 }
 
-.vid-inp {
-  width: 100%;
+.v-upload{
+  transform: translate(60px, 30px);
+  height: 200px;
+  width: 200px;
+  border: solid 1px rgb(107, 103, 103);
 }
 
-.thumbnail-upload {
-  width: 75%;
+.t-upload{
+  transform: translate(320px, -171px);
+  height: 200px;
+  width: 200px;
+  border: solid 1px rgb(107, 103, 103);
+}
+
+fa-file-upload{
   margin: auto;
-  // display: none;
 }
 
-.thumb-inp {
+.fa-file-upload:hover {
+  color: #3EA6FF;
+  cursor: pointer;
+}
+
+.vid-inp, .thumb-inp {
   width: 100%;
 }
 
 .title-upload {
   width: 75%;
   margin: auto;
-  border: 1px solid lightgrey;
 }
 
 .title-inp {
@@ -70,23 +94,27 @@
   padding-left: 10px;
 }
 
+.title-inp:focus, .desc-inp:focus {
+  box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+  border: 1px solid rgba(81, 203, 238, 1);
+}
+
 .description-upload {
   width: 75%;
   margin: auto;
-  height: 200px;
-  border: 1px solid lightgrey;
+  height: 325px;
 }
 
 .desc-inp {
+  padding-left: 10px;
   width: 100%;
   height: 100%;
 }
 
 .upload-button-wrapper {
-  padding: 5px;
-  width: 20%;
-  margin: 0 auto;
-  transform: translate(0px, 120px)
+  margin-left: 100px;
+  width: 100px;
+  transform: translate(0px, -120px);
 }
 
 .upload-button {
@@ -94,12 +122,45 @@
   font-size: 12px;
   color: white;
   background-color: #3EA6FF;
-  padding: 5px;
+  padding: 10px;
   width: 100%;
 }
 
 .loading-button {
   width: 100%;
-  padding: 5px;
+  padding: 10px;
   background-color: #3EA6FF;
+}
+
+.inputfile {
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+
+.upload {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  font-family: Impact, Charcoal, sans-serif;
+  font-size: 20px;
+  // color: white;
+  text-align: center;
+  // text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+
+  background: white; /* For browsers that do not support gradients */
+  background: -webkit-linear-gradient(left, orange , yellow, green, cyan, blue, violet); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(right, orange, yellow, green, cyan, blue, violet); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(right, orange, yellow, green, cyan, blue, violet); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(to right, orange , yellow, green, cyan, blue, violet); /* Standard syntax (must be last) */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.upload-text {
+  text-align: center;
+  transform: translate(0px, 40px);
+  font-family: sans-serif, Arial;
 }

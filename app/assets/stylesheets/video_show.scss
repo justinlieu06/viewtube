@@ -1,5 +1,7 @@
 .vid-show-wrapper {
-  background-color: #121212;
+  // background-color: #121212;
+  background-color: #191919;
+
   z-index: -10;
   position: fixed;
   width: 100%;
@@ -13,9 +15,8 @@
   padding-bottom: 56.25%;
   height: 0;
   width: 100%;
-
-  margin: auto;
-  margin-top: 75px;
+  background-color: black;
+  // margin: auto;
 }
 
 .vid-wrapper video{
@@ -26,20 +27,50 @@
   height: 100%;
 }
 
-.vid-title {
+.vid-info {
+  width: 60%;
   color: white;
   font-size: 20px;
   font-family: sans-serif;
+  margin-left: 5%;
 }
 
-.vid-index-wrapper {
-  width: 300px;
-  height: 1000px;
-  float: right;
-  background-color: lightgrey;
+.vid-title{
+  font-size: 26px;
 }
+
+.vid-published {
+  margin-top: 10px;
+  color: #AAAAAA;
+  font-size: 12px;
+}
+
+.vid-username {
+  font-size: 14px;
+  padding-right: 40px;
+}
+
+.vid-description {
+  padding-left: 40px;
+  padding-right: 40px;
+  margin-top: 15px;
+  font-size: 12px;
+}
+
+// .vid-index-wrapper {
+//   width: 300px;
+//   height: 1000px;
+//   float: right;
+//   background-color: lightgrey;
+// }
 
 .outer-vid-wrapper {
-  display: flex;
-  justify-content: space-between;
+  // display: flex;
+  // justify-content: space-between;
+  width: 60%;
+  background-color: red;
+  margin-top: 24px;
+  margin-bottom: 24px;
+  margin-right: 24px;
+  margin-left: 5%;
 }

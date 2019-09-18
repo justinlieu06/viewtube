@@ -350,6 +350,9 @@ var App = function App(_ref) {
     exact: true,
     path: "/",
     component: _splash__WEBPACK_IMPORTED_MODULE_4__["default"]
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Redirect"], {
+    to: "/",
+    component: _splash__WEBPACK_IMPORTED_MODULE_4__["default"]
   })));
 };
 
@@ -477,7 +480,7 @@ var NavBarSide = function NavBarSide(props) {
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "side-icon-text"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-    "class": "fas fa-video"
+    className: "fas fa-video"
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "side-text"
   }, "Upload")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
@@ -489,7 +492,7 @@ var NavBarSide = function NavBarSide(props) {
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "side-icon-text"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-    "class": "fab fa-github"
+    className: "fab fa-github"
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "side-text"
   }, "Github")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
@@ -501,7 +504,7 @@ var NavBarSide = function NavBarSide(props) {
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "side-icon-text"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-    "class": "fab fa-linkedin"
+    className: "fab fa-linkedin"
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "side-text"
   }, "Linkedin")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
@@ -513,7 +516,7 @@ var NavBarSide = function NavBarSide(props) {
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "side-icon-text"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-    "class": "fab fa-youtube"
+    className: "fab fa-youtube"
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "side-text"
   }, "Original")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -815,12 +818,13 @@ function (_React$Component) {
     value: function pressSignIn() {
       var _this2 = this;
 
-      var user = Object.assign({}, this.state);
-      this.props.logIn(user).then(function () {
-        return _this2.props.history.push('/');
-      }); // this.props.logIn(user).then( () => (
-      //   this.props.history.goBack()
+      var user = Object.assign({}, this.state); // this.props.logIn(user).then( () => (
+      //   this.props.history.push('/')
       // ));
+
+      this.props.logIn(user).then(function () {
+        return _this2.props.history.goBack();
+      });
     }
   }, {
     key: "demoLogIn",
@@ -1459,45 +1463,67 @@ function (_React$Component) {
       }, "Publish");
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "upload-wrapper"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_nav_bar_top_nav_bar_top_container__WEBPACK_IMPORTED_MODULE_1__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_nav_bar_side_modal__WEBPACK_IMPORTED_MODULE_3__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_nav_bar_top_nav_bar_top_container__WEBPACK_IMPORTED_MODULE_1__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_nav_bar_side_modal__WEBPACK_IMPORTED_MODULE_3__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "upload-form"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "video-upload"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
-        htmlFor: "upload-mp4",
-        className: "form-upload-icon"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fas fa-play-circle"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        type: "file",
-        accept: "video/mp4",
-        onChange: this.updateVideo
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "thumbnail-upload"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        className: "thumb-inp",
-        type: "file",
-        accept: "image/png, image/jpeg",
-        onChange: this.updateThumbnail
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "upload-left"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "upload"
+      }, "Upload"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "title-upload"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         className: "title-inp",
         type: "text",
-        placeholder: "Title",
+        placeholder: "Video Title",
         onChange: this.update('title')
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "description-upload"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
         className: "desc-inp",
         type: "text",
-        placeholder: "Description",
+        placeholder: "Video Description",
         onChange: this.update('description')
-      })), this.renderErrors(), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "upload-right"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "v-upload"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        htmlFor: "vid-upload",
+        className: "form-upload-icon"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "video-upload"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fas fa-file-upload fa-8x"
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "upload-text"
+      }, "Select video to upload"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        className: "inputfile",
+        id: "vid-upload",
+        type: "file",
+        accept: "video/mp4",
+        onChange: this.updateVideo
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "t-upload"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        htmlFor: "thumb-upload",
+        className: "form-upload-icon"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "thumbnail-upload"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fas fa-file-upload fa-8x"
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "upload-text"
+      }, "Select thumbnail to upload"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        className: "inputfile",
+        id: "thumb-upload",
+        type: "file",
+        accept: "image/png, image/jpeg",
+        onChange: this.updateThumbnail
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "upload-errors"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, this.state.titleError), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, this.state.descriptionError), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, this.state.videoError), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, this.state.thumbnailError)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "upload-button-wrapper"
-      }, uploadButton)));
+      }, uploadButton)))));
     }
   }]);
 
@@ -1605,6 +1631,14 @@ function (_React$Component) {
           video: video
         });
       });
+
+      for (var i = videos.length - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1));
+        var _ref = [videos[j], videos[i]];
+        videos[i] = _ref[0];
+        videos[j] = _ref[1];
+      }
+
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "video-index-outer-wrapper"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -1689,7 +1723,9 @@ var VideoIndexItem = function VideoIndexItem(_ref) {
     className: "vid-index-item-title"
   }, video.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "vid-index-item-author"
-  }, video.author)))));
+  }, video.author), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "vid-index-item-author"
+  }, video.published)))));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (VideoIndexItem);
@@ -1779,15 +1815,25 @@ function (_React$Component) {
         className: "vid-wrapper"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("video", {
         key: this.props.video.id,
-        width: "300px",
+        width: "100%",
         className: "video-show-player",
         controls: true
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("source", {
         src: this.props.video.video,
         type: "video/mp4"
-      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "vid-index-wrapper"
-      }, "TO DO: LIST OF VIDS")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "vid-info"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "vid-title"
+      }, this.props.video.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "vid-published"
+      }, this.props.video.published), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "vid-username"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fas fa-user-circle fa-3x"
+      }), this.props.video.username), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "vid-description"
+      }, this.props.video.description)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "vid-show-wrapper"
       }));
     }

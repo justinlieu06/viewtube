@@ -118,6 +118,7 @@ class UploadForm extends React.Component {
   }
 
   render() {
+
     let uploadButton = this.state.loading ?
       <button className="loading-button" onClick={this.handleSubmit} disabled >
       <div className="loader"></div>
@@ -125,46 +126,73 @@ class UploadForm extends React.Component {
       <button className="upload-button" onClick={this.handleSubmit} >
         Publish
       </button>;
+
     return(
       <div className="upload-wrapper">
         <NavBarTopContainer />
         <Modal />
 
-        <form className="upload-form">
+        <form>
+        <div className="upload-form">
 
-          {/* VIDEO UPLOAD */}
-          <div className="video-upload">
-            <label htmlFor="upload-mp4"
-              className="form-upload-icon">
-              <i className="fas fa-play-circle"></i>
-            </label>
-            <input type="file" accept="video/mp4" onChange={this.updateVideo} />
+          <div className="upload-left">
+
+            <div className="upload">Upload</div>
+
+            {/* TITLE UPLOAD */}
+            <div className="title-upload">
+              <input className="title-inp" type="text" placeholder="Video Title" onChange={this.update('title')} />
+            </div>
+
+            <br />
+            <br />
+            {/* DESCRIPTION UPLOAD */}
+            <div className="description-upload">
+              <textarea className="desc-inp" type="text" placeholder="Video Description" onChange={this.update('description')} />
+            </div>
+
           </div>
 
-          {/* THUMBNAIL UPLOAD */}
-          <div className="thumbnail-upload">
-            <input className="thumb-inp" type="file" accept="image/png, image/jpeg" onChange={this.updateThumbnail} />
+          <div className="upload-right">
+
+            {/* VIDEO UPLOAD */}
+            <div className="v-upload">
+              <label htmlFor="vid-upload" className="form-upload-icon">
+                  <div className="video-upload">
+                    <i className="fas fa-file-upload fa-8x"></i>
+                  </div>
+              </label>
+              <div className="upload-text">Select video to upload</div>
+              <input className="inputfile" id="vid-upload" type="file" accept="video/mp4" onChange={this.updateVideo} />
+            </div>
+
+            {/* THUMBNAIL UPLOAD */}
+            <div className="t-upload">
+              <label htmlFor="thumb-upload" className="form-upload-icon">
+                <div className="thumbnail-upload">
+                  <i className="fas fa-file-upload fa-8x"></i>
+                </div>
+              </label>
+              <div className="upload-text">Select thumbnail to upload</div>
+              <input className="inputfile" id="thumb-upload" type="file" accept="image/png, image/jpeg" onChange={this.updateThumbnail} />
+            </div>
+
+            {/* ERRORS */}
+            {/* <div className="upload-errors">{this.renderErrors()}</div> */}
+            <div className="upload-errors">
+              <p>{this.state.titleError}</p>
+              <p>{this.state.descriptionError}</p>
+              <p>{this.state.videoError}</p>
+              <p>{this.state.thumbnailError}</p>
+            </div>
+
+            {/* UPLOAD BUTTON */}
+            <div className="upload-button-wrapper">{uploadButton}</div>
+
+
           </div>
 
-          {/* TITLE UPLOAD */}
-          <div className="title-upload">
-            <input className="title-inp" type="text" placeholder="Title" onChange={this.update('title')} />
-          </div>
-
-          {/* DESCRIPTION UPLOAD */}
-          <div className="description-upload">
-            <textarea className="desc-inp" type="text" placeholder="Description" onChange={this.update('description')} />
-          </div>
-          {this.renderErrors()}
-          <div className="upload-errors">
-            <p>{this.state.titleError}</p>
-            <p>{this.state.descriptionError}</p>
-            <p>{this.state.videoError}</p>
-            <p>{this.state.thumbnailError}</p>
-          </div>
-
-          {/* UPLOAD BUTTON */}
-          <div className="upload-button-wrapper">{uploadButton}</div>
+        </div>
         </form>
       </div>
     )
