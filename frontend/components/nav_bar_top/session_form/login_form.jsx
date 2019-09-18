@@ -30,6 +30,7 @@ class LogInForm extends React.Component {
     //   password: '123456'
     // };
 
+    //Credit to Fue
     const fillIn = (string, field) => () => {
       if (string.length > 0) {
         this.setState({ [field]: this.state[field] + string[0] });
