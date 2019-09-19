@@ -19,6 +19,8 @@ ActiveRecord::Base.transaction do
   user5 = User.create(username: "UwU", email: "uwu@gmail.com", password: "123456")
   user6 = User.create(username: "LoL", email: "lol@gmail.com", password: "123456")
   user7 = User.create(username: "Reznick", email: "reznick@gmail.com", password: "123456")
+  user8 = User.create(username: "OFWGKTA", email: "ofwgkta@gmail.com", password: "123456")
+
 
 
   vid1 = Video.create(
@@ -160,4 +162,24 @@ ActiveRecord::Base.transaction do
   vid14.thumbnail.attach(io: file, filename: 'willie.jpg')
   file = open('https://viewtube-seeds.s3-us-west-1.amazonaws.com/willie.mp4')
   vid14.video.attach(io: file, filename: 'willie.mp4')
+
+  vid15 = Video.create(
+    title: "I'm Not Finished", 
+    description: "he's not finished",
+    author_id: user8.id
+  )
+  file = open('https://viewtube-seeds.s3-us-west-1.amazonaws.com/tyler.jpg')
+  vid15.thumbnail.attach(io: file, filename: 'tyler.jpg')
+  file = open('https://viewtube-seeds.s3-us-west-1.amazonaws.com/tyler.mp4')
+  vid15.video.attach(io: file, filename: 'tyler.mp4')
+
+  vid16 = Video.create(
+    title: "People Are Afraid of Technology", 
+    description: "Truly terrifying",
+    author_id: user8.id
+  )
+  file = open('https://viewtube-seeds.s3-us-west-1.amazonaws.com/technology.jpg')
+  vid16.thumbnail.attach(io: file, filename: 'technology.jpg')
+  file = open('https://viewtube-seeds.s3-us-west-1.amazonaws.com/technology.mp4')
+  vid16.video.attach(io: file, filename: 'technology.mp4')
 end

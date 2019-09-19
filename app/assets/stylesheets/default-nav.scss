@@ -1,0 +1,34 @@
+.default-nav {
+  height: 100%;
+  width: 72px;
+  background-color: #282828;
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin-top: 56px;
+}
+
+.default-link:link, .default-link:active, .default-link:hover, .default-link:visited, .default-link:focus {
+  text-decoration: none;
+}
+
+.default-link-wrapper {
+  color: white;
+  padding-top: 24px;
+  padding-bottom: 24px;
+}
+
+#default-icon {
+  padding-left: 18px;
+}
+
+#default-icon-2 {
+  padding-left: 20px;
+}
+
+.default-text {
+  font-family: Arial, sans-serif;
+  font-size: 10px;
+  // padding-left: 18px;
+  text-align: center;
+}
