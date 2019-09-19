@@ -17,6 +17,9 @@ class LogInForm extends React.Component {
     // this.props.logIn(user).then( () => (
     //   this.props.history.push('/')
     // ));
+    if (this.props.history.length === 0) {
+      this.props.history.push('/');
+    }
     this.props.logIn(user).then( () => (
       this.props.history.goBack()
     ));

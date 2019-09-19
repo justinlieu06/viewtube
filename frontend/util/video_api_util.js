@@ -36,3 +36,9 @@ export const deleteVideo = id => (
     type: `DELETE`,
   })
 );
+
+// export const searchVideos = input => ({
+//   url: `/api/search`,
+//   type: 'GET',
+//   data: { input }
+// })

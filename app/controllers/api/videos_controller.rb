@@ -13,7 +13,6 @@ class Api::VideosController < ApplicationController
   end
 
   def create
-    # debugger
     if params[:video][:video] == "null"
       render json: ["Please select video"], status: 406
       return nil

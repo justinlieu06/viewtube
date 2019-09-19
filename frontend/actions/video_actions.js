@@ -48,7 +48,6 @@ export const createVideo = video => dispatch => {
   return(
   VideoAPIUtil.createVideo(video)
   .then(video => {
-    // debugger
     dispatch(receiveVideo(video))
   })
   .fail(err => {
@@ -70,3 +69,6 @@ export const deleteVideo = id => dispatch => (
   ))
 );
 
+// export const searchVideos = info => ({
+  
+// })

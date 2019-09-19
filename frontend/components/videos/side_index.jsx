@@ -7,7 +7,6 @@ class SideIndex extends React.Component {
   }
 
   render(){
-    // debugger
 
     let videos = this.props.videos.map( (video, index) => (
       <SideIndexItem key={index} video={video} />
@@ -20,7 +19,7 @@ class SideIndex extends React.Component {
     
     return (
       <div className="side-index-outer-wrapper">
-        <div className="recommended">Recommended</div>
+        {/* <div className="recommended">Recommended</div> */}
         <ul className="side-index-wrapper">
           {videos}
         </ul>

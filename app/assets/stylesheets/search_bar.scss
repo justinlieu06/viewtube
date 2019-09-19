@@ -1,0 +1,40 @@
+.input-button-wrapper {
+  display: flex;
+  justify-content: space-around;
+}
+
+.search-form {
+  width: 40%;
+}
+
+.input-search-wrapper {
+  width: 90%;
+}
+
+.input-search {
+  margin: 0px;
+  padding: 0px;
+  margin-top: 10px;
+  // padding: 5px;
+  width: 100%;
+  background-color: grey;
+  border: 1px solid grey;
+}
+
+.input-search:focus {
+  border-color: blue;
+}
+
+.search-button-wrapper {
+  width: 10%;
+}
+
+.search-button {
+  padding: 0px;
+  margin-top: 10px;
+  color: grey;
+  border-color: grey;
+  background-color: lightgrey;
+  // padding: 5px;
+  width: 100%;
+}

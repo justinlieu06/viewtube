@@ -274,7 +274,6 @@ var fetchVideo = function fetchVideo(id) {
 var createVideo = function createVideo(video) {
   return function (dispatch) {
     return _util_video_api_util__WEBPACK_IMPORTED_MODULE_0__["createVideo"](video).then(function (video) {
-      // debugger
       dispatch(receiveVideo(video));
     }).fail(function (err) {
       dispatch(receiveErrors(err.responseJSON));
@@ -298,7 +297,8 @@ var deleteVideo = function deleteVideo(id) {
       return dispatch(receiveErrors(err.responseJSON));
     });
   };
-};
+}; // export const searchVideos = info => ({
+// })
 
 /***/ }),
 
@@ -706,7 +706,24 @@ var NavBarTop = function NavBarTop(props) {
     to: "/"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "nav-viewtube"
-  }, "ViewTube"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_greeting_greeting_container__WEBPACK_IMPORTED_MODULE_1__["default"], null));
+  }, "ViewTube"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+    className: "search-form"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "input-button-wrapper"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "input-search-wrapper"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "text",
+    placeholder: "Search",
+    className: "input-search"
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "search-button-wrapper"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    onClick: "",
+    className: "search-button"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+    "class": "fas fa-search"
+  }))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_greeting_greeting_container__WEBPACK_IMPORTED_MODULE_1__["default"], null));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (NavBarTop);
@@ -821,6 +838,10 @@ function (_React$Component) {
       var user = Object.assign({}, this.state); // this.props.logIn(user).then( () => (
       //   this.props.history.push('/')
       // ));
+
+      if (this.props.history.length === 0) {
+        this.props.history.push('/');
+      }
 
       this.props.logIn(user).then(function () {
         return _this2.props.history.goBack();
@@ -1305,7 +1326,6 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      // debugger
       var videos = this.props.videos.map(function (video, index) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_video_index_item__WEBPACK_IMPORTED_MODULE_1__["default"], {
           key: index,
@@ -1322,9 +1342,7 @@ function (_React$Component) {
 
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "side-index-outer-wrapper"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "recommended"
-      }, "Recommended"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
         className: "side-index-wrapper"
       }, videos));
     }
@@ -1451,15 +1469,13 @@ function (_React$Component) {
       formData.append('video[title]', this.state.title);
       formData.append('video[description]', this.state.description);
       formData.append('video[video]', this.state.videoFile);
-      formData.append('video[thumbnail]', this.state.thumbnailFile); // debugger
-      // $.ajax({
+      formData.append('video[thumbnail]', this.state.thumbnailFile); // $.ajax({
       //   url: `/api/videos`,
       //   type: `POST`,
       //   data: formData,
       //   contentType: false,
       //   processData: false
       // });
-      // debugger
       // if (this.props.errors > 0){
       //   console.log("Cannot upload");
       //   return;
@@ -1746,7 +1762,6 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      // debugger
       var videos = this.props.videos.map(function (video, index) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_video_index_item__WEBPACK_IMPORTED_MODULE_1__["default"], {
           key: index,
@@ -1961,7 +1976,7 @@ function (_React$Component) {
         className: "fas fa-user-circle fa-3x"
       }), this.props.video.username), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "vid-description"
-      }, this.props.video.description))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, this.props.video.description), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "show-right"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_side_index_container__WEBPACK_IMPORTED_MODULE_4__["default"], null))));
     }
@@ -2546,7 +2561,11 @@ var deleteVideo = function deleteVideo(id) {
     url: "/api/videos/".concat(id),
     type: "DELETE"
   });
-};
+}; // export const searchVideos = input => ({
+//   url: `/api/search`,
+//   type: 'GET',
+//   data: { input }
+// })
 
 /***/ }),
 

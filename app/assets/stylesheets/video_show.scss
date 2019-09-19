@@ -2,6 +2,7 @@
   display: flex;
   justify-content: center;
   margin-top: 50px;
+  padding-top: 20px;
 }
 
 .vid-show-wrapper {
@@ -61,13 +62,6 @@
   font-size: 12px;
 }
 
-// .vid-index-wrapper {
-//   width: 300px;
-//   height: 1000px;
-//   float: right;
-//   background-color: lightgrey;
-// }
-
 .show-left {
   background-color: red;
   width: 100%;
@@ -75,8 +69,6 @@
 }
 
 .outer-vid-wrapper {
-  // display: flex;
-  // justify-content: space-between;
   width: 90%;
   background-color: green;
   margin-top: 24px;
@@ -87,7 +79,7 @@
 
 .show-right {
   background-color: blue;
-  width: 40%;
+  width: 60%;
   // height: 4000px;
   // float: right;
 }

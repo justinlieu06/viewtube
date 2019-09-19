@@ -32,7 +32,6 @@ class UploadForm extends React.Component {
     formData.append('video[description]', this.state.description);
     formData.append('video[video]', this.state.videoFile);
     formData.append('video[thumbnail]', this.state.thumbnailFile);
-    // debugger
     // $.ajax({
     //   url: `/api/videos`,
     //   type: `POST`,
@@ -40,7 +39,6 @@ class UploadForm extends React.Component {
     //   contentType: false,
     //   processData: false
     // });
-    // debugger
     // if (this.props.errors > 0){
     //   console.log("Cannot upload");
     //   return;

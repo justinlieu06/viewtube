@@ -7,7 +7,6 @@ class VideoIndex extends React.Component {
   }
 
   render(){
-    // debugger
 
     let videos = this.props.videos.map( (video, index) => (
       <VideoIndexItem key={index} video={video} />

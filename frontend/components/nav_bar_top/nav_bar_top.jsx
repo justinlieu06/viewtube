@@ -14,7 +14,17 @@ const NavBarTop = props => {
         <Link to={`/`}><div className="nav-viewtube">ViewTube</div></Link>
       </div>
       
-      {/* PUT SEARCH FORM CONTAINER HERE */}
+      {/* PUT SEARCH HERE */}
+      <form className="search-form">
+        <div className="input-button-wrapper">
+          <div className="input-search-wrapper">
+            <input type="text" placeholder="Search" className="input-search"/>
+          </div>
+          <div className="search-button-wrapper">
+            <button onClick="" className="search-button"><i class="fas fa-search"></i></button>
+          </div>
+        </div>
+      </form>
       
       <GreetingContainer />
     </div>
