@@ -2627,6 +2627,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
 var VideoShow =
 /*#__PURE__*/
 function (_React$Component) {
@@ -2639,13 +2640,33 @@ function (_React$Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(VideoShow).call(this, props));
     _this.state = {
-      video: _this.props.video
+      video: _this.props.video,
+      redirect: false
     };
     _this.handleDelete = _this.handleDelete.bind(_assertThisInitialized(_this));
+    _this.setRedirect = _this.setRedirect.bind(_assertThisInitialized(_this));
+    _this.renderRedirect = _this.renderRedirect.bind(_assertThisInitialized(_this));
     return _this;
   }
 
   _createClass(VideoShow, [{
+    key: "setRedirect",
+    value: function setRedirect() {
+      this.setState({
+        redirect: true
+      });
+    }
+  }, {
+    key: "renderRedirect",
+    value: function renderRedirect() {
+      // debugger
+      if (this.state.redirect) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Redirect"], {
+          to: "/"
+        });
+      }
+    }
+  }, {
     key: "componentDidMount",
     value: function componentDidMount() {
       this.props.fetchVideo(this.props.match.params.videoId);
@@ -2671,10 +2692,11 @@ function (_React$Component) {
       var _this2 = this;
 
       e.preventDefault(); // debugger
+      // this.setRedirect();
 
       this.props.deleteVideo(this.state.video.id).then(function () {
-        return _this2.props.history.push('/');
-      });
+        return _this2.setRedirect;
+      }); // this.setRedirect();
     }
   }, {
     key: "render",
@@ -2696,7 +2718,7 @@ function (_React$Component) {
 
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "vid-show-wrapper"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_nav_bar_top_nav_bar_top_container__WEBPACK_IMPORTED_MODULE_2__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_nav_bar_side_modal__WEBPACK_IMPORTED_MODULE_3__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, this.renderRedirect(), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_nav_bar_top_nav_bar_top_container__WEBPACK_IMPORTED_MODULE_2__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_nav_bar_side_modal__WEBPACK_IMPORTED_MODULE_3__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "vid-show"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "show-left"

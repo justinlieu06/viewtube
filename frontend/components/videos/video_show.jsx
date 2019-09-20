@@ -4,15 +4,31 @@ import NavBarTopContainer from '../nav_bar_top/nav_bar_top_container';
 import Modal from '../nav_bar_side/modal';
 import SideIndexContainer from './side_index_container';
 import CommentsContainer from '../comments/comments_container';
-
+import { Redirect } from 'react-router-dom'
 
 class VideoShow extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       video: this.props.video,
+      redirect: false
     }
     this.handleDelete = this.handleDelete.bind(this);
+    this.setRedirect = this.setRedirect.bind(this);
+    this.renderRedirect = this.renderRedirect.bind(this);
+  }
+
+  setRedirect() {
+    this.setState({
+      redirect: true
+    })
+  }
+
+  renderRedirect() {
+    // debugger
+    if (this.state.redirect) {
+      return <Redirect to='/' />
+    }
   }
 
   componentDidMount(){
@@ -40,7 +56,11 @@ class VideoShow extends React.Component {
   handleDelete(e) {
     e.preventDefault();
     // debugger
-    this.props.deleteVideo(this.state.video.id).then(() => this.props.history.push('/'))
+    // this.setRedirect();
+    this.props.deleteVideo(this.state.video.id).then(()=>this.setRedirect)
+
+    // this.setRedirect();
+
   }
 
   render(){
@@ -55,6 +75,7 @@ class VideoShow extends React.Component {
     }
     return(
       <div className="vid-show-wrapper">
+        {this.renderRedirect()}
 
         <NavBarTopContainer />
         <Modal />
