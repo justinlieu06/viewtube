@@ -1,24 +1,29 @@
-# README
+# ViewTube README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Overview
 
-Things you may want to cover:
+ViewTube is a clone of the popular streaming site known as YouTube. Users can watch videos, search for videos, and create accounts to upload and delete videos.
 
-* Ruby version
+[Check Out the Live Site Here!](https://viewtube-fsp.herokuapp.com/#/)
 
-* System dependencies
+ViewTube uses the MVC design pattern where the backend is implemented with Ruby on Rails, and the frontend is created with Redux and React. Videos and video thumbnails are stored on Amazon S3, and model information is stored on the Heroku Postgres database. 
 
-* Configuration
+## Features
 
-* Database creation
+### Video Upload
 
-* Database initialization
+### Video Search
 
-* How to run the test suite
+The search bar is a React form that passes the search query information to the search component.
 
-* Services (job queues, cache servers, search engines, etc.)
+## Code Snippets
 
-* Deployment instructions
+## Future Features
 
-* ...
+* comments
+
+* video likes
+
+* video dislikes
+
+* video updating
