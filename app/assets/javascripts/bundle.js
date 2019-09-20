@@ -86,6 +86,55 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./frontend/actions/comment_actions.js":
+/*!*********************************************!*\
+  !*** ./frontend/actions/comment_actions.js ***!
+  \*********************************************/
+/*! exports provided: RECEIVE_COMMENT, DELETE_COMMENT, createComment, deleteComment */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_COMMENT", function() { return RECEIVE_COMMENT; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DELETE_COMMENT", function() { return DELETE_COMMENT; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createComment", function() { return createComment; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "deleteComment", function() { return deleteComment; });
+/* harmony import */ var _util_comment_api_util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util/comment_api_util */ "./frontend/util/comment_api_util.js");
+
+var RECEIVE_COMMENT = 'RECEIVE_COMMENT';
+var DELETE_COMMENT = 'DELETE_COMMENT';
+
+var receiveComment = function receiveComment(comment) {
+  return {
+    type: RECEIVE_COMMENT,
+    comment: comment
+  };
+};
+
+var removeComment = function removeComment(comment) {
+  return {
+    type: DELETE_COMMENT,
+    commentId: comment.id
+  };
+};
+
+var createComment = function createComment(video_id, comment) {
+  return function (dispatch) {
+    return _util_comment_api_util__WEBPACK_IMPORTED_MODULE_0__["createComment"](video_id, comment).then(function (comment) {
+      return dispatch(receiveComment(comment));
+    });
+  };
+};
+var deleteComment = function deleteComment(id) {
+  return function (dispatch) {
+    return _util_comment_api_util__WEBPACK_IMPORTED_MODULE_0__["deleteComment"](id).then(function (comment) {
+      return dispatch(removeComment(comment));
+    });
+  };
+};
+
+/***/ }),
+
 /***/ "./frontend/actions/modal_actions.js":
 /*!*******************************************!*\
   !*** ./frontend/actions/modal_actions.js ***!
@@ -381,6 +430,237 @@ var App = function App(_ref) {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (App);
+
+/***/ }),
+
+/***/ "./frontend/components/comments/comment_item.jsx":
+/*!*******************************************************!*\
+  !*** ./frontend/components/comments/comment_item.jsx ***!
+  \*******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+var CommentItem =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(CommentItem, _React$Component);
+
+  function CommentItem(props) {
+    var _this;
+
+    _classCallCheck(this, CommentItem);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(CommentItem).call(this, props));
+    _this.handleDelete = _this.handleDelete.bind(_assertThisInitialized(_this));
+    return _this;
+  }
+
+  _createClass(CommentItem, [{
+    key: "handleDelete",
+    value: function handleDelete() {
+      this.props.deleteComment(this.props.comment.id);
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, this.props.comment.body), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        onClick: this.handleDelete
+      }, "Delete"));
+    }
+  }]);
+
+  return CommentItem;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+/* harmony default export */ __webpack_exports__["default"] = (CommentItem);
+
+/***/ }),
+
+/***/ "./frontend/components/comments/comments.jsx":
+/*!***************************************************!*\
+  !*** ./frontend/components/comments/comments.jsx ***!
+  \***************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _comment_item__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./comment_item */ "./frontend/components/comments/comment_item.jsx");
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+var Comments =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(Comments, _React$Component);
+
+  function Comments(props) {
+    var _this;
+
+    _classCallCheck(this, Comments);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(Comments).call(this, props));
+    _this.state = {
+      body: ''
+    };
+    _this.handleUpdate = _this.handleUpdate.bind(_assertThisInitialized(_this));
+    _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
+    _this.goToLogin = _this.goToLogin.bind(_assertThisInitialized(_this));
+    return _this;
+  }
+
+  _createClass(Comments, [{
+    key: "handleUpdate",
+    value: function handleUpdate(e) {
+      e.preventDefault();
+      this.setState({
+        body: e.currentTarget.value
+      });
+    }
+  }, {
+    key: "handleSubmit",
+    value: function handleSubmit(e) {
+      e.preventDefault();
+      this.props.createComment({
+        video_id: this.props.videoId,
+        body: this.state.body
+      }); // .then(() => this.props.fetchVideo(this.props.videoId));
+
+      this.setState({
+        body: ''
+      }); // debugger
+    }
+  }, {
+    key: "goToLogin",
+    value: function goToLogin() {
+      this.props.history.push('/login');
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this2 = this;
+
+      var commentFormCode = this.props.currentUser ? commentFormCode = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "text",
+        value: this.state.body,
+        placeholder: "Add Comment",
+        onChange: this.handleUpdate
+      }) : // commentFormCode = <button onClick={this.goToLogin}>Add Comment</button>
+      react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Please log in"); // debugger
+
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", null, commentFormCode), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        onClick: this.handleSubmit
+      }, "Comment"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, this.props.comments.map(function (comment, index) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_comment_item__WEBPACK_IMPORTED_MODULE_1__["default"], {
+          comment: comment,
+          key: index,
+          currentUser: _this2.props.currentUser,
+          deleteComment: _this2.props.deleteComment
+        });
+      })));
+    }
+  }]);
+
+  return Comments;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+/* harmony default export */ __webpack_exports__["default"] = (Comments);
+
+/***/ }),
+
+/***/ "./frontend/components/comments/comments_container.js":
+/*!************************************************************!*\
+  !*** ./frontend/components/comments/comments_container.js ***!
+  \************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _actions_comment_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../actions/comment_actions */ "./frontend/actions/comment_actions.js");
+/* harmony import */ var _comments__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./comments */ "./frontend/components/comments/comments.jsx");
+
+
+ // import { fetchVideo } from '../../actions/video_actions';
+
+var mapStateToProps = function mapStateToProps(state, ownProps) {
+  return {
+    comments: state.entities.comments ? Object.values(state.entities.comments) : [],
+    currentUser: state.session.id ? state.entities.users[state.session.id] : null,
+    video: ownProps.video
+  };
+};
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return {
+    createComment: function createComment(comment) {
+      return dispatch(Object(_actions_comment_actions__WEBPACK_IMPORTED_MODULE_1__["createComment"])(comment));
+    },
+    deleteComment: function deleteComment(id) {
+      return dispatch(Object(_actions_comment_actions__WEBPACK_IMPORTED_MODULE_1__["deleteComment"])(id));
+    },
+    fetchVideo: function (_fetchVideo) {
+      function fetchVideo(_x) {
+        return _fetchVideo.apply(this, arguments);
+      }
+
+      fetchVideo.toString = function () {
+        return _fetchVideo.toString();
+      };
+
+      return fetchVideo;
+    }(function (videoId) {
+      return dispatch(fetchVideo(videoId));
+    })
+  };
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mapStateToProps, mapDispatchToProps)(_comments__WEBPACK_IMPORTED_MODULE_2__["default"]));
 
 /***/ }),
 
@@ -756,7 +1036,7 @@ function (_React$Component) {
     _this.state = {
       search: ''
     };
-    _this.handleInput = _this.handleInput.bind(_assertThisInitialized(_this));
+    _this.handleUpdate = _this.handleUpdate.bind(_assertThisInitialized(_this));
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
     return _this;
   }
@@ -766,24 +1046,33 @@ function (_React$Component) {
     value: function componentDidMount() {
       this.setState({
         search: ''
-      });
-    }
+      }); // this.props.searchVideos(this.props.match.params.query);
+
+      window.scrollTo(0, 0);
+    } // componentDidUpdate(prevProps){
+    //   this.props.searchVideos(this.props.match.params.query);
+    // }
+
   }, {
-    key: "handleInput",
-    value: function handleInput(e) {
+    key: "handleUpdate",
+    value: function handleUpdate(e) {
+      e.preventDefault();
       this.setState({
         search: e.currentTarget.value
       });
     }
   }, {
     key: "handleSubmit",
-    value: function handleSubmit() {
-      // debugger
+    value: function handleSubmit(e) {
+      e.preventDefault(); // debugger
+
       if (this.state.search === '') {
         this.props.history.push("/");
       } else {
         this.props.history.push("/search/".concat(this.state.search));
       }
+
+      location.reload();
     }
   }, {
     key: "render",
@@ -816,7 +1105,7 @@ function (_React$Component) {
         type: "text",
         placeholder: "Search",
         className: "input-search",
-        onChange: this.handleInput,
+        onChange: this.handleUpdate,
         value: this.state.search
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "search-button-wrapper"
@@ -851,6 +1140,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _nav_bar_top__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./nav_bar_top */ "./frontend/components/nav_bar_top/nav_bar_top.jsx");
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 /* harmony import */ var _actions_modal_actions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../actions/modal_actions */ "./frontend/actions/modal_actions.js");
+/* harmony import */ var _actions_video_actions__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../actions/video_actions */ "./frontend/actions/video_actions.js");
+
 
 
 
@@ -876,6 +1167,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     })),
     closeModal: function closeModal() {
       return dispatch(Object(_actions_modal_actions__WEBPACK_IMPORTED_MODULE_4__["closeModal"])());
+    },
+    searchVideos: function searchVideos() {
+      return dispatch(Object(_actions_video_actions__WEBPACK_IMPORTED_MODULE_5__["searchVideos"])());
     }
   };
 };
@@ -1723,7 +2017,7 @@ function (_React$Component) {
         className: "side-index-outer-wrapper"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "side-header"
-      }, "Recommended"), filteredVideos);
+      }, "Up Next"), filteredVideos);
     }
   }]);
 
@@ -2307,6 +2601,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _nav_bar_top_nav_bar_top_container__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../nav_bar_top/nav_bar_top_container */ "./frontend/components/nav_bar_top/nav_bar_top_container.js");
 /* harmony import */ var _nav_bar_side_modal__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../nav_bar_side/modal */ "./frontend/components/nav_bar_side/modal.jsx");
 /* harmony import */ var _side_index_container__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./side_index_container */ "./frontend/components/videos/side_index_container.js");
+/* harmony import */ var _comments_comments_container__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../comments/comments_container */ "./frontend/components/comments/comments_container.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -2324,6 +2619,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
 
 
 
@@ -2389,7 +2685,8 @@ function (_React$Component) {
         key: this.props.video.id,
         width: "100%",
         className: "video-show-player",
-        controls: true
+        controls: true,
+        autoPlay: true
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("source", {
         src: this.props.video.video,
         type: "video/mp4"
@@ -2847,6 +3144,35 @@ var configureStore = function configureStore() {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (configureStore);
+
+/***/ }),
+
+/***/ "./frontend/util/comment_api_util.js":
+/*!*******************************************!*\
+  !*** ./frontend/util/comment_api_util.js ***!
+  \*******************************************/
+/*! exports provided: createComment, deleteComment */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createComment", function() { return createComment; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "deleteComment", function() { return deleteComment; });
+var createComment = function createComment(video_id, comment) {
+  return $.ajax({
+    url: "/api/videos/".concat(video_id, "/comments"),
+    type: "POST",
+    data: {
+      comment: comment
+    }
+  });
+};
+var deleteComment = function deleteComment(id) {
+  return $.ajax({
+    url: "/api/comments/".concat(id),
+    type: "DELETE"
+  });
+};
 
 /***/ }),
 

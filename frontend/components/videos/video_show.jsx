@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import NavBarTopContainer from '../nav_bar_top/nav_bar_top_container';
 import Modal from '../nav_bar_side/modal';
 import SideIndexContainer from './side_index_container';
+import CommentsContainer from '../comments/comments_container';
+
 
 class VideoShow extends React.Component {
   constructor(props) {
@@ -40,6 +42,7 @@ class VideoShow extends React.Component {
     }
     return(
       <div className="vid-show-wrapper">
+
         <NavBarTopContainer />
         <Modal />
         <div className="vid-show">
@@ -47,11 +50,12 @@ class VideoShow extends React.Component {
           <div className="show-left">
             <div className="outer-vid-wrapper">
               <div className="vid-wrapper">
-                <video key={this.props.video.id} width='100%' className='video-show-player' controls>
+                <video key={this.props.video.id} width='100%' className='video-show-player' controls autoPlay>
                   <source src={this.props.video.video} type="video/mp4" />
                 </video>
               </div>
             </div>
+
             <div className="vid-info">
               <div className="vid-title">
                 {this.props.video.title}
@@ -70,6 +74,8 @@ class VideoShow extends React.Component {
               </div>
               <hr />
             </div>
+
+            {/* <CommentsContainer videoId={this.props.video.id} /> */}
           </div>
 
           {/* <div className="vid-show-wrapper"></div> */}

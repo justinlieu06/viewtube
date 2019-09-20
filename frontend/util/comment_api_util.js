@@ -6,7 +6,7 @@ export const createComment = (video_id, comment) => (
   })
 );
 
-export const createComment = id => (
+export const deleteComment = id => (
   $.ajax({
     url: `/api/comments/${id}`,
     type: `DELETE`

@@ -8,27 +8,38 @@ class NavBarTop extends React.Component {
     this.state = {
       search: ''
     }
-    this.handleInput = this.handleInput.bind(this);
+    this.handleUpdate = this.handleUpdate.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   componentDidMount(){
     this.setState({search: ''})
+    // this.props.searchVideos(this.props.match.params.query);
+    window.scrollTo(0, 0);
   }
 
-  handleInput(e) {
+  // componentDidUpdate(prevProps){
+  //   this.props.searchVideos(this.props.match.params.query);
+
+  // }
+
+  handleUpdate(e) {
+    e.preventDefault();
     this.setState({
       search: e.currentTarget.value
     })
   }
 
-  handleSubmit(){
+  handleSubmit(e){
+    e.preventDefault();
     // debugger
     if (this.state.search === '') {
       this.props.history.push(`/`);
     } else {
       this.props.history.push(`/search/${this.state.search}`);
     }
+    location.reload();
+    
   }
 
   render(){
@@ -51,7 +62,7 @@ class NavBarTop extends React.Component {
                 type="text" 
                 placeholder="Search" 
                 className="input-search" 
-                onChange={this.handleInput} 
+                onChange={this.handleUpdate} 
                 value={this.state.search} 
               />
             </div>

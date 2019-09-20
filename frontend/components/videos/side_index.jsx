@@ -25,7 +25,7 @@ class SideIndex extends React.Component {
     
     return (
       <div className="side-index-outer-wrapper">
-        <div className="side-header">Recommended</div>
+        <div className="side-header">Up Next</div>
         {filteredVideos}
       </div>
     );
