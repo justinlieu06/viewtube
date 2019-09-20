@@ -14,7 +14,7 @@ ViewTube uses the MVC design pattern where the backend is implemented with Ruby 
 
 ### Video Search
 
-The search bar is a React form that passes the search query information to the search component.
+The search bar is a React form that passes the search query information to the search component which lists all videos where the search query is a substring of. The videos controller has a search function that searches through all the lowercased video titles that contain the lowercased query via active record.
 
 ## Code Snippets
 
