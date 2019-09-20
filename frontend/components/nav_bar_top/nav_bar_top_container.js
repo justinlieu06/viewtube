@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import React from 'react';
 import NavBarTop from './nav_bar_top';
+import {withRouter} from 'react-router-dom';
 
 import { openModal, closeModal } from '../../actions/modal_actions';
 
@@ -17,4 +18,4 @@ const mapDispatchToProps = dispatch => ({
   closeModal: () => dispatch(closeModal()),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(NavBarTop);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(NavBarTop));

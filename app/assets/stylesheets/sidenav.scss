@@ -15,7 +15,7 @@
 
 .modal-child {
   top: 0;
-  z-index: 5;
+  // z-index: 5;
   transform: translate(0px, -56px);
   width: 240px;
   height: 120%;
@@ -40,13 +40,8 @@
   width: 10px;
 }
 
-// .nav-viewtube:hover, .nav-viewtube:visited, .nav-viewtube:active, .nav-viewtube:link, .nav-viewtube:focus {
-//   text-decoration: none;
-// }
-
 .viewtube-icon {
   color: #3EA6FF;
-  // color: #FF0000;
   transform: translate(65px, -32px);
 }
 

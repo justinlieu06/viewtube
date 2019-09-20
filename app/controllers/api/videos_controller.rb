@@ -48,6 +48,13 @@ class Api::VideosController < ApplicationController
     render :show
   end
 
+  def search
+    
+    @videos = [Video.first]
+    # debugger
+    render :index
+  end
+
   private
   def video_params
     params.require(:video).permit(:title, :description, :author_id, :video, :thumbnail)

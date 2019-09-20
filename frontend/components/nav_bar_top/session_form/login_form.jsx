@@ -17,11 +17,9 @@ class LogInForm extends React.Component {
     // this.props.logIn(user).then( () => (
     //   this.props.history.push('/')
     // ));
-    if (this.props.history.length === 0) {
-      this.props.history.push('/');
-    }
+    
     this.props.logIn(user).then( () => (
-      this.props.history.goBack()
+      this.props.history.length <= 3 ? this.props.history.push('/') : this.props.history.goBack()
     ));
   }
 
@@ -115,8 +113,10 @@ class LogInForm extends React.Component {
 
           </div>
         </form>
-        <span className="login-footer-left">English (United States) </span>
-        <span className="login-footer-right">Help Privacy Terms</span>
+        <div className="login-footer">
+          <span className="login-footer-left">English (United States) </span>
+          <span className="login-footer-right">Help Privacy Terms</span>
+        </div>
       </div>
     );
   }

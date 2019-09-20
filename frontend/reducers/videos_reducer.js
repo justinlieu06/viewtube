@@ -2,6 +2,7 @@ import {
   RECEIVE_ALL_VIDEOS,
   RECEIVE_VIDEO,
   DELETE_VIDEO,
+  FIND_VIDEOS,
 } from '../actions/video_actions';
 
 const videoReducer = (oldState = {}, action) => {
@@ -16,6 +17,10 @@ const videoReducer = (oldState = {}, action) => {
     case DELETE_VIDEO:
       delete newState[action.videoId];
       return newState;
+    case FIND_VIDEOS:
+      // debugger
+      let result = action.videos.videos ? action.videos.videos : {};
+      return result;
     default:
       return oldState;
   }

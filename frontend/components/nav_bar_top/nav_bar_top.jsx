@@ -19,7 +19,7 @@ class NavBarTop extends React.Component {
   }
 
   handleSubmit(){
-    debugger
+    // debugger
     if (this.state.search === '') {
       this.props.history.push(`/`);
     } else {
@@ -35,8 +35,8 @@ class NavBarTop extends React.Component {
         </div> */}
         <div>
           {this.props.otherNav}
-          <Link to={`/`}><div className="viewtube-icon"><i className="fab fa-youtube fa-rotate-180 fa-2x"></i></div></Link>
-          <Link to={`/`}><div className="nav-viewtube">ViewTube</div></Link>
+          <Link to={`/`} style={{ textDecoration: 'none' }}><div className="viewtube-icon"><i className="fab fa-youtube fa-rotate-180 fa-2x"></i></div></Link>
+          <Link to={`/`} style={{ textDecoration: 'none' }}><div className="nav-viewtube">ViewTube</div></Link>
         </div>
         
         {/* PUT SEARCH HERE */}

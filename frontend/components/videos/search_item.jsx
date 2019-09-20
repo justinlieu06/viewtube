@@ -3,14 +3,14 @@ import { Link } from 'react-router-dom';
 
 const SearchItem = ({ video }) => {
   return (
-    <div className="index-item-wrapper">
+    <div className="search-item-wrapper">
       <Link to={`/watch/${video.id}`} className="vid-index-item-link">
-        <div>
+        <div className="search-item-inner-wrapper">
           <img src={video.thumbnail} width="210" height="118" alt="Viewtube Thumbnail" />
-          <div className="video-description">
-            <div className="vid-index-item-title">{video.title}</div>
-            <div className="vid-index-item-author">{video.author}</div>
-            <div className="vid-index-item-author">{video.published}</div>
+          <div className="search-description">
+            <div className="search-index-item-title">{video.title}</div>
+            <div className="search-index-item-author">{video.author}</div>
+            <div className="search-index-item-author">{video.published}</div>
           </div>
         </div>
       </Link>

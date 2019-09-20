@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { fetchVideos } from '../../actions/video_actions';
+import { searchVideos } from '../../actions/video_actions';
 import search from './search';
 
 const mapStateToProps = (state, ownProps) => ({
@@ -8,7 +8,7 @@ const mapStateToProps = (state, ownProps) => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  fetchVideos: input => dispatch(fetchVideos(input))
+  searchVideos: query => dispatch(searchVideos(query))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(search);

@@ -5,6 +5,7 @@ export const RECEIVE_VIDEO = 'RECEIVE_VIDEO';
 export const DELETE_VIDEO = 'DELETE_VIDEO';
 export const RECEIVE_VIDEO_ERRORS = 'RECEIVE_VIDEO_ERRORS';
 export const CLEAR_ERRORS = 'CLEAR_ERRORS';
+export const FIND_VIDEOS = 'FIND_VIDEOS';
 
 const receiveAllVideos = videos => ({
   type: RECEIVE_ALL_VIDEOS,
@@ -20,6 +21,11 @@ const removeVideo = video => ({
   type: DELETE_VIDEO,
   videoId: video.id
 });
+
+const findVideos = videos => ({
+  type: FIND_VIDEOS,
+  videos
+})
 
 const receiveErrors = errors => ({
   type: RECEIVE_VIDEO_ERRORS,
@@ -69,6 +75,9 @@ export const deleteVideo = id => dispatch => (
   ))
 );
 
-// export const searchVideos = info => ({
-  
-// })
+export const searchVideos = query => dispatch => (
+  VideoAPIUtil.searchVideos(query).then(videos => (dispatch(findVideos(videos))
+  ), err => (
+    dispatch(receiveErrors(err.responseJSON))
+  ))
+);

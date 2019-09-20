@@ -37,8 +37,10 @@ export const deleteVideo = id => (
   })
 );
 
-// export const searchVideos = input => ({
-//   url: `/api/search`,
-//   type: 'GET',
-//   data: { input }
-// })
+export const searchVideos = query => (
+  $.ajax({
+    url: `/api/search/${query}`,
+    type: 'GET',
+    data: { query }
+  })
+);

@@ -1,0 +1,43 @@
+.side-item-wrapper{
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-left: 20px;
+  margin-right: 0px;
+  padding-right: 0px;
+}
+
+.side-item-inner-wrapper {
+  padding-top: 7px;
+  display: flex;
+  flex-direction: row;
+}
+
+.side-description {
+  padding-left: 7px;
+}
+
+.side-index-item-title {
+  margin-top: 5px;
+  color: white;
+  font-size: 14px;
+  font-family: 'Roboto', sans-serif, Arial;
+  text-decoration: none;
+  width: 100%;
+}
+
+.side-index-item-author{
+  margin-top: 5px;
+  color: #AAAAAA;
+  font-size: 14px;
+  font-family: 'Roboto', sans-serif, Arial;
+  text-decoration: none;
+  width: 100%;
+}
+
+.side-index-item-published{
+  color: #AAAAAA;
+  font-size: 14px;
+  font-family: 'Roboto', sans-serif, Arial;
+  text-decoration: none;
+  width: 100%;
+}

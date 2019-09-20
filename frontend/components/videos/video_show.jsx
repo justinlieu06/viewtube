@@ -14,6 +14,12 @@ class VideoShow extends React.Component {
 
   componentDidMount(){
     this.props.fetchVideo(this.props.match.params.videoId);
+    window.scrollTo(0, 0);
+  }
+
+  componentDidUpdate(){
+    window.scrollTo(0, 0);
+
   }
 
   renderErrors() {
@@ -56,7 +62,8 @@ class VideoShow extends React.Component {
               <hr />
               <div className="vid-username">
                 <i className="fas fa-user-circle fa-3x"></i>
-                {this.props.video.username}
+                <span className="video-author">{this.props.video.author}</span>
+                <i className="fas fa-check-circle" id="username-check"></i>
               </div>
               <div className="vid-description">
                 {this.props.video.description}
