@@ -1,8 +1,8 @@
-export const createComment = (video_id, comment) => (
+export const createComment = (video_id, body) => (
   $.ajax({
     url: `/api/videos/${video_id}/comments`,
     type: `POST`,
-    data: {comment}
+    data: {body}
   })
 );
 

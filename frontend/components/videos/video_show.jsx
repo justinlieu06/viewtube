@@ -12,6 +12,7 @@ class VideoShow extends React.Component {
     this.state = {
       video: this.props.video,
     }
+    this.handleDelete = this.handleDelete.bind(this);
   }
 
   componentDidMount(){
@@ -19,9 +20,9 @@ class VideoShow extends React.Component {
     window.scrollTo(0, 0);
   }
 
-  componentDidUpdate(){
+  componentDidUpdate(prevProps){
     window.scrollTo(0, 0);
-
+    
   }
 
   renderErrors() {
@@ -36,9 +37,21 @@ class VideoShow extends React.Component {
     );
   }
 
+  handleDelete(e) {
+    e.preventDefault();
+    // debugger
+    this.props.deleteVideo(this.state.video.id).then(() => this.props.history.push('/'))
+  }
+
   render(){
     if (this.props.video === undefined){
       return null;
+    }
+    let deleteButton = <div></div>
+    if (this.props.currentUser){
+      if (this.props.currentUser.id === this.state.video.author_id){
+        deleteButton = <button onClick={this.handleDelete} className="delete-button">DELETE VIDEO</button>
+      }
     }
     return(
       <div className="vid-show-wrapper">
@@ -61,19 +74,22 @@ class VideoShow extends React.Component {
                 {this.props.video.title}
               </div>
               <div className="vid-published">
-                {this.props.video.published}
+                Published on {this.props.video.published}
               </div>
               <hr />
               <div className="vid-username">
                 <i className="fas fa-user-circle fa-3x"></i>
                 <span className="video-author">{this.props.video.author}</span>
                 <i className="fas fa-check-circle" id="username-check"></i>
+                <div className="delete-wrapper">{deleteButton}</div>
               </div>
               <div className="vid-description">
                 {this.props.video.description}
               </div>
               <hr />
             </div>
+
+            
 
             {/* <CommentsContainer videoId={this.props.video.id} /> */}
           </div>

@@ -1,6 +1,7 @@
 class Api::CommentsController < ApplicationController
   def create
-    @comment = Comment.new(comment_params)
+    # debugger
+    @comment = Comment.new(body: params[:body])
     @comment.author_id = current_user.id
     @comment.video_id = params[:video_id]
     if @comment.save
@@ -16,8 +17,8 @@ class Api::CommentsController < ApplicationController
     render :show
   end
 
-  private
-  def comment_params
-    params.require(:comments).permit(:body)
-  end
+  # private
+  # def comment_params
+  #   params.require(:comments).permit(:body)
+  # end
 end

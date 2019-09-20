@@ -22,7 +22,7 @@ class Comments extends React.Component {
 
   handleSubmit(e){
     e.preventDefault();
-    this.props.createComment({video_id: this.props.videoId, body: this.state.body});
+    this.props.createComment(this.props.videoId, this.state.body);
       // .then(() => this.props.fetchVideo(this.props.videoId));
     this.setState({body: ''});
     // debugger

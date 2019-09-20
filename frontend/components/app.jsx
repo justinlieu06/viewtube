@@ -12,7 +12,6 @@ import SearchContainer from './videos/search_container';
 
 const App = ({ children }) => (
   <div>
-    {/* <Modal /> */}
     <Switch>
       <AuthRoute exact path='/signup' component={SignUpFormContainer} />
       <AuthRoute exact path='/login' component={LogInFormContainer} />

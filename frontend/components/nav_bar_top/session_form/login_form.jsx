@@ -14,13 +14,13 @@ class LogInForm extends React.Component {
 
   pressSignIn(){
     const user = Object.assign({}, this.state);
-    // this.props.logIn(user).then( () => (
-    //   this.props.history.push('/')
-    // ));
-    
     this.props.logIn(user).then( () => (
-      this.props.history.length <= 3 ? this.props.history.push('/') : this.props.history.goBack()
+      this.props.history.push('/')
     ));
+    
+    // this.props.logIn(user).then( () => (
+    //   this.props.history.length <= 3 ? this.props.history.push('/') : this.props.history.goBack()
+    // ));
   }
 
   demoLogIn(e){
@@ -30,6 +30,11 @@ class LogInForm extends React.Component {
     //   username: 'DemoUser',
     //   password: '123456'
     // };
+
+    this.state = {
+      username: '',
+      password: ''
+    }
 
     //Credit to Fue
     const fillIn = (string, field) => () => {

@@ -15,7 +15,7 @@ ActiveRecord::Base.transaction do
   user1 = User.create(username: "DemoUser", email: "demo@gmail.com", password: "123456")
   user2 = User.create(username: "Lieutuber", email: "lieutuber@gmail.com", password: "123456")
   user3 = User.create(username: "DankMemes", email: "dankmemes@gmail.com", password: "123456")
-  user4 = User.create(username: "AA4Lfye", email: "aa@gmail.com", password: "123456")
+  user4 = User.create(username: "AA4Lyfe", email: "aa@gmail.com", password: "123456")
   user5 = User.create(username: "UwU", email: "uwu@gmail.com", password: "123456")
   user6 = User.create(username: "LoL", email: "lol@gmail.com", password: "123456")
   user7 = User.create(username: "Reznick", email: "reznick@gmail.com", password: "123456")

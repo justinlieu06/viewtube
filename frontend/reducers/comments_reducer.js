@@ -1,5 +1,5 @@
 
-import {RECEIVE_COMMENT, DELETE_COMMENT} from '../actions/comment_action';
+import {RECEIVE_COMMENT, DELETE_COMMENT} from '../actions/comment_actions';
 // import {RECEIVE_VIDEO } from '../actions/video_actions';
 
 const commentsReducer = (oldState = {}, action) => {

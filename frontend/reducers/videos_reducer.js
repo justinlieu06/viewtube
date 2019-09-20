@@ -18,7 +18,6 @@ const videoReducer = (oldState = {}, action) => {
       delete newState[action.videoId];
       return newState;
     case FIND_VIDEOS:
-      // debugger
       let result = action.videos.videos ? action.videos.videos : {};
       return result;
     default:
