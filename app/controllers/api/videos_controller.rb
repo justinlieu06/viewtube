@@ -49,8 +49,9 @@ class Api::VideosController < ApplicationController
   end
 
   def search
+    input = params[:query].downcase
+    @videos = Video.where("lower(videos.title) LIKE ?", "%#{input}%")
     
-    @videos = [Video.first]
     # debugger
     render :index
   end

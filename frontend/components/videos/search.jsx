@@ -55,7 +55,10 @@ class Search extends React.Component {
 
         </div> */} 
         <div className="search-outer-wrapper">
-          <div className="search-header">{result}</div>
+          <div className="search-header">
+            {result}
+            <hr style={{ color: 'blue' }}/>
+          </div>
           {videos}
         </div>
       </div>

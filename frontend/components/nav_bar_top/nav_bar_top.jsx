@@ -12,6 +12,10 @@ class NavBarTop extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  componentDidMount(){
+    this.setState({search: ''})
+  }
+
   handleInput(e) {
     this.setState({
       search: e.currentTarget.value

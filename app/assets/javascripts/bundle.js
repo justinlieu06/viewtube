@@ -762,6 +762,13 @@ function (_React$Component) {
   }
 
   _createClass(NavBarTop, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.setState({
+        search: ''
+      });
+    }
+  }, {
     key: "handleInput",
     value: function handleInput(e) {
       this.setState({
@@ -1546,7 +1553,11 @@ function (_React$Component) {
         className: "search-outer-wrapper"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "search-header"
-      }, result), videos));
+      }, result, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", {
+        style: {
+          color: 'blue'
+        }
+      })), videos));
     }
   }]);
 
