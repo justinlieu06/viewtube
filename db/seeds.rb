@@ -29,9 +29,9 @@ ActiveRecord::Base.transaction do
     description: "greatest of all time for a reason",
     author_id: user7.id
   )
-  file = open('https://viewtube-seeds.s3-us-west-1.amazonaws.com/ali.jpg')
+  file = open('https://view-tube-seeds.s3-us-west-1.amazonaws.com/ali.jpg')
   vid1.thumbnail.attach(io: file, filename: 'ali.jpg')
-  file = open('https://viewtube-seeds.s3-us-west-1.amazonaws.com/ali.mp4')
+  file = open('https://view-tube-seeds.s3-us-west-1.amazonaws.com/ali.mp4')
   vid1.video.attach(io: file, filename: 'ali.mp4')
 
   vid2 = Video.create(
