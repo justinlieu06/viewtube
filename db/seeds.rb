@@ -39,9 +39,9 @@ ActiveRecord::Base.transaction do
     description: "I like vines",
     author_id: user3.id
   )
-  file = open('https://viewtube-seeds.s3-us-west-1.amazonaws.com/beenStoppedThumbnail.jpg')
+  file = open('https://view-tube-seeds.s3-us-west-1.amazonaws.com/beenStoppedThumbnail.jpg')
   vid2.thumbnail.attach(io: file, filename: 'beenStoppedThumbnail.jpg')
-  file = open('https://viewtube-seeds.s3-us-west-1.amazonaws.com/beenStopped.mp4')
+  file = open('https://view-tube-seeds.s3-us-west-1.amazonaws.com/beenStopped.mp4')
   vid2.video.attach(io: file, filename: 'beenStopped.mp4')
   
   vid3 = Video.create(
@@ -49,9 +49,9 @@ ActiveRecord::Base.transaction do
     description: "The og muppet",
     author_id: user3.id
   )
-  file = open('https://viewtube-seeds.s3-us-west-1.amazonaws.com/kermitThumbnail.jpg')
+  file = open('https://view-tube-seeds.s3-us-west-1.amazonaws.com/kermitThumbnail.jpg')
   vid3.thumbnail.attach(io: file, filename: 'kermitThumbnail.jpg')
-  file = open('https://viewtube-seeds.s3-us-west-1.amazonaws.com/kermit.mp4')
+  file = open('https://view-tube-seeds.s3-us-west-1.amazonaws.com/kermit.mp4')
   vid3.video.attach(io: file, filename: 'kermit.mp4')
 
   # vid4 = Video.create(
@@ -59,9 +59,9 @@ ActiveRecord::Base.transaction do
   #   description: "d o double g",
   #   author_id: user3.id
   # )
-  # file = open('https://viewtube-seeds.s3-us-west-1.amazonaws.com/snoopThumbnail.jpg')
+  # file = open('https://view-tube-seeds.s3-us-west-1.amazonaws.com/snoopThumbnail.jpg')
   # vid4.thumbnail.attach(io: file, filename: 'snoopThumbnail.jpg')
-  # file = open('https://viewtube-seeds.s3-us-west-1.amazonaws.com/snoop.mp4')
+  # file = open('https://view-tube-seeds.s3-us-west-1.amazonaws.com/snoop.mp4')
   # vid4.video.attach(io: file, filename: 'snoop.mp4')
 
   # vid5 = Video.create(
@@ -69,9 +69,9 @@ ActiveRecord::Base.transaction do
   #   description: "amazing distance on that yeet",
   #   author_id: user3.id
   # )
-  # file = open('https://viewtube-seeds.s3-us-west-1.amazonaws.com/ariana.jpg')
+  # file = open('https://view-tube-seeds.s3-us-west-1.amazonaws.com/ariana.jpg')
   # vid5.thumbnail.attach(io: file, filename: 'ariana.jpg')
-  # file = open('https://viewtube-seeds.s3-us-west-1.amazonaws.com/ariana.mp4')
+  # file = open('https://view-tube-seeds.s3-us-west-1.amazonaws.com/ariana.mp4')
   # vid5.video.attach(io: file, filename: 'ariana.mp4')
 
   # vid6 = Video.create(
@@ -79,9 +79,9 @@ ActiveRecord::Base.transaction do
   #   description: "where did he get the wig",
   #   author_id: user4.id
   # )
-  # file = open('https://viewtube-seeds.s3-us-west-1.amazonaws.com/cat.jpg')
+  # file = open('https://view-tube-seeds.s3-us-west-1.amazonaws.com/cat.jpg')
   # vid6.thumbnail.attach(io: file, filename: 'cat.jpg')
-  # file = open('https://viewtube-seeds.s3-us-west-1.amazonaws.com/cat.mp4')
+  # file = open('https://view-tube-seeds.s3-us-west-1.amazonaws.com/cat.mp4')
   # vid6.video.attach(io: file, filename: 'cat.mp4')
 
   # vid7 = Video.create(
@@ -89,9 +89,9 @@ ActiveRecord::Base.transaction do
   #   description: "It's just how I remembered it was",
   #   author_id: user4.id
   # )
-  # file = open('https://viewtube-seeds.s3-us-west-1.amazonaws.com/hannah.jpg')
+  # file = open('https://view-tube-seeds.s3-us-west-1.amazonaws.com/hannah.jpg')
   # vid7.thumbnail.attach(io: file, filename: 'hannah.jpg')
-  # file = open('https://viewtube-seeds.s3-us-west-1.amazonaws.com/hannah.mp4')
+  # file = open('https://view-tube-seeds.s3-us-west-1.amazonaws.com/hannah.mp4')
   # vid7.video.attach(io: file, filename: 'hannah.mp4')
 
   vid8 = Video.create(
@@ -99,9 +99,9 @@ ActiveRecord::Base.transaction do
     description: "I wonder what the aftermath was",
     author_id: user5.id
   )
-  file = open('https://viewtube-seeds.s3-us-west-1.amazonaws.com/krispy.jpg')
+  file = open('https://view-tube-seeds.s3-us-west-1.amazonaws.com/krispy.jpg')
   vid8.thumbnail.attach(io: file, filename: 'krispy.jpg')
-  file = open('https://viewtube-seeds.s3-us-west-1.amazonaws.com/krispy.mp4')
+  file = open('https://view-tube-seeds.s3-us-west-1.amazonaws.com/krispy.mp4')
   vid8.video.attach(io: file, filename: 'krispy.mp4')
 
   vid9 = Video.create(
@@ -109,9 +109,9 @@ ActiveRecord::Base.transaction do
     description: "Baby don't hurt me",
     author_id: user5.id
   )
-  file = open('https://viewtube-seeds.s3-us-west-1.amazonaws.com/love.jpg')
+  file = open('https://view-tube-seeds.s3-us-west-1.amazonaws.com/love.jpg')
   vid9.thumbnail.attach(io: file, filename: 'love.jpg')
-  file = open('https://viewtube-seeds.s3-us-west-1.amazonaws.com/love.mp4')
+  file = open('https://view-tube-seeds.s3-us-west-1.amazonaws.com/love.mp4')
   vid9.video.attach(io: file, filename: 'love.mp4')
 
   vid10 = Video.create(
@@ -119,9 +119,9 @@ ActiveRecord::Base.transaction do
     description: "if you're so smart, EXPLAIN THIS",
     author_id: user6.id
   )
-  file = open('https://viewtube-seeds.s3-us-west-1.amazonaws.com/red.jpg')
+  file = open('https://view-tube-seeds.s3-us-west-1.amazonaws.com/red.jpg')
   vid10.thumbnail.attach(io: file, filename: 'red.jpg')
-  file = open('https://viewtube-seeds.s3-us-west-1.amazonaws.com/red.mp4')
+  file = open('https://view-tube-seeds.s3-us-west-1.amazonaws.com/red.mp4')
   vid10.video.attach(io: file, filename: 'red.mp4')
 
   vid11 = Video.create(
@@ -129,9 +129,9 @@ ActiveRecord::Base.transaction do
     description: "he wants you to stop",
     author_id: user8.id
   )
-  file = open('https://viewtube-seeds.s3-us-west-1.amazonaws.com/stop.jpg')
+  file = open('https://view-tube-seeds.s3-us-west-1.amazonaws.com/stop.jpg')
   vid11.thumbnail.attach(io: file, filename: 'stop.jpg')
-  file = open('https://viewtube-seeds.s3-us-west-1.amazonaws.com/stop.mp4')
+  file = open('https://view-tube-seeds.s3-us-west-1.amazonaws.com/stop.mp4')
   vid11.video.attach(io: file, filename: 'stop.mp4')
 
   vid12 = Video.create(
@@ -139,9 +139,9 @@ ActiveRecord::Base.transaction do
     description: "rip to my homie taco",
     author_id: user6.id
   )
-  file = open('https://viewtube-seeds.s3-us-west-1.amazonaws.com/taco.jpg')
+  file = open('https://view-tube-seeds.s3-us-west-1.amazonaws.com/taco.jpg')
   vid12.thumbnail.attach(io: file, filename: 'taco.jpg')
-  file = open('https://viewtube-seeds.s3-us-west-1.amazonaws.com/taco.mp4')
+  file = open('https://view-tube-seeds.s3-us-west-1.amazonaws.com/taco.mp4')
   vid12.video.attach(io: file, filename: 'taco.mp4')
 
   # vid13 = Video.create(
@@ -149,9 +149,9 @@ ActiveRecord::Base.transaction do
   #   description: "i wanna try some",
   #   author_id: user7.id
   # )
-  # file = open('https://viewtube-seeds.s3-us-west-1.amazonaws.com/taste.jpg')
+  # file = open('https://view-tube-seeds.s3-us-west-1.amazonaws.com/taste.jpg')
   # vid13.thumbnail.attach(io: file, filename: 'taste.jpg')
-  # file = open('https://viewtube-seeds.s3-us-west-1.amazonaws.com/taste.mp4')
+  # file = open('https://view-tube-seeds.s3-us-west-1.amazonaws.com/taste.mp4')
   # vid13.video.attach(io: file, filename: 'taste.mp4')
 
   vid14 = Video.create(
@@ -159,9 +159,9 @@ ActiveRecord::Base.transaction do
     description: "what a cutie",
     author_id: user2.id
   )
-  file = open('https://viewtube-seeds.s3-us-west-1.amazonaws.com/willie.jpg')
+  file = open('https://view-tube-seeds.s3-us-west-1.amazonaws.com/willie.jpg')
   vid14.thumbnail.attach(io: file, filename: 'willie.jpg')
-  file = open('https://viewtube-seeds.s3-us-west-1.amazonaws.com/willie.mp4')
+  file = open('https://view-tube-seeds.s3-us-west-1.amazonaws.com/willie.mp4')
   vid14.video.attach(io: file, filename: 'willie.mp4')
 
   vid15 = Video.create(
@@ -169,9 +169,9 @@ ActiveRecord::Base.transaction do
     description: "he's not finished",
     author_id: user1.id
   )
-  file = open('https://viewtube-seeds.s3-us-west-1.amazonaws.com/tyler.jpg')
+  file = open('https://view-tube-seeds.s3-us-west-1.amazonaws.com/tyler.jpg')
   vid15.thumbnail.attach(io: file, filename: 'tyler.jpg')
-  file = open('https://viewtube-seeds.s3-us-west-1.amazonaws.com/tyler.mp4')
+  file = open('https://view-tube-seeds.s3-us-west-1.amazonaws.com/tyler.mp4')
   vid15.video.attach(io: file, filename: 'tyler.mp4')
 
   vid16 = Video.create(
@@ -179,9 +179,9 @@ ActiveRecord::Base.transaction do
     description: "Truly terrifying",
     author_id: user1.id
   )
-  file = open('https://viewtube-seeds.s3-us-west-1.amazonaws.com/technology.jpg')
+  file = open('https://view-tube-seeds.s3-us-west-1.amazonaws.com/technology.jpg')
   vid16.thumbnail.attach(io: file, filename: 'technology.jpg')
-  file = open('https://viewtube-seeds.s3-us-west-1.amazonaws.com/technology.mp4')
+  file = open('https://view-tube-seeds.s3-us-west-1.amazonaws.com/technology.mp4')
   vid16.video.attach(io: file, filename: 'technology.mp4')
 
   vid17 = Video.create(
@@ -189,9 +189,9 @@ ActiveRecord::Base.transaction do
     description: "clips of tyson combos",
     author_id: user7.id
   )
-  file = open('https://viewtube-seeds.s3-us-west-1.amazonaws.com/tyson.jpg')
+  file = open('https://view-tube-seeds.s3-us-west-1.amazonaws.com/tyson.jpg')
   vid17.thumbnail.attach(io: file, filename: 'tyson.jpg')
-  file = open('https://viewtube-seeds.s3-us-west-1.amazonaws.com/tyson.mp4')
+  file = open('https://view-tube-seeds.s3-us-west-1.amazonaws.com/tyson.mp4')
   vid17.video.attach(io: file, filename: 'tyson.mp4')
 
   vid18 = Video.create(
@@ -199,9 +199,9 @@ ActiveRecord::Base.transaction do
     description: "why?",
     author_id: user2.id
   )
-  file = open('https://viewtube-seeds.s3-us-west-1.amazonaws.com/mouse.jpg')
+  file = open('https://view-tube-seeds.s3-us-west-1.amazonaws.com/mouse.jpg')
   vid18.thumbnail.attach(io: file, filename: 'mouse.jpg')
-  file = open('https://viewtube-seeds.s3-us-west-1.amazonaws.com/mouse.mp4')
+  file = open('https://view-tube-seeds.s3-us-west-1.amazonaws.com/mouse.mp4')
   vid18.video.attach(io: file, filename: 'mouse.mp4')
 
   vid19 = Video.create(
@@ -209,9 +209,9 @@ ActiveRecord::Base.transaction do
     description: "i don't get it either",
     author_id: user2.id
   )
-  file = open('https://viewtube-seeds.s3-us-west-1.amazonaws.com/arknasas.jpg')
+  file = open('https://view-tube-seeds.s3-us-west-1.amazonaws.com/arknasas.jpg')
   vid19.thumbnail.attach(io: file, filename: 'arknasas.jpg')
-  file = open('https://viewtube-seeds.s3-us-west-1.amazonaws.com/arkansas.mp4')
+  file = open('https://view-tube-seeds.s3-us-west-1.amazonaws.com/arkansas.mp4')
   vid19.video.attach(io: file, filename: 'arkansas.mp4')
 
   vid20 = Video.create(
@@ -219,9 +219,9 @@ ActiveRecord::Base.transaction do
     description: "LongBeachGriffy",
     author_id: user5.id
   )
-  file = open('https://viewtube-seeds.s3-us-west-1.amazonaws.com/beach.jpg')
+  file = open('https://view-tube-seeds.s3-us-west-1.amazonaws.com/beach.jpg')
   vid20.thumbnail.attach(io: file, filename: 'beach.jpg')
-  file = open('https://viewtube-seeds.s3-us-west-1.amazonaws.com/beach.mp4')
+  file = open('https://view-tube-seeds.s3-us-west-1.amazonaws.com/beach.mp4')
   vid20.video.attach(io: file, filename: 'beach.mp4')
 
   vid21 = Video.create(
@@ -229,9 +229,9 @@ ActiveRecord::Base.transaction do
     description: "not enough cat videos",
     author_id: user9.id
   )
-  file = open('https://viewtube-seeds.s3-us-west-1.amazonaws.com/cat2.jpg')
+  file = open('https://view-tube-seeds.s3-us-west-1.amazonaws.com/cat2.jpg')
   vid21.thumbnail.attach(io: file, filename: 'cat2.jpg')
-  file = open('https://viewtube-seeds.s3-us-west-1.amazonaws.com/cat2.mp4')
+  file = open('https://view-tube-seeds.s3-us-west-1.amazonaws.com/cat2.mp4')
   vid21.video.attach(io: file, filename: 'cat2.mp4')
 
   vid22 = Video.create(
@@ -239,9 +239,9 @@ ActiveRecord::Base.transaction do
     description: "CalebCity",
     author_id: user10.id
   )
-  file = open('https://viewtube-seeds.s3-us-west-1.amazonaws.com/insects.jpg')
+  file = open('https://view-tube-seeds.s3-us-west-1.amazonaws.com/insects.jpg')
   vid22.thumbnail.attach(io: file, filename: 'insects.jpg')
-  file = open('https://viewtube-seeds.s3-us-west-1.amazonaws.com/insects.mp4')
+  file = open('https://view-tube-seeds.s3-us-west-1.amazonaws.com/insects.mp4')
   vid22.video.attach(io: file, filename: 'insects.mp4')
 
   vid23 = Video.create(
@@ -249,8 +249,8 @@ ActiveRecord::Base.transaction do
     description: "Wow everyone who goes to App Academy is so good looking. Truly amazing",
     author_id: user4.id
   )
-  file = open('https://viewtube-seeds.s3-us-west-1.amazonaws.com/aa.jpg')
+  file = open('https://view-tube-seeds.s3-us-west-1.amazonaws.com/aa.jpg')
   vid23.thumbnail.attach(io: file, filename: 'aa.jpg')
-  file = open('https://viewtube-seeds.s3-us-west-1.amazonaws.com/aa.mp4')
+  file = open('https://view-tube-seeds.s3-us-west-1.amazonaws.com/aa.mp4')
   vid23.video.attach(io: file, filename: 'aa.mp4')
 end
