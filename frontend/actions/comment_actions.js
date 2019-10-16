@@ -13,8 +13,8 @@ const removeComment = comment => ({
   commentId: comment.id
 });
 
-export const createComment = (video_id, comment) => dispatch => (
-  CommentAPIUtil.createComment(video_id, comment).then(comment => dispatch(receiveComment(comment)))
+export const postComment = (obj) => dispatch => (
+  CommentAPIUtil.postComment(obj.video_id, obj.body).then(comment => dispatch(receiveComment(comment)))
 );
 
 export const deleteComment = (id) => dispatch => (

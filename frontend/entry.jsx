@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
   }
   const store = configureStore(preloadedState);
   delete window.currentUser;
-
+  
   window.getState = store.getState;
   // window.signUp = signUp;
   // window.logIn = logIn;

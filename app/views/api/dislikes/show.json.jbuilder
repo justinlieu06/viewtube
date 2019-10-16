@@ -1,1 +1,1 @@
-json.extract! @dislike, :id, :user_id, :video_id
+json.extract! @dislike, :id, :author_id, :video_id

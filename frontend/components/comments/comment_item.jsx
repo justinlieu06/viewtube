@@ -6,15 +6,20 @@ class CommentItem extends React.Component{
   }
 
   handleDelete() {
-      this.props.deleteComment(this.props.comment.id);
+    this.props.deleteComment(this.props.comment.id);
   }
 
   render(){
     return(
-      <div>
-        {/* <div>{this.props.comment.author}</div> */}
-        <div>{this.props.comment.body}</div>
-        <button onClick={this.handleDelete}>Delete</button>
+      <div className="comment-item-wrapper">
+        <div className="comment-item">
+          <i className="far fa-user-circle fa-3x"></i>
+          <div className="comment-item-right">
+            <div className="comment-username">{this.props.comment.username}</div>
+            <div className="comment-body">{this.props.comment.body}</div>
+          </div>
+        </div>
+        <button onClick={this.handleDelete} className="comment-item-delete">Delete</button>
       </div>
     )
   }

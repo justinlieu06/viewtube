@@ -5,6 +5,7 @@ import Modal from '../nav_bar_side/modal';
 import SideIndexContainer from './side_index_container';
 import CommentsContainer from '../comments/comments_container';
 import { Redirect } from 'react-router-dom'
+import LikeDislikeContainer from './like_dislike_container'
 
 class VideoShow extends React.Component {
   constructor(props) {
@@ -97,6 +98,14 @@ class VideoShow extends React.Component {
               <div className="vid-published">
                 Published on {this.props.video.published}
               </div>
+              <LikeDislikeContainer 
+                videoId={this.props.video.id}
+                likes={this.props.video.likes}
+                dislikes={this.props.video.dislikes}
+                userLikes={this.props.video.userLikes}
+                userDislikes={this.props.video.userDislikes}
+                currentUser={this.props.currentUser}
+              />
               <hr />
               <div className="vid-username">
                 <i className="fas fa-user-circle fa-3x"></i>
@@ -104,15 +113,14 @@ class VideoShow extends React.Component {
                 <i className="fas fa-check-circle" id="username-check"></i>
                 <div className="delete-wrapper">{deleteButton}</div>
               </div>
+
               <div className="vid-description">
                 {this.props.video.description}
               </div>
               <hr />
             </div>
 
-            
-
-            {/* <CommentsContainer videoId={this.props.video.id} /> */}
+            <CommentsContainer videoId={this.props.video.id} />
           </div>
 
           {/* <div className="vid-show-wrapper"></div> */}

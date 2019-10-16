@@ -2,7 +2,9 @@
   padding-top: 70px;
   padding-left: 100px;
   padding-right: 0px;
-  margin-right: 0px; 
+  margin-right: 0px;
+  height: calc(100vh - 56px);
+  overflow-y: scroll;
 }
 
 .recommended {

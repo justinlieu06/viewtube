@@ -6,8 +6,10 @@ Rails.application.routes.draw do
     resources :users, only: [:create]
     resource :session, only: [:create, :destroy]
     resources :videos, only: [:index, :show, :create, :update, :destroy] do
-      resources :likes, only: [:create, :index, :destroy]
-      resources :dislikes, only: [:create, :index, :destroy]
+      resources :likes, only: [:create, :index]
+      delete '/likes', to: 'likes#destroy'
+      resources :dislikes, only: [:create, :index]
+      delete '/dislikes', to: 'dislikes#destroy'
       resources :comments, only: [:create]
     end
     get '/search/:query', to: 'videos#search'

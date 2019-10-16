@@ -90,14 +90,14 @@
 /*!*********************************************!*\
   !*** ./frontend/actions/comment_actions.js ***!
   \*********************************************/
-/*! exports provided: RECEIVE_COMMENT, DELETE_COMMENT, createComment, deleteComment */
+/*! exports provided: RECEIVE_COMMENT, DELETE_COMMENT, postComment, deleteComment */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_COMMENT", function() { return RECEIVE_COMMENT; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DELETE_COMMENT", function() { return DELETE_COMMENT; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createComment", function() { return createComment; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "postComment", function() { return postComment; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "deleteComment", function() { return deleteComment; });
 /* harmony import */ var _util_comment_api_util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util/comment_api_util */ "./frontend/util/comment_api_util.js");
 
@@ -118,9 +118,9 @@ var removeComment = function removeComment(comment) {
   };
 };
 
-var createComment = function createComment(video_id, comment) {
+var postComment = function postComment(obj) {
   return function (dispatch) {
-    return _util_comment_api_util__WEBPACK_IMPORTED_MODULE_0__["createComment"](video_id, comment).then(function (comment) {
+    return _util_comment_api_util__WEBPACK_IMPORTED_MODULE_0__["postComment"](obj.video_id, obj.body).then(function (comment) {
       return dispatch(receiveComment(comment));
     });
   };
@@ -129,6 +129,138 @@ var deleteComment = function deleteComment(id) {
   return function (dispatch) {
     return _util_comment_api_util__WEBPACK_IMPORTED_MODULE_0__["deleteComment"](id).then(function (comment) {
       return dispatch(removeComment(comment));
+    });
+  };
+};
+
+/***/ }),
+
+/***/ "./frontend/actions/dislike_actions.js":
+/*!*********************************************!*\
+  !*** ./frontend/actions/dislike_actions.js ***!
+  \*********************************************/
+/*! exports provided: RECEIVE_ALL_DISLIKES, RECEIVE_DISLIKE, DELETE_DISLIKE, fetchDislikes, createDislike, destroyDislike */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_ALL_DISLIKES", function() { return RECEIVE_ALL_DISLIKES; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_DISLIKE", function() { return RECEIVE_DISLIKE; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DELETE_DISLIKE", function() { return DELETE_DISLIKE; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchDislikes", function() { return fetchDislikes; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createDislike", function() { return createDislike; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "destroyDislike", function() { return destroyDislike; });
+/* harmony import */ var _util_dislike_api_util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util/dislike_api_util */ "./frontend/util/dislike_api_util.js");
+
+var RECEIVE_ALL_DISLIKES = "RECEIVE_ALL_DISLIKES";
+var RECEIVE_DISLIKE = "RECEIVE_DISLIKE";
+var DELETE_DISLIKE = "DELETE_DISLIKE";
+
+var receiveAllDislikes = function receiveAllDislikes(dislikes) {
+  return {
+    type: RECEIVE_ALL_DISLIKES,
+    dislikes: dislikes
+  };
+};
+
+var receiveDislike = function receiveDislike(dislike) {
+  return {
+    type: RECEIVE_DISLIKE,
+    dislike: dislike
+  };
+};
+
+var deleteDislike = function deleteDislike(dislike) {
+  return {
+    type: DELETE_DISLIKE,
+    dislike: dislike
+  };
+};
+
+var fetchDislikes = function fetchDislikes(video_id) {
+  return function (dispatch) {
+    return _util_dislike_api_util__WEBPACK_IMPORTED_MODULE_0__["fetchDislikes"](video_id).then(function (dislikes) {
+      return dispatch(receiveAllDislikes(dislikes));
+    });
+  };
+};
+var createDislike = function createDislike(video_id) {
+  return function (dispatch) {
+    return _util_dislike_api_util__WEBPACK_IMPORTED_MODULE_0__["createDislike"](video_id).then(function (dislike) {
+      return dispatch(receiveDislike(dislike));
+    });
+  };
+};
+var destroyDislike = function destroyDislike(video_id) {
+  return function (dispatch) {
+    return _util_dislike_api_util__WEBPACK_IMPORTED_MODULE_0__["destroyDislike"](video_id).then(function (dislike) {
+      return dispatch(deleteDislike(dislike));
+    });
+  };
+};
+
+/***/ }),
+
+/***/ "./frontend/actions/like_actions.js":
+/*!******************************************!*\
+  !*** ./frontend/actions/like_actions.js ***!
+  \******************************************/
+/*! exports provided: RECEIVE_ALL_LIKES, RECEIVE_LIKE, DELETE_LIKE, fetchLikes, createLike, destroyLike */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_ALL_LIKES", function() { return RECEIVE_ALL_LIKES; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_LIKE", function() { return RECEIVE_LIKE; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DELETE_LIKE", function() { return DELETE_LIKE; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchLikes", function() { return fetchLikes; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createLike", function() { return createLike; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "destroyLike", function() { return destroyLike; });
+/* harmony import */ var _util_like_api_util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util/like_api_util */ "./frontend/util/like_api_util.js");
+
+var RECEIVE_ALL_LIKES = "RECEIVE_ALL_LIKES";
+var RECEIVE_LIKE = "RECEIVE_LIKE";
+var DELETE_LIKE = "DELETE_LIKE";
+
+var receiveAllLikes = function receiveAllLikes(likes) {
+  return {
+    type: RECEIVE_ALL_LIKES,
+    likes: likes
+  };
+};
+
+var receiveLike = function receiveLike(like) {
+  return {
+    type: RECEIVE_LIKE,
+    like: like
+  };
+};
+
+var deleteLike = function deleteLike(like) {
+  return {
+    type: DELETE_LIKE,
+    like: like
+  };
+};
+
+var fetchLikes = function fetchLikes(video_id) {
+  return function (dispatch) {
+    return _util_like_api_util__WEBPACK_IMPORTED_MODULE_0__["fetchLikes"](video_id).then(function (likes) {
+      return dispatch(receiveAllLikes(likes));
+    });
+  };
+};
+var createLike = function createLike(video_id) {
+  return function (dispatch) {
+    return _util_like_api_util__WEBPACK_IMPORTED_MODULE_0__["createLike"](video_id).then(function (like) {
+      return dispatch(receiveLike(like));
+    });
+  };
+};
+var destroyLike = function destroyLike(video_id) {
+  return function (dispatch) {
+    return _util_like_api_util__WEBPACK_IMPORTED_MODULE_0__["destroyLike"](video_id).then(function (like) {
+      return dispatch(deleteLike(like));
     });
   };
 };
@@ -487,8 +619,21 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, this.props.comment.body), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        onClick: this.handleDelete
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "comment-item-wrapper"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "comment-item"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "far fa-user-circle fa-3x"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "comment-item-right"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "comment-username"
+      }, this.props.comment.username), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "comment-body"
+      }, this.props.comment.body))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        onClick: this.handleDelete,
+        className: "comment-item-delete"
       }, "Delete"));
     }
   }]);
@@ -545,11 +690,13 @@ function (_React$Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(Comments).call(this, props));
     _this.state = {
-      body: ''
+      body: '',
+      comments: _this.props.comments
     };
     _this.handleUpdate = _this.handleUpdate.bind(_assertThisInitialized(_this));
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
     _this.goToLogin = _this.goToLogin.bind(_assertThisInitialized(_this));
+    _this.handleCancel = _this.handleCancel.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -565,11 +712,22 @@ function (_React$Component) {
     key: "handleSubmit",
     value: function handleSubmit(e) {
       e.preventDefault();
-      this.props.createComment(this.props.videoId, this.state.body); // .then(() => this.props.fetchVideo(this.props.videoId));
+      this.props.postComment({
+        video_id: this.props.videoId,
+        body: this.state.body
+      }); // .then(() => this.props.fetchVideo(this.props.videoId));
 
       this.setState({
         body: ''
       }); // debugger
+    }
+  }, {
+    key: "handleCancel",
+    value: function handleCancel(e) {
+      e.preventDefault();
+      this.setState({
+        body: ''
+      });
     }
   }, {
     key: "goToLogin",
@@ -581,17 +739,36 @@ function (_React$Component) {
     value: function render() {
       var _this2 = this;
 
-      var commentFormCode = this.props.currentUser ? commentFormCode = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      var commentFormCode = this.props.currentUser ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "comment-form"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fas fa-user-circle fa-3x"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",
         value: this.state.body,
-        placeholder: "Add Comment",
-        onChange: this.handleUpdate
-      }) : // commentFormCode = <button onClick={this.goToLogin}>Add Comment</button>
-      react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Please log in"); // debugger
+        placeholder: "Add a public comment...",
+        onChange: this.handleUpdate,
+        className: "comment-input"
+      })) : // commentFormCode = <button onClick={this.goToLogin}>Add Comment</button>
+      react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "comment-form"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fas fa-user-circle fa-3x"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "comment-input"
+      }, "Login to post a public comment...")); // debugger
 
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", null, commentFormCode), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        onClick: this.handleSubmit
-      }, "Comment"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, this.props.comments.map(function (comment, index) {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "comment-wrapper"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", null, commentFormCode), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "com-buttons"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        onClick: this.handleCancel,
+        className: "cancel-button"
+      }, "CANCEL"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        onClick: this.handleSubmit,
+        className: "comment-button"
+      }, "COMMENT"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, this.props.comments.map(function (comment, index) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_comment_item__WEBPACK_IMPORTED_MODULE_1__["default"], {
           comment: comment,
           key: index,
@@ -626,8 +803,11 @@ __webpack_require__.r(__webpack_exports__);
  // import { fetchVideo } from '../../actions/video_actions';
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
+  console.log(state);
   return {
-    comments: state.entities.comments ? Object.values(state.entities.comments) : [],
+    comments: Object.values(state.entities.comments).filter(function (comment) {
+      return comment.video_id === ownProps.videoId;
+    }),
     currentUser: state.session.id ? state.entities.users[state.session.id] : null,
     video: ownProps.video
   };
@@ -635,8 +815,8 @@ var mapStateToProps = function mapStateToProps(state, ownProps) {
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
-    createComment: function createComment(comment) {
-      return dispatch(Object(_actions_comment_actions__WEBPACK_IMPORTED_MODULE_1__["createComment"])(comment));
+    postComment: function postComment(comment) {
+      return dispatch(Object(_actions_comment_actions__WEBPACK_IMPORTED_MODULE_1__["postComment"])(comment));
     },
     deleteComment: function deleteComment(id) {
       return dispatch(Object(_actions_comment_actions__WEBPACK_IMPORTED_MODULE_1__["deleteComment"])(id));
@@ -1779,6 +1959,263 @@ function (_React$Component) {
 
 /***/ }),
 
+/***/ "./frontend/components/videos/like_dislike.jsx":
+/*!*****************************************************!*\
+  !*** ./frontend/components/videos/like_dislike.jsx ***!
+  \*****************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+var LikeDislike =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(LikeDislike, _React$Component);
+
+  function LikeDislike(props) {
+    var _this;
+
+    _classCallCheck(this, LikeDislike);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(LikeDislike).call(this, props));
+    _this.state = {
+      videoId: _this.props.videoId,
+      likes: _this.props.likes,
+      dislikes: _this.props.dislikes,
+      userLikes: _this.props.userLikes,
+      userDislikes: _this.props.userDislikes
+    };
+    _this.handleLike = _this.handleLike.bind(_assertThisInitialized(_this));
+    _this.handleDislike = _this.handleDislike.bind(_assertThisInitialized(_this));
+    return _this;
+  }
+
+  _createClass(LikeDislike, [{
+    key: "componentDidUpdate",
+    value: function componentDidUpdate(prevProps) {
+      if (prevProps.videoId !== this.props.videoId) {
+        this.setState({
+          videoId: this.props.videoId,
+          likes: this.props.likes,
+          dislikes: this.props.dislikes,
+          userLikes: this.props.userLikes,
+          userDislikes: this.props.userDislikes
+        });
+      }
+    }
+  }, {
+    key: "handleLike",
+    value: function handleLike(e) {
+      var _this2 = this;
+
+      e.preventDefault();
+      var userLikes = this.state.userLikes;
+      var userDislikes = this.state.userDislikes;
+
+      if (this.props.currentUser) {
+        if (!userLikes && !userDislikes) {
+          //if video is not liked or disliked, like it
+          this.props.createLike(this.state.videoId).then(function (ret) {
+            _this2.setState({
+              likes: ++_this2.state.likes,
+              userLikes: !userLikes
+            });
+          });
+        } else if (userLikes) {
+          //if already liked, unlike it
+          this.props.destroyLike(this.state.videoId).then(function (ret) {
+            _this2.setState({
+              likes: --_this2.state.likes,
+              userLikes: !userLikes
+            });
+          });
+        } else if (!userLikes && userDislikes) {
+          this.props.destroyDislike(this.state.videoId);
+          this.props.createLike(this.state.videoId).then(function (result) {
+            _this2.setState({
+              likes: ++_this2.state.likes,
+              dislikes: --_this2.state.dislikes,
+              userLikes: !userLikes,
+              userDislikes: !userDislikes
+            });
+          });
+        }
+      }
+    }
+  }, {
+    key: "handleDislike",
+    value: function handleDislike(e) {
+      var _this3 = this;
+
+      e.preventDefault();
+      var userLikes = this.state.userLikes;
+      var userDislikes = this.state.userDislikes;
+
+      if (this.props.currentUser) {
+        if (!userDislikes && !userLikes) {
+          //if video is not liked or disliked, dislike it
+          this.props.createDislike(this.state.videoId).then(function (ret) {
+            _this3.setState({
+              dislikes: ++_this3.state.dislikes,
+              userDislikes: !userDislikes
+            });
+          });
+        } else if (userDislikes) {
+          //if already liked, unlike it
+          this.props.destroyDislike(this.state.videoId).then(function (ret) {
+            _this3.setState({
+              dislikes: --_this3.state.dislikes,
+              userDislikes: !userDislikes
+            });
+          });
+        } else if (!userDislikes && userLikes) {
+          this.props.destroyLike(this.state.videoId);
+          this.props.createDislike(this.state.videoId).then(function (result) {
+            _this3.setState({
+              likes: --_this3.state.likes,
+              dislikes: ++_this3.state.dislikes,
+              userLikes: !userLikes,
+              userDislikes: !userDislikes
+            });
+          });
+        }
+      }
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var likeButton = this.props.currentUser ? this.props.userLikes ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        onClick: this.handleLike,
+        className: "selected"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fas fa-thumbs-up"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "like-dislike-num"
+      }, this.state.likes)) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        onClick: this.handleLike,
+        className: "unselected"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fas fa-thumbs-up"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "like-dislike-num"
+      }, this.state.likes)) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        onClick: this.handleLike,
+        className: "unselected"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fas fa-thumbs-up"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "like-dislike-num"
+      }, this.state.likes));
+      var dislikeButton = this.props.currentUser ? this.props.userDislikes ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        onClick: this.handleDislike,
+        className: "selected"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fas fa-thumbs-down"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "like-dislike-num"
+      }, this.state.dislikes)) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        onClick: this.handleDislike,
+        className: "unselected"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fas fa-thumbs-down"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "like-dislike-num"
+      }, this.state.dislikes)) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        onClick: this.handleDislike,
+        className: "unselected"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fas fa-thumbs-down"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "like-dislike-num"
+      }, this.state.dislikes));
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "like-dislike-buttons"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, likeButton), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, dislikeButton));
+    }
+  }]);
+
+  return LikeDislike;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+/* harmony default export */ __webpack_exports__["default"] = (LikeDislike);
+
+/***/ }),
+
+/***/ "./frontend/components/videos/like_dislike_container.js":
+/*!**************************************************************!*\
+  !*** ./frontend/components/videos/like_dislike_container.js ***!
+  \**************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _actions_like_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../actions/like_actions */ "./frontend/actions/like_actions.js");
+/* harmony import */ var _actions_dislike_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/dislike_actions */ "./frontend/actions/dislike_actions.js");
+/* harmony import */ var _like_dislike__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./like_dislike */ "./frontend/components/videos/like_dislike.jsx");
+
+
+
+
+
+var mapStateToProps = function mapStateToProps(state, ownProps) {
+  return {
+    videoId: ownProps.videoId,
+    likes: ownProps.likes,
+    dislikes: ownProps.dislikes,
+    userLikes: ownProps.userLikes,
+    userDislikes: ownProps.userDislikes,
+    currentUser: ownProps.currentUser
+  };
+};
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return {
+    createLike: function createLike(video_id) {
+      return dispatch(Object(_actions_like_actions__WEBPACK_IMPORTED_MODULE_1__["createLike"])(video_id));
+    },
+    destroyLike: function destroyLike(video_id) {
+      return dispatch(Object(_actions_like_actions__WEBPACK_IMPORTED_MODULE_1__["destroyLike"])(video_id));
+    },
+    createDislike: function createDislike(video_id) {
+      return dispatch(Object(_actions_dislike_actions__WEBPACK_IMPORTED_MODULE_2__["createDislike"])(video_id));
+    },
+    destroyDislike: function destroyDislike(video_id) {
+      return dispatch(Object(_actions_dislike_actions__WEBPACK_IMPORTED_MODULE_2__["destroyDislike"])(video_id));
+    }
+  };
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mapStateToProps, mapDispatchToProps)(_like_dislike__WEBPACK_IMPORTED_MODULE_3__["default"]));
+
+/***/ }),
+
 /***/ "./frontend/components/videos/search.jsx":
 /*!***********************************************!*\
   !*** ./frontend/components/videos/search.jsx ***!
@@ -2602,6 +3039,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _nav_bar_side_modal__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../nav_bar_side/modal */ "./frontend/components/nav_bar_side/modal.jsx");
 /* harmony import */ var _side_index_container__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./side_index_container */ "./frontend/components/videos/side_index_container.js");
 /* harmony import */ var _comments_comments_container__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../comments/comments_container */ "./frontend/components/comments/comments_container.js");
+/* harmony import */ var _like_dislike_container__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./like_dislike_container */ "./frontend/components/videos/like_dislike_container.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -2619,6 +3057,7 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
 
 
 
@@ -2741,7 +3180,14 @@ function (_React$Component) {
         className: "vid-title"
       }, this.props.video.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "vid-published"
-      }, "Published on ", this.props.video.published), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "Published on ", this.props.video.published), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_like_dislike_container__WEBPACK_IMPORTED_MODULE_6__["default"], {
+        videoId: this.props.video.id,
+        likes: this.props.video.likes,
+        dislikes: this.props.video.dislikes,
+        userLikes: this.props.video.userLikes,
+        userDislikes: this.props.video.userDislikes,
+        currentUser: this.props.currentUser
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "vid-username"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         className: "fas fa-user-circle fa-3x"
@@ -2754,7 +3200,9 @@ function (_React$Component) {
         className: "delete-wrapper"
       }, deleteButton)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "vid-description"
-      }, this.props.video.description), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, this.props.video.description), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_comments_comments_container__WEBPACK_IMPORTED_MODULE_5__["default"], {
+        videoId: this.props.video.id
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "show-right"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_side_index_container__WEBPACK_IMPORTED_MODULE_4__["default"], null))));
     }
@@ -2866,7 +3314,13 @@ document.addEventListener("DOMContentLoaded", function () {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _actions_comment_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/comment_actions */ "./frontend/actions/comment_actions.js");
+/* harmony import */ var lodash_merge__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! lodash/merge */ "./node_modules/lodash/merge.js");
+/* harmony import */ var lodash_merge__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(lodash_merge__WEBPACK_IMPORTED_MODULE_1__);
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
  // import {RECEIVE_VIDEO } from '../actions/video_actions';
+
+
 
 var commentsReducer = function commentsReducer() {
   var oldState = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
@@ -2878,8 +3332,9 @@ var commentsReducer = function commentsReducer() {
     // case RECEIVE_VIDEO:
     //   return action.payload.comments;
     case _actions_comment_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_COMMENT"]:
-      newState[action.comment.id] = action.comment;
-      return newState;
+      // newState[action.comment.id] = action.comment;
+      // return newState;
+      return lodash_merge__WEBPACK_IMPORTED_MODULE_1___default()({}, oldState, _defineProperty({}, action.comment.id, action.comment));
 
     case _actions_comment_actions__WEBPACK_IMPORTED_MODULE_0__["DELETE_COMMENT"]:
       delete newState[action.commentId];
@@ -2891,6 +3346,45 @@ var commentsReducer = function commentsReducer() {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (commentsReducer);
+
+/***/ }),
+
+/***/ "./frontend/reducers/dislikes_reducer.js":
+/*!***********************************************!*\
+  !*** ./frontend/reducers/dislikes_reducer.js ***!
+  \***********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _actions_dislike_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/dislike_actions */ "./frontend/actions/dislike_actions.js");
+
+
+var dislikesReducer = function dislikesReducer() {
+  var oldState = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+  Object.freeze(oldState);
+  var newState = Object.assign({}, oldState);
+
+  switch (action.type) {
+    case _actions_dislike_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_ALL_DISLIKES"]:
+      return action.dislikes;
+
+    case _actions_dislike_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_DISLIKE"]:
+      newState[action.dislike.id] = action.dislike;
+      return newState;
+
+    case _actions_dislike_actions__WEBPACK_IMPORTED_MODULE_0__["DELETE_DISLIKE"]:
+      delete newState[action.dislike.id];
+      return newState;
+
+    default:
+      return oldState;
+  }
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (dislikesReducer);
 
 /***/ }),
 
@@ -2907,6 +3401,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _users_reducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./users_reducer */ "./frontend/reducers/users_reducer.js");
 /* harmony import */ var _videos_reducer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./videos_reducer */ "./frontend/reducers/videos_reducer.js");
 /* harmony import */ var _comments_reducer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./comments_reducer */ "./frontend/reducers/comments_reducer.js");
+/* harmony import */ var _likes_reducer__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./likes_reducer */ "./frontend/reducers/likes_reducer.js");
+/* harmony import */ var _dislikes_reducer__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./dislikes_reducer */ "./frontend/reducers/dislikes_reducer.js");
+
+
 
 
 
@@ -2914,7 +3412,9 @@ __webpack_require__.r(__webpack_exports__);
 var entitiesReducer = Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"])({
   users: _users_reducer__WEBPACK_IMPORTED_MODULE_1__["default"],
   videos: _videos_reducer__WEBPACK_IMPORTED_MODULE_2__["default"],
-  comments: _comments_reducer__WEBPACK_IMPORTED_MODULE_3__["default"]
+  comments: _comments_reducer__WEBPACK_IMPORTED_MODULE_3__["default"],
+  likes: _likes_reducer__WEBPACK_IMPORTED_MODULE_4__["default"],
+  dislikes: _dislikes_reducer__WEBPACK_IMPORTED_MODULE_5__["default"]
 });
 /* harmony default export */ __webpack_exports__["default"] = (entitiesReducer);
 
@@ -2940,6 +3440,45 @@ var errorsReducer = Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"]
   videoErrors: _videos_errors_reducer__WEBPACK_IMPORTED_MODULE_2__["default"]
 });
 /* harmony default export */ __webpack_exports__["default"] = (errorsReducer);
+
+/***/ }),
+
+/***/ "./frontend/reducers/likes_reducer.js":
+/*!********************************************!*\
+  !*** ./frontend/reducers/likes_reducer.js ***!
+  \********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _actions_like_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/like_actions */ "./frontend/actions/like_actions.js");
+
+
+var likesReducer = function likesReducer() {
+  var oldState = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+  Object.freeze(oldState);
+  var newState = Object.assign({}, oldState);
+
+  switch (action.type) {
+    case _actions_like_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_ALL_LIKES"]:
+      return action.likes;
+
+    case _actions_like_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_LIKE"]:
+      newState[action.like.id] = action.like;
+      return newState;
+
+    case _actions_like_actions__WEBPACK_IMPORTED_MODULE_0__["DELETE_LIKE"]:
+      delete newState[action.like.id];
+      return newState;
+
+    default:
+      return oldState;
+  }
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (likesReducer);
 
 /***/ }),
 
@@ -3237,14 +3776,14 @@ var configureStore = function configureStore() {
 /*!*******************************************!*\
   !*** ./frontend/util/comment_api_util.js ***!
   \*******************************************/
-/*! exports provided: createComment, deleteComment */
+/*! exports provided: postComment, deleteComment */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createComment", function() { return createComment; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "postComment", function() { return postComment; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "deleteComment", function() { return deleteComment; });
-var createComment = function createComment(video_id, body) {
+var postComment = function postComment(video_id, body) {
   return $.ajax({
     url: "/api/videos/".concat(video_id, "/comments"),
     type: "POST",
@@ -3256,6 +3795,72 @@ var createComment = function createComment(video_id, body) {
 var deleteComment = function deleteComment(id) {
   return $.ajax({
     url: "/api/comments/".concat(id),
+    type: "DELETE"
+  });
+};
+
+/***/ }),
+
+/***/ "./frontend/util/dislike_api_util.js":
+/*!*******************************************!*\
+  !*** ./frontend/util/dislike_api_util.js ***!
+  \*******************************************/
+/*! exports provided: fetchDislikes, createDislike, destroyDislike */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchDislikes", function() { return fetchDislikes; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createDislike", function() { return createDislike; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "destroyDislike", function() { return destroyDislike; });
+var fetchDislikes = function fetchDislikes(video_id) {
+  return $.ajax({
+    url: "/api/videos/".concat(video_id, "/dislikes"),
+    type: "GET"
+  });
+};
+var createDislike = function createDislike(video_id) {
+  return $.ajax({
+    url: "/api/videos/".concat(video_id, "/dislikes"),
+    type: "POST"
+  });
+};
+var destroyDislike = function destroyDislike(video_id) {
+  return $.ajax({
+    url: "/api/videos/".concat(video_id, "/dislikes"),
+    type: "DELETE"
+  });
+};
+
+/***/ }),
+
+/***/ "./frontend/util/like_api_util.js":
+/*!****************************************!*\
+  !*** ./frontend/util/like_api_util.js ***!
+  \****************************************/
+/*! exports provided: fetchLikes, createLike, destroyLike */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchLikes", function() { return fetchLikes; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createLike", function() { return createLike; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "destroyLike", function() { return destroyLike; });
+var fetchLikes = function fetchLikes(video_id) {
+  return $.ajax({
+    url: "/api/videos/".concat(video_id, "/likes"),
+    type: "GET"
+  });
+};
+var createLike = function createLike(video_id) {
+  return $.ajax({
+    url: "/api/videos/".concat(video_id, "/likes"),
+    type: "POST"
+  });
+};
+var destroyLike = function destroyLike(video_id) {
+  return $.ajax({
+    url: "/api/videos/".concat(video_id, "/likes"),
     type: "DELETE"
   });
 };
@@ -36746,7 +37351,7 @@ function warning(message) {
 /*!***************************************************************!*\
   !*** ./node_modules/react-router-dom/esm/react-router-dom.js ***!
   \***************************************************************/
-/*! exports provided: BrowserRouter, HashRouter, Link, NavLink, MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext */
+/*! exports provided: MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext, BrowserRouter, HashRouter, Link, NavLink */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

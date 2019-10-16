@@ -43,8 +43,8 @@ class Api::VideosController < ApplicationController
   end
 
   def destroy
-    video = Video.find(params[:id])
-    video.destroy
+    @video = Video.find(params[:id])
+    @video.destroy
     render :show
   end
 

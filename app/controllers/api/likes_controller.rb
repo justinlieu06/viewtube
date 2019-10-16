@@ -1,5 +1,6 @@
 class Api::LikesController < ApplicationController
   def create
+    # debugger
     @like = Like.new()
     @like.author_id = current_user.id
     @like.video_id = params[:video_id]

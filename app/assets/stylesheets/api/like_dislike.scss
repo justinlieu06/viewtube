@@ -1,0 +1,25 @@
+.selected {
+  color: #3EA6FF;
+  background-color: #191919;
+  font-size: 16px;
+  display: flex;
+  border: none;
+}
+
+.unselected {
+  color: #AAAAAA;
+  background-color: #191919;
+  font-size: 16px;
+  display: flex;
+  border: none;
+}
+
+.like-dislike-buttons {
+  float: right;
+  display: flex;
+}
+
+.like-dislike-num {
+  padding-left: 7px;
+  font-size: 12px;
+}

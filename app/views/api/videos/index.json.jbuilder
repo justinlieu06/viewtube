@@ -6,6 +6,10 @@
       json.video url_for(video.video)
       json.thumbnail url_for(video.thumbnail)
       json.published video.created_at.strftime("%B %d, %Y")
+      json.likes video.likes.length
+      json.dislikes video.dislikes.length
+      json.userLikes video.likes_authors.include?(current_user)
+      json.userDislikes video.dislikes_authors.include?(current_user)
     end
   end
 end

@@ -13,6 +13,7 @@ class Like < ApplicationRecord
 
   validates :author_id, presence: true
   validates :video_id, presence: true
+  validates :author_id, uniqueness: { scope: :video_id }
 
   belongs_to :user,
     foreign_key: :author_id,

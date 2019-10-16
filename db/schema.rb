@@ -42,8 +42,8 @@ ActiveRecord::Schema.define(version: 2019_09_12_173835) do
     t.string "body", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["author_id"], name: "index_comments_on_author_id", unique: true
-    t.index ["video_id"], name: "index_comments_on_video_id", unique: true
+    t.index ["author_id"], name: "index_comments_on_author_id"
+    t.index ["video_id"], name: "index_comments_on_video_id"
   end
 
   create_table "dislikes", force: :cascade do |t|
@@ -51,8 +51,7 @@ ActiveRecord::Schema.define(version: 2019_09_12_173835) do
     t.integer "video_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["author_id"], name: "index_dislikes_on_author_id", unique: true
-    t.index ["video_id"], name: "index_dislikes_on_video_id", unique: true
+    t.index ["video_id", "author_id"], name: "index_dislikes_on_video_id_and_author_id", unique: true
   end
 
   create_table "likes", force: :cascade do |t|
@@ -60,8 +59,7 @@ ActiveRecord::Schema.define(version: 2019_09_12_173835) do
     t.integer "video_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["author_id"], name: "index_likes_on_author_id", unique: true
-    t.index ["video_id"], name: "index_likes_on_video_id", unique: true
+    t.index ["video_id", "author_id"], name: "index_likes_on_video_id_and_author_id", unique: true
   end
 
   create_table "users", force: :cascade do |t|

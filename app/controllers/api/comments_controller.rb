@@ -1,6 +1,5 @@
 class Api::CommentsController < ApplicationController
   def create
-    # debugger
     @comment = Comment.new(body: params[:body])
     @comment.author_id = current_user.id
     @comment.video_id = params[:video_id]
@@ -12,8 +11,8 @@ class Api::CommentsController < ApplicationController
   end
 
   def destroy
-    comment = Comment.find(params[:id])
-    comment.destroy
+    @comment = Comment.find(params[:id])
+    @comment.destroy
     render :show
   end
 
