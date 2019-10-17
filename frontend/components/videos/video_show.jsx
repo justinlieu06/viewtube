@@ -120,7 +120,7 @@ class VideoShow extends React.Component {
               <hr />
             </div>
 
-            <CommentsContainer videoId={this.props.video.id} />
+            <CommentsContainer videoId={this.props.video.id} video={this.props.video}/>
           </div>
 
           {/* <div className="vid-show-wrapper"></div> */}

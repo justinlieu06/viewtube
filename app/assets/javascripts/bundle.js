@@ -803,13 +803,13 @@ __webpack_require__.r(__webpack_exports__);
  // import { fetchVideo } from '../../actions/video_actions';
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
-  console.log(state);
+  console.log(ownProps);
   return {
-    comments: Object.values(state.entities.comments).filter(function (comment) {
+    comments: Object.values(ownProps.video.comments).filter(function (comment) {
       return comment.video_id === ownProps.videoId;
     }),
-    currentUser: state.session.id ? state.entities.users[state.session.id] : null,
-    video: ownProps.video
+    currentUser: state.session.id ? state.entities.users[state.session.id] : null // video: ownProps.video
+
   };
 };
 
@@ -3201,7 +3201,8 @@ function (_React$Component) {
       }, deleteButton)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "vid-description"
       }, this.props.video.description), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_comments_comments_container__WEBPACK_IMPORTED_MODULE_5__["default"], {
-        videoId: this.props.video.id
+        videoId: this.props.video.id,
+        video: this.props.video
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "show-right"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_side_index_container__WEBPACK_IMPORTED_MODULE_4__["default"], null))));

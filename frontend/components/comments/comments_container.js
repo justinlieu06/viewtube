@@ -4,14 +4,14 @@ import Comments from './comments';
 // import { fetchVideo } from '../../actions/video_actions';
 
 const mapStateToProps = (state, ownProps) => {
-  console.log(state);
+  console.log(ownProps);
   return({
-    comments: Object.values(state.entities.comments).filter(
+    comments: Object.values(ownProps.video.comments).filter(
       comment => {
         return comment.video_id === ownProps.videoId
       }),
     currentUser: state.session.id ? state.entities.users[state.session.id] : null,
-    video: ownProps.video
+    // video: ownProps.video
   })
 }
 
