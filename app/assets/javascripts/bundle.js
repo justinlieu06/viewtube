@@ -738,15 +738,33 @@ function (_React$Component) {
     key: "goToLogin",
     value: function goToLogin() {
       this.props.history.push('/login');
-    } // componentDidUpdate(prevProps, prevState){
-    //   if (this.state.comments !== this.state.stateComments){
-    //     console.log("UPDATE");
-    //     // this.setState({comments: this.props.stateComments});
-    //     this.state.comments = this.props.stateComments;
-    //     console.log(this.state);
-    //   }
-    // }
+    }
+  }, {
+    key: "componentDidUpdate",
+    value: function componentDidUpdate(prevProps, prevState) {
+      var equal = true;
+      var prevComments = prevProps.stateComments;
+      var currComments = this.props.stateComments; //check if arrays are equal
 
+      if (prevComments.length !== currComments.length) {
+        equal = false;
+      }
+
+      for (var i = 0; i < prevComments.length; i++) {
+        if (prevComments[i] !== currComments[i]) {
+          equal = false;
+        }
+      } //only update if the state comments are not equal
+
+
+      if (!equal) {
+        console.log("UPDATE");
+        console.log(this.state.comments);
+        this.state.comments.push(currComments[currComments.length - 1]);
+        console.log(this.state.comments);
+        this.forceUpdate();
+      }
+    }
   }, {
     key: "render",
     value: function render() {
@@ -817,6 +835,9 @@ __webpack_require__.r(__webpack_exports__);
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
   console.log("MSP");
+  console.log(Object.values(state.entities.comments).filter(function (comment) {
+    return comment.video_id === ownProps.videoId;
+  }));
   return {
     comments: Object.values(ownProps.video.comments).filter(function (comment) {
       return comment.video_id === ownProps.videoId;

@@ -35,6 +35,7 @@ class Comments extends React.Component {
     // this.setState({body: '', stateComments: this.props.stateComments});
     // console.log(this.state);
     this.setState({body: ''});
+
   }
 
   handleCancel(e){
@@ -46,14 +47,30 @@ class Comments extends React.Component {
     this.props.history.push('/login')
   }
 
-  // componentDidUpdate(prevProps, prevState){
-  //   if (this.state.comments !== this.state.stateComments){
-  //     console.log("UPDATE");
-  //     // this.setState({comments: this.props.stateComments});
-  //     this.state.comments = this.props.stateComments;
-  //     console.log(this.state);
-  //   }
-  // }
+  componentDidUpdate(prevProps, prevState){
+    let equal = true;
+    let prevComments = prevProps.stateComments;
+    let currComments = this.props.stateComments;
+    //check if arrays are equal
+    if (prevComments.length !== currComments.length){
+      equal = false;
+    }
+    for (let i = 0; i < prevComments.length; i++){
+      if (prevComments[i] !== currComments[i]){
+        equal = false;
+      }
+    }
+    //only update if the state comments are not equal
+    if (!equal){
+      console.log("UPDATE");
+      console.log(this.state.comments);
+      this.state.comments.push(currComments[currComments.length-1]);
+      console.log(this.state.comments);
+
+      this.forceUpdate();
+    }
+  }
+
 
   render(){
     console.log("RENDER");
