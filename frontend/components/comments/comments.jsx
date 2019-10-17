@@ -3,11 +3,13 @@ import CommentItem from './comment_item';
 
 class Comments extends React.Component {
   constructor(props) {
+      console.log("CONSTRUCTOR");
       super(props);
 
       this.state = { 
         body: '',
-        comments: this.props.comments
+        comments: this.props.comments,
+        stateComments: this.props.comments,
       };
       this.handleUpdate = this.handleUpdate.bind(this);
       this.handleSubmit = this.handleSubmit.bind(this);
@@ -23,14 +25,16 @@ class Comments extends React.Component {
   }
 
   handleSubmit(e){
+    console.log("SUBMIT");
     e.preventDefault();
     this.props.postComment({
       video_id: this.props.videoId, 
       body: this.state.body
     });
-      // .then(() => this.props.fetchVideo(this.props.videoId));
+    // console.log(this.props.stateComments);
+    // this.setState({body: '', stateComments: this.props.stateComments});
+    // console.log(this.state);
     this.setState({body: ''});
-    // debugger
   }
 
   handleCancel(e){
@@ -42,7 +46,18 @@ class Comments extends React.Component {
     this.props.history.push('/login')
   }
 
+  // componentDidUpdate(prevProps, prevState){
+  //   if (this.state.comments !== this.state.stateComments){
+  //     console.log("UPDATE");
+  //     // this.setState({comments: this.props.stateComments});
+  //     this.state.comments = this.props.stateComments;
+  //     console.log(this.state);
+  //   }
+  // }
+
   render(){
+    console.log("RENDER");
+    console.log(this.state.comments);
     let commentFormCode = this.props.currentUser ? 
     (<div className="comment-form">
         <i className="fas fa-user-circle fa-3x"></i>
@@ -55,14 +70,12 @@ class Comments extends React.Component {
         />
       </div>
     ) : (
-      // commentFormCode = <button onClick={this.goToLogin}>Add Comment</button>
       <div className="comment-form">
         <i className="fas fa-user-circle fa-3x"></i>
         <div className="comment-input">Login to post a public comment...</div>
       </div>
     )
 
-    // debugger
     return(
       <div className="comment-wrapper">
         <div>
@@ -76,7 +89,7 @@ class Comments extends React.Component {
         </div>
 
         <div>
-          {this.props.comments.map((comment, index) => (
+          {this.state.comments.map((comment, index) => (
             <CommentItem comment={comment} key={index} currentUser={this.props.currentUser} 
               deleteComment={this.props.deleteComment} />
           ))}

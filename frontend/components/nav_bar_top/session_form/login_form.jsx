@@ -107,7 +107,7 @@ class LogInForm extends React.Component {
             <div className="login-errors"> {this.renderErrors()} </div>
             
             <div className="demo-div"> Don't want to use your own account? Try Demo mode to sign 
-            in with a public account.<input className="demo-button" type="submit" 
+            in with a public account.<input className="demo-button" type="button" 
             value="Demo login" onClick={this.demoLogIn} />
             </div>
             <br />
@@ -118,10 +118,10 @@ class LogInForm extends React.Component {
 
           </div>
         </form>
-        <div className="login-footer">
+        {/* <div className="login-footer">
           <span className="login-footer-left">English (United States) </span>
           <span className="login-footer-right">Help Privacy Terms</span>
-        </div>
+        </div> */}
       </div>
     );
   }

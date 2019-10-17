@@ -4,14 +4,19 @@ import Comments from './comments';
 // import { fetchVideo } from '../../actions/video_actions';
 
 const mapStateToProps = (state, ownProps) => {
-  console.log(ownProps);
+  console.log("MSP");
   return({
     comments: Object.values(ownProps.video.comments).filter(
       comment => {
         return comment.video_id === ownProps.videoId
-      }),
+      }
+    ),
     currentUser: state.session.id ? state.entities.users[state.session.id] : null,
-    // video: ownProps.video
+    stateComments: Object.values(state.entities.comments).filter(
+      comment => {
+        return comment.video_id === ownProps.videoId
+      }
+    ),
   })
 }
 
@@ -21,4 +26,4 @@ const mapDispatchToProps = dispatch => ({
   fetchVideo: videoId => dispatch(fetchVideo(videoId))
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(Comments)
+export default connect(mapStateToProps, mapDispatchToProps)(Comments);

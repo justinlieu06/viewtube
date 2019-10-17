@@ -688,10 +688,12 @@ function (_React$Component) {
 
     _classCallCheck(this, Comments);
 
+    console.log("CONSTRUCTOR");
     _this = _possibleConstructorReturn(this, _getPrototypeOf(Comments).call(this, props));
     _this.state = {
       body: '',
-      comments: _this.props.comments
+      comments: _this.props.comments,
+      stateComments: _this.props.comments
     };
     _this.handleUpdate = _this.handleUpdate.bind(_assertThisInitialized(_this));
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
@@ -711,15 +713,18 @@ function (_React$Component) {
   }, {
     key: "handleSubmit",
     value: function handleSubmit(e) {
+      console.log("SUBMIT");
       e.preventDefault();
       this.props.postComment({
         video_id: this.props.videoId,
         body: this.state.body
-      }); // .then(() => this.props.fetchVideo(this.props.videoId));
+      }); // console.log(this.props.stateComments);
+      // this.setState({body: '', stateComments: this.props.stateComments});
+      // console.log(this.state);
 
       this.setState({
         body: ''
-      }); // debugger
+      });
     }
   }, {
     key: "handleCancel",
@@ -733,12 +738,22 @@ function (_React$Component) {
     key: "goToLogin",
     value: function goToLogin() {
       this.props.history.push('/login');
-    }
+    } // componentDidUpdate(prevProps, prevState){
+    //   if (this.state.comments !== this.state.stateComments){
+    //     console.log("UPDATE");
+    //     // this.setState({comments: this.props.stateComments});
+    //     this.state.comments = this.props.stateComments;
+    //     console.log(this.state);
+    //   }
+    // }
+
   }, {
     key: "render",
     value: function render() {
       var _this2 = this;
 
+      console.log("RENDER");
+      console.log(this.state.comments);
       var commentFormCode = this.props.currentUser ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "comment-form"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
@@ -749,15 +764,13 @@ function (_React$Component) {
         placeholder: "Add a public comment...",
         onChange: this.handleUpdate,
         className: "comment-input"
-      })) : // commentFormCode = <button onClick={this.goToLogin}>Add Comment</button>
-      react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      })) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "comment-form"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         className: "fas fa-user-circle fa-3x"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "comment-input"
-      }, "Login to post a public comment...")); // debugger
-
+      }, "Login to post a public comment..."));
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "comment-wrapper"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", null, commentFormCode), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -768,7 +781,7 @@ function (_React$Component) {
       }, "CANCEL"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: this.handleSubmit,
         className: "comment-button"
-      }, "COMMENT"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, this.props.comments.map(function (comment, index) {
+      }, "COMMENT"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, this.state.comments.map(function (comment, index) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_comment_item__WEBPACK_IMPORTED_MODULE_1__["default"], {
           comment: comment,
           key: index,
@@ -803,13 +816,15 @@ __webpack_require__.r(__webpack_exports__);
  // import { fetchVideo } from '../../actions/video_actions';
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
-  console.log(ownProps);
+  console.log("MSP");
   return {
     comments: Object.values(ownProps.video.comments).filter(function (comment) {
       return comment.video_id === ownProps.videoId;
     }),
-    currentUser: state.session.id ? state.entities.users[state.session.id] : null // video: ownProps.video
-
+    currentUser: state.session.id ? state.entities.users[state.session.id] : null,
+    stateComments: Object.values(state.entities.comments).filter(function (comment) {
+      return comment.video_id === ownProps.videoId;
+    })
   };
 };
 
@@ -1247,9 +1262,8 @@ function (_React$Component) {
         this.props.history.push("/");
       } else {
         this.props.history.push("/search/".concat(this.state.search));
-      }
+      } // location.reload();
 
-      location.reload();
     }
   }, {
     key: "render",
@@ -1518,7 +1532,7 @@ function (_React$Component) {
         className: "demo-div"
       }, " Don't want to use your own account? Try Demo mode to sign in with a public account.", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         className: "demo-button",
-        type: "submit",
+        type: "button",
         value: "Demo login",
         onClick: this.demoLogIn
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -1527,13 +1541,7 @@ function (_React$Component) {
         className: "session-submit",
         type: "submit",
         value: "Sign In"
-      })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "login-footer"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "login-footer-left"
-      }, "English (United States) "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "login-footer-right"
-      }, "Help Privacy Terms")));
+      })))));
     }
   }]);
 
@@ -1731,13 +1739,7 @@ function (_React$Component) {
         className: "session-submit",
         type: "submit",
         value: "Sign Up"
-      })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "login-footer"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "login-footer-left"
-      }, "English (United States) "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "login-footer-right"
-      }, "Help Privacy Terms")));
+      })))));
     }
   }]);
 
@@ -2267,8 +2269,14 @@ function (_React$Component) {
   _createClass(Search, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      // debugger
-      this.props.searchVideos(this.props.match.params.query);
+      this.props.searchVideos(this.props.query);
+    }
+  }, {
+    key: "componentDidUpdate",
+    value: function componentDidUpdate(prevProps) {
+      if (prevProps.query !== this.props.query) {
+        this.props.searchVideos(this.props.match.params.query);
+      }
     }
   }, {
     key: "render",
@@ -3293,8 +3301,8 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   var store = Object(_store_store__WEBPACK_IMPORTED_MODULE_2__["default"])(preloadedState);
-  delete window.currentUser;
-  window.getState = store.getState; // window.signUp = signUp;
+  delete window.currentUser; // window.getState = store.getState;
+  // window.signUp = signUp;
   // window.logIn = logIn;
   // window.logOut = logOut;
 
@@ -3315,13 +3323,7 @@ document.addEventListener("DOMContentLoaded", function () {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _actions_comment_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/comment_actions */ "./frontend/actions/comment_actions.js");
-/* harmony import */ var lodash_merge__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! lodash/merge */ "./node_modules/lodash/merge.js");
-/* harmony import */ var lodash_merge__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(lodash_merge__WEBPACK_IMPORTED_MODULE_1__);
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
- // import {RECEIVE_VIDEO } from '../actions/video_actions';
-
-
+ // import merge from 'lodash/merge';
 
 var commentsReducer = function commentsReducer() {
   var oldState = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
@@ -3330,12 +3332,10 @@ var commentsReducer = function commentsReducer() {
   var newState = Object.assign({}, oldState);
 
   switch (action.type) {
-    // case RECEIVE_VIDEO:
-    //   return action.payload.comments;
     case _actions_comment_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_COMMENT"]:
-      // newState[action.comment.id] = action.comment;
-      // return newState;
-      return lodash_merge__WEBPACK_IMPORTED_MODULE_1___default()({}, oldState, _defineProperty({}, action.comment.id, action.comment));
+      newState[action.comment.id] = action.comment;
+      return newState;
+    // return merge({}, oldState, { [action.comment.id]: action.comment });
 
     case _actions_comment_actions__WEBPACK_IMPORTED_MODULE_0__["DELETE_COMMENT"]:
       delete newState[action.commentId];

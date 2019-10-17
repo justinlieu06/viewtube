@@ -5,8 +5,13 @@ import ModalContainer from '../nav_bar_side/modal';
 
 class Search extends React.Component {
   componentDidMount() {
-    // debugger
-    this.props.searchVideos(this.props.match.params.query);
+    this.props.searchVideos(this.props.query);
+  }
+
+  componentDidUpdate(prevProps){
+    if (prevProps.query !== this.props.query){
+      this.props.searchVideos(this.props.match.params.query);
+    }
   }
 
   render(){

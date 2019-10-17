@@ -38,7 +38,7 @@ class NavBarTop extends React.Component {
     } else {
       this.props.history.push(`/search/${this.state.search}`);
     }
-    location.reload();
+    // location.reload();
     
   }
 

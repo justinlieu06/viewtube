@@ -88,10 +88,10 @@ class SignUpForm extends React.Component {
             </div>
           </div>
         </form>
-        <div className="login-footer">
+        {/* <div className="login-footer">
           <span className="login-footer-left">English (United States) </span>
           <span className="login-footer-right">Help Privacy Terms</span>
-        </div>
+        </div> */}
       </div>
     );
   }

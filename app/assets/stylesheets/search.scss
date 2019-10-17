@@ -2,6 +2,8 @@
   padding-top: 50px;
   margin-right: 20px;
   margin-left: 12%;
+  height: calc(100vh - 56px);
+  overflow-y: scroll;
 }
 
 .search-wrapper{
