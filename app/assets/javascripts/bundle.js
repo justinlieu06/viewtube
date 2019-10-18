@@ -792,7 +792,7 @@ function (_React$Component) {
         onClick: this.handleSubmit,
         className: "comment-button",
         type: "submit"
-      }, "COMMENT"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, this.state.comments.map(function (comment, index) {
+      }, "COMMENT"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, this.state.comments.slice(0).reverse().map(function (comment, index) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_comment_item__WEBPACK_IMPORTED_MODULE_1__["default"], {
           comment: comment,
           key: index,
@@ -2810,6 +2810,28 @@ function (_React$Component) {
         className: "upload-button",
         onClick: this.handleSubmit
       }, "Publish");
+      var thumbnailUpload = this.state.thumbnail ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Thumbnail uploaded ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fas fa-check"
+      })) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Select thumbnail to upload");
+      var videoUpload = this.state.video ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Video uploaded ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fas fa-check"
+      })) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Select video to upload");
+      var thumbnailPreview = this.state.thumbnail ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: this.state.thumbnail,
+        width: "200px",
+        height: "110px"
+      }) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "preview-placeholder"
+      }, "Thumbnail Preview");
+      var videoPreview = this.state.video ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("video", {
+        className: "preview-placeholder",
+        controls: true
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("source", {
+        src: this.state.video,
+        type: "video/mp4"
+      })) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "preview-placeholder"
+      }, "Video Preview");
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "upload-wrapper"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_nav_bar_top_nav_bar_top_container__WEBPACK_IMPORTED_MODULE_1__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_nav_bar_side_modal__WEBPACK_IMPORTED_MODULE_3__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -2855,10 +2877,10 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "video-upload"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fas fa-file-upload fa-8x"
+        className: "fas fa-file-video fa-8x"
       }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "upload-text"
-      }, "Select video to upload"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      }, videoUpload), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         className: "inputfile",
         id: "vid-upload",
         type: "file",
@@ -2872,10 +2894,10 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "thumbnail-upload"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fas fa-file-upload fa-8x"
+        className: "fas fa-file-image fa-8x"
       }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "upload-text"
-      }, "Select thumbnail to upload"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      }, thumbnailUpload), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         className: "inputfile",
         id: "thumb-upload",
         type: "file",
@@ -2885,7 +2907,11 @@ function (_React$Component) {
         className: "upload-errors"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, this.state.titleError), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, this.state.descriptionError), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, this.state.videoError), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, this.state.thumbnailError)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "upload-button-wrapper"
-      }, uploadButton)))));
+      }, uploadButton)))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "video-preview"
+      }, videoPreview), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "thumbnail-preview"
+      }, thumbnailPreview));
     }
   }]);
 
@@ -37420,7 +37446,7 @@ function warning(message) {
 /*!***************************************************************!*\
   !*** ./node_modules/react-router-dom/esm/react-router-dom.js ***!
   \***************************************************************/
-/*! exports provided: BrowserRouter, HashRouter, Link, NavLink, MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext */
+/*! exports provided: MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext, BrowserRouter, HashRouter, Link, NavLink */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

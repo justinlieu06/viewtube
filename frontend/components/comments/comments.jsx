@@ -95,10 +95,11 @@ class Comments extends React.Component {
         </div>
 
         <div>
-          {this.state.comments.map((comment, index) => (
+          {this.state.comments.slice(0).reverse().map((comment, index) => (
             <CommentItem comment={comment} key={index} currentUser={this.props.currentUser} 
               deleteComment={this.props.deleteComment} />
           ))}
+          
         </div>
       </div>
     )

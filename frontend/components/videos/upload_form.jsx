@@ -125,6 +125,24 @@ class UploadForm extends React.Component {
         Publish
       </button>;
 
+    let thumbnailUpload = this.state.thumbnail? 
+      <span>Thumbnail uploaded <i className="fas fa-check"></i></span> :
+      <span>Select thumbnail to upload</span>
+
+    let videoUpload = this.state.video?
+      <span>Video uploaded <i className="fas fa-check"></i></span> : 
+      <span>Select video to upload</span>
+
+    let thumbnailPreview = this.state.thumbnail?
+      <img src={this.state.thumbnail} width="200px" height="110px"/> :
+      <div className="preview-placeholder">Thumbnail Preview</div>
+
+    let videoPreview = this.state.video?
+      <video className="preview-placeholder" controls>
+        <source src={this.state.video} type="video/mp4" />
+      </video> :
+      <div className="preview-placeholder">Video Preview</div>
+
     return(
       <div className="upload-wrapper">
         <NavBarTopContainer />
@@ -164,10 +182,11 @@ class UploadForm extends React.Component {
             <div className="v-upload">
               <label htmlFor="vid-upload" className="form-upload-icon">
                   <div className="video-upload">
-                    <i className="fas fa-file-upload fa-8x"></i>
+                    {/* <i className="fas fa-file-upload fa-8x"></i> */}
+                    <i className="fas fa-file-video fa-8x"></i>
                   </div>
               </label>
-              <div className="upload-text">Select video to upload</div>
+              <div className="upload-text">{videoUpload}</div>
               <input className="inputfile" id="vid-upload" type="file" accept="video/mp4" onChange={this.updateVideo} />
             </div>
 
@@ -175,10 +194,10 @@ class UploadForm extends React.Component {
             <div className="t-upload">
               <label htmlFor="thumb-upload" className="form-upload-icon">
                 <div className="thumbnail-upload">
-                  <i className="fas fa-file-upload fa-8x"></i>
+                  <i className="fas fa-file-image fa-8x"></i>
                 </div>
               </label>
-              <div className="upload-text">Select thumbnail to upload</div>
+              <div className="upload-text">{thumbnailUpload}</div>
               <input className="inputfile" id="thumb-upload" type="file" accept="image/png, image/jpeg" onChange={this.updateThumbnail} />
             </div>
 
@@ -195,11 +214,14 @@ class UploadForm extends React.Component {
             <div className="upload-button-wrapper">{uploadButton}</div>
 
             {/* <img src={window.uploadArtURL} className="upload-art"/> */}
-
+            
           </div>
 
         </div>
         </form>
+
+        <div className="video-preview">{videoPreview}</div>
+        <div className="thumbnail-preview">{thumbnailPreview}</div>
       </div>
     )
   }
