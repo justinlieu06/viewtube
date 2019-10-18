@@ -132,10 +132,17 @@ class UploadForm extends React.Component {
 
         <form>
         <div className="upload-form">
-
           <div className="upload-left">
 
-            <div className="upload">Upload</div>
+            <div className="viewtube" id="upload">
+              <span className="v">U</span>
+              <span className="i">p</span>
+              <span className="e">l</span>
+              <span className="w">o</span>
+              <span className="t">a</span>
+              <span className="u">d</span>
+            </div>
+            {/* <br /> */}
 
             {/* TITLE UPLOAD */}
             <div className="title-upload">
@@ -187,7 +194,7 @@ class UploadForm extends React.Component {
             {/* UPLOAD BUTTON */}
             <div className="upload-button-wrapper">{uploadButton}</div>
 
-            <img src={window.uploadArtURL} className="upload-art"/>
+            {/* <img src={window.uploadArtURL} className="upload-art"/> */}
 
           </div>
 

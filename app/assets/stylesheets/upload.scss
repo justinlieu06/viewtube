@@ -65,14 +65,16 @@
   transform: translate(60px, 30px);
   height: 200px;
   width: 200px;
-  border: solid 1px rgb(107, 103, 103);
+  border: solid 1px #3EA6FF;
+  border-style: dotted;
 }
 
 .t-upload{
   transform: translate(320px, -171px);
   height: 200px;
   width: 200px;
-  border: solid 1px rgb(107, 103, 103);
+  border: solid 1px #3EA6FF;
+  border-style: dotted;
 }
 
 fa-file-upload{
@@ -175,4 +177,8 @@ fa-file-upload{
   height: 200px;
   width: 350px;
   transform: translate(238px, -320px);
+}
+
+#upload{
+  margin-bottom: 5px;
 }

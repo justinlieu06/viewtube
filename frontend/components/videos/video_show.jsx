@@ -33,7 +33,11 @@ class VideoShow extends React.Component {
   }
 
   componentDidMount(){
-    this.props.fetchVideo(this.props.match.params.videoId);
+    this.props.fetchVideo(this.props.match.params.videoId).then( res => {
+      this.setState({
+        video: res.video.video
+      })
+    })
     window.scrollTo(0, 0);
   }
 
@@ -56,12 +60,7 @@ class VideoShow extends React.Component {
 
   handleDelete(e) {
     e.preventDefault();
-    // debugger
-    // this.setRedirect();
     this.props.deleteVideo(this.state.video.id).then(()=>this.setRedirect)
-
-    // this.setRedirect();
-
   }
 
   render(){
@@ -69,7 +68,7 @@ class VideoShow extends React.Component {
       return null;
     }
     let deleteButton = <div></div>
-    if (this.props.currentUser){
+    if (this.props.currentUser && this.state.video !== undefined){
       if (this.props.currentUser.id === this.state.video.author_id){
         deleteButton = <button onClick={this.handleDelete} className="delete-button">DELETE VIDEO</button>
       }
@@ -125,7 +124,7 @@ class VideoShow extends React.Component {
 
           {/* <div className="vid-show-wrapper"></div> */}
 
-          <div className="show-right"><SideIndexContainer /></div>
+          <div className="show-right"><SideIndexContainer video={this.props.video} /></div>
         </div>
       </div>
     )

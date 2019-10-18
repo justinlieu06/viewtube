@@ -81,7 +81,16 @@ class LogInForm extends React.Component {
     return (
       <div className="login-form-div">
         <form onSubmit={this.handleSubmit} className="login-form">
-          <p className="viewtube" >ViewTube</p>
+          <div className="viewtube">
+            <span className="v">V</span>
+            <span className="i">i</span>
+            <span className="e">e</span>
+            <span className="w">w</span>
+            <span className="t">T</span>
+            <span className="u">u</span>
+            <span className="b">b</span>
+            <span className="e">e</span>
+          </div>
           <p className="login-header">Sign In</p>
           <p className="login-subheader">to continue to ViewTube</p>
           <br />

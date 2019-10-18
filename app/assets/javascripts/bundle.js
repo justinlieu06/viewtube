@@ -629,7 +629,9 @@ function (_React$Component) {
         className: "comment-item-right"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "comment-username"
-      }, this.props.comment.username), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, this.props.comment.username, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "comment-published"
+      }, this.props.comment.published)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "comment-body"
       }, this.props.comment.body))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: this.handleDelete,
@@ -688,7 +690,6 @@ function (_React$Component) {
 
     _classCallCheck(this, Comments);
 
-    console.log("CONSTRUCTOR");
     _this = _possibleConstructorReturn(this, _getPrototypeOf(Comments).call(this, props));
     _this.state = {
       body: '',
@@ -713,15 +714,11 @@ function (_React$Component) {
   }, {
     key: "handleSubmit",
     value: function handleSubmit(e) {
-      console.log("SUBMIT");
       e.preventDefault();
       this.props.postComment({
         video_id: this.props.videoId,
         body: this.state.body
-      }); // console.log(this.props.stateComments);
-      // this.setState({body: '', stateComments: this.props.stateComments});
-      // console.log(this.state);
-
+      });
       this.setState({
         body: ''
       });
@@ -758,10 +755,7 @@ function (_React$Component) {
 
 
       if (!equal) {
-        console.log("UPDATE");
-        console.log(this.state.comments);
         this.state.comments.push(currComments[currComments.length - 1]);
-        console.log(this.state.comments);
         this.forceUpdate();
       }
     }
@@ -770,8 +764,6 @@ function (_React$Component) {
     value: function render() {
       var _this2 = this;
 
-      console.log("RENDER");
-      console.log(this.state.comments);
       var commentFormCode = this.props.currentUser ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "comment-form"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
@@ -798,7 +790,8 @@ function (_React$Component) {
         className: "cancel-button"
       }, "CANCEL"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: this.handleSubmit,
-        className: "comment-button"
+        className: "comment-button",
+        type: "submit"
       }, "COMMENT"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, this.state.comments.map(function (comment, index) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_comment_item__WEBPACK_IMPORTED_MODULE_1__["default"], {
           comment: comment,
@@ -834,10 +827,6 @@ __webpack_require__.r(__webpack_exports__);
  // import { fetchVideo } from '../../actions/video_actions';
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
-  console.log("MSP");
-  console.log(Object.values(state.entities.comments).filter(function (comment) {
-    return comment.video_id === ownProps.videoId;
-  }));
   return {
     comments: Object.values(ownProps.video.comments).filter(function (comment) {
       return comment.video_id === ownProps.videoId;
@@ -1523,9 +1512,25 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         onSubmit: this.handleSubmit,
         className: "login-form"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "viewtube"
-      }, "ViewTube"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "v"
+      }, "V"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "i"
+      }, "i"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "e"
+      }, "e"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "w"
+      }, "w"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "t"
+      }, "T"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "u"
+      }, "u"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "b"
+      }, "b"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "e"
+      }, "e")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         className: "login-header"
       }, "Sign In"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         className: "login-subheader"
@@ -1718,9 +1723,25 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         onSubmit: this.handleSubmit,
         className: "signup-form"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "viewtube"
-      }, "ViewTube"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "v"
+      }, "V"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "i"
+      }, "i"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "e"
+      }, "e"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "w"
+      }, "w"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "t"
+      }, "T"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "u"
+      }, "u"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "b"
+      }, "b"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "e"
+      }, "e")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         className: "signup-header"
       }, "Create your ViewTube Account"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         className: "signup-subheader"
@@ -2455,7 +2476,14 @@ function (_React$Component) {
     key: "componentDidMount",
     value: function componentDidMount() {
       this.props.fetchVideos();
-    }
+    } // shouldComponentUpdate(nextProps) {
+    //   if (nextProps.video.id === this.props.video.id){
+    //     return false;
+    //   } else {
+    //     return true;
+    //   }
+    // }
+
   }, {
     key: "render",
     value: function render() {
@@ -2510,9 +2538,10 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var mapStateToProps = function mapStateToProps(state) {
+var mapStateToProps = function mapStateToProps(state, ownProps) {
   return {
-    videos: Object.values(state.entities.videos)
+    videos: Object.values(state.entities.videos),
+    video: ownProps.video
   };
 };
 
@@ -2786,8 +2815,21 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "upload-left"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "upload"
-      }, "Upload"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "viewtube",
+        id: "upload"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "v"
+      }, "U"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "i"
+      }, "p"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "e"
+      }, "l"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "w"
+      }, "o"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "t"
+      }, "a"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "u"
+      }, "d")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "title-upload"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         className: "title-inp",
@@ -2841,10 +2883,7 @@ function (_React$Component) {
         className: "upload-errors"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, this.state.titleError), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, this.state.descriptionError), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, this.state.videoError), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, this.state.thumbnailError)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "upload-button-wrapper"
-      }, uploadButton), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: window.uploadArtURL,
-        className: "upload-art"
-      })))));
+      }, uploadButton)))));
     }
   }]);
 
@@ -3137,7 +3176,13 @@ function (_React$Component) {
   }, {
     key: "componentDidMount",
     value: function componentDidMount() {
-      this.props.fetchVideo(this.props.match.params.videoId);
+      var _this2 = this;
+
+      this.props.fetchVideo(this.props.match.params.videoId).then(function (res) {
+        _this2.setState({
+          video: res.video.video
+        });
+      });
       window.scrollTo(0, 0);
     }
   }, {
@@ -3157,14 +3202,12 @@ function (_React$Component) {
   }, {
     key: "handleDelete",
     value: function handleDelete(e) {
-      var _this2 = this;
+      var _this3 = this;
 
-      e.preventDefault(); // debugger
-      // this.setRedirect();
-
+      e.preventDefault();
       this.props.deleteVideo(this.state.video.id).then(function () {
-        return _this2.setRedirect;
-      }); // this.setRedirect();
+        return _this3.setRedirect;
+      });
     }
   }, {
     key: "render",
@@ -3175,7 +3218,7 @@ function (_React$Component) {
 
       var deleteButton = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null);
 
-      if (this.props.currentUser) {
+      if (this.props.currentUser && this.state.video !== undefined) {
         if (this.props.currentUser.id === this.state.video.author_id) {
           deleteButton = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
             onClick: this.handleDelete,
@@ -3234,7 +3277,9 @@ function (_React$Component) {
         video: this.props.video
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "show-right"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_side_index_container__WEBPACK_IMPORTED_MODULE_4__["default"], null))));
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_side_index_container__WEBPACK_IMPORTED_MODULE_4__["default"], {
+        video: this.props.video
+      }))));
     }
   }]);
 

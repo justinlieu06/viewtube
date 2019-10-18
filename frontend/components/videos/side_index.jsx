@@ -6,6 +6,14 @@ class SideIndex extends React.Component {
     this.props.fetchVideos();
   }
 
+  // shouldComponentUpdate(nextProps) {
+  //   if (nextProps.video.id === this.props.video.id){
+  //     return false;
+  //   } else {
+  //     return true;
+  //   }
+  // }
+
   render(){
 
     let videos = this.props.videos.map( (video, index) => (

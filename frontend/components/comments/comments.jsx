@@ -3,7 +3,6 @@ import CommentItem from './comment_item';
 
 class Comments extends React.Component {
   constructor(props) {
-      console.log("CONSTRUCTOR");
       super(props);
 
       this.state = { 
@@ -25,15 +24,11 @@ class Comments extends React.Component {
   }
 
   handleSubmit(e){
-    console.log("SUBMIT");
     e.preventDefault();
     this.props.postComment({
       video_id: this.props.videoId, 
       body: this.state.body
     });
-    // console.log(this.props.stateComments);
-    // this.setState({body: '', stateComments: this.props.stateComments});
-    // console.log(this.state);
     this.setState({body: ''});
 
   }
@@ -62,19 +57,13 @@ class Comments extends React.Component {
     }
     //only update if the state comments are not equal
     if (!equal){
-      console.log("UPDATE");
-      console.log(this.state.comments);
       this.state.comments.push(currComments[currComments.length-1]);
-      console.log(this.state.comments);
-
       this.forceUpdate();
     }
   }
 
 
   render(){
-    console.log("RENDER");
-    console.log(this.state.comments);
     let commentFormCode = this.props.currentUser ? 
     (<div className="comment-form">
         <i className="fas fa-user-circle fa-3x"></i>
@@ -101,7 +90,7 @@ class Comments extends React.Component {
           </form>
           <div className="com-buttons">
             <button onClick={this.handleCancel} className="cancel-button">CANCEL</button>        
-            <button onClick={this.handleSubmit} className="comment-button">COMMENT</button>
+            <button onClick={this.handleSubmit} className="comment-button" type="submit">COMMENT</button>
           </div>
         </div>
 

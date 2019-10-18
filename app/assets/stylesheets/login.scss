@@ -59,21 +59,57 @@
   font-size: 0px;
 }
 
+#tube-icon {
+  color: #3EA6FF;
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+  margin-right: 5px;
+}
+
 .viewtube {
   padding-top: 35px;
-  font-family: Impact, Charcoal, sans-serif;
-  font-size: 20px;
-  // color: white;
+  // font-family: Impact, Charcoal, sans-serif;
+  font-family: Roboto, Arial, Helvetica, sans-serif;
+  font-size: 22px;
   text-align: center;
-  // text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+  padding-right: 2px;
 
-  background: white; /* For browsers that do not support gradients */
-  background: -webkit-linear-gradient(left, orange , yellow, green, cyan, blue, violet); /* For Safari 5.1 to 6.0 */
-  background: -o-linear-gradient(right, orange, yellow, green, cyan, blue, violet); /* For Opera 11.1 to 12.0 */
-  background: -moz-linear-gradient(right, orange, yellow, green, cyan, blue, violet); /* For Firefox 3.6 to 15 */
-  background: linear-gradient(to right, orange , yellow, green, cyan, blue, violet); /* Standard syntax (must be last) */
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  // color: white;
+  // text-shadow:
+	// 	-1px -1px 0 #000,
+	// 	1px -1px 0 #000,
+	// 	-1px 1px 0 #000,
+	// 	1px 1px 0 #000;
+
+  // background: white; /* For browsers that do not support gradients */
+  // background: -webkit-linear-gradient(left, orange , yellow, green, cyan, blue, violet); /* For Safari 5.1 to 6.0 */
+  // background: -o-linear-gradient(right, orange, yellow, green, cyan, blue, violet); /* For Opera 11.1 to 12.0 */
+  // background: -moz-linear-gradient(right, orange, yellow, green, cyan, blue, violet); /* For Firefox 3.6 to 15 */
+  // background: linear-gradient(to right, orange , yellow, green, cyan, blue, violet); /* Standard syntax (must be last) */
+  // -webkit-background-clip: text;
+  // -webkit-text-fill-color: transparent;
+}
+
+.v{
+  color: #4285F4;
+}
+.i{
+  color: #DB4437;
+}
+.e{
+  color: #F4B400;
+}
+.w{
+  color: #0F9D58;
+}
+.t{
+  color: #4285F4;
+}
+.u{
+  color: #DB4437;
+}
+.b{
+  color:#0F9D58;
 }
 
 .session-submit {

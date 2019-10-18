@@ -15,7 +15,10 @@ class CommentItem extends React.Component{
         <div className="comment-item">
           <i className="far fa-user-circle fa-3x"></i>
           <div className="comment-item-right">
-            <div className="comment-username">{this.props.comment.username}</div>
+            <div className="comment-username">
+              {this.props.comment.username} 
+              <span className="comment-published">{this.props.comment.published}</span>
+            </div>
             <div className="comment-body">{this.props.comment.body}</div>
           </div>
         </div>
