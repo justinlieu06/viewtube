@@ -22,6 +22,7 @@ ActiveRecord::Base.transaction do
   user8 = User.create(username: "OFWGKTA", email: "ofwgkta@gmail.com", password: "123456")
   user9 = User.create(username: "CatVideos", email: "catvideos@gmail.com", password: "123456")
   user10 = User.create(username: "City", email: "city@gmail.com", password: "123456")
+  user11 = User.create(username: "anonymous", email: "anonymous@gmail.com", password: "123456")
 
 
   vid1 = Video.create(
@@ -253,4 +254,54 @@ ActiveRecord::Base.transaction do
   vid23.thumbnail.attach(io: file, filename: 'aa.jpg')
   file = open('https://view-tube-seeds.s3-us-west-1.amazonaws.com/aa.mp4')
   vid23.video.attach(io: file, filename: 'aa.mp4')
+
+  vid24 = Video.create(
+    title: "Need more generic cat videos", 
+    description: "not enough cats",
+    author_id: user11.id
+  )
+  file = open('https://view-tube-seeds.s3-us-west-1.amazonaws.com/cat3.jpg')
+  vid24.thumbnail.attach(io: file, filename: 'cat3.jpg')
+  file = open('https://view-tube-seeds.s3-us-west-1.amazonaws.com/cat3.mp4')
+  vid24.video.attach(io: file, filename: 'cat3.mp4')
+
+  vid25 = Video.create(
+    title: "Iguana vs Snakes", 
+    description: "Nature is scary",
+    author_id: user11.id
+  )
+  file = open('https://view-tube-seeds.s3-us-west-1.amazonaws.com/snake.jpg')
+  vid25.thumbnail.attach(io: file, filename: 'snake.jpg')
+  file = open('https://view-tube-seeds.s3-us-west-1.amazonaws.com/snake.mp4')
+  vid25.video.attach(io: file, filename: 'snake.mp4')
+
+  vid26 = Video.create(
+    title: "engelwood - crystal dolphin", 
+    description: "Doo doo doo doo",
+    author_id: user11.id
+  )
+  file = open('https://view-tube-seeds.s3-us-west-1.amazonaws.com/dolphin.jpg')
+  vid26.thumbnail.attach(io: file, filename: 'dolphin.jpg')
+  file = open('https://view-tube-seeds.s3-us-west-1.amazonaws.com/dolphin.mp4')
+  vid26.video.attach(io: file, filename: 'dolphin.mp4')
+
+  vid27 = Video.create(
+    title: "Shawn Wasabi - Marble Soda", 
+    description: "What a mashup",
+    author_id: user11.id
+  )
+  file = open('https://view-tube-seeds.s3-us-west-1.amazonaws.com/marble.jpg')
+  vid27.thumbnail.attach(io: file, filename: 'marble.jpg')
+  file = open('https://view-tube-seeds.s3-us-west-1.amazonaws.com/marble.mp4')
+  vid27.video.attach(io: file, filename: 'marble.mp4')
+
+  vid28 = Video.create(
+    title: "No pomegranates!", 
+    description: "no no no no no",
+    author_id: user11.id
+  )
+  file = open('https://view-tube-seeds.s3-us-west-1.amazonaws.com/pomegranate.jpg')
+  vid28.thumbnail.attach(io: file, filename: 'pomegranate.jpg')
+  file = open('https://view-tube-seeds.s3-us-west-1.amazonaws.com/pomegranate.mp4')
+  vid28.video.attach(io: file, filename: 'pomegranate.mp4')
 end

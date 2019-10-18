@@ -121,7 +121,7 @@ class LogInForm extends React.Component {
             </div>
             <br />
             <div className="login-form-buttons">
-              {this.props.navLink}
+            <div className="form-link">{this.props.navLink}</div>
               <input className="session-submit" type="submit" value="Sign In" />
             </div>
 

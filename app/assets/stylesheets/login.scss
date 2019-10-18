@@ -187,7 +187,9 @@
   padding-right: 10px;
 }
 
-.form-link:visited, .form-link:hover, .form-link:active, .form-link:link {
+.form-link:visited, .form-link:hover, .form-link:active, .form-link:link, .form-link {
   color: #1a73e8;
   text-decoration: none;
+  font-family: roboto,'Noto Sans Myanmar UI',arial,sans-serif;
+  font-size: 15px;
 }
