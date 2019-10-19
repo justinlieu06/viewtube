@@ -68,7 +68,7 @@ class VideoShow extends React.Component {
       return null;
     }
     let deleteButton = <div></div>
-    if (this.props.currentUser && this.state.video !== undefined){
+    if (this.props.currentUser && this.state.video){
       if (this.props.currentUser.id === this.state.video.author_id){
         deleteButton = <button onClick={this.handleDelete} className="delete-button">DELETE VIDEO</button>
       }

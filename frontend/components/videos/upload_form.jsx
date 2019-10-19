@@ -61,7 +61,7 @@ class UploadForm extends React.Component {
       this.props.createVideo(formData)
       .then(
         () => {
-          console.log(formData);
+          // console.log(formData);
           this.setState({ loading: false });
           this.props.history.push('/');
         },

@@ -23,3 +23,4 @@ node_modules/
 bundle.js
 bundle.js.map
 bundle.js*
+/log/development.log

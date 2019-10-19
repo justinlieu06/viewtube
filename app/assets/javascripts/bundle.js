@@ -2724,8 +2724,7 @@ function (_React$Component) {
           loading: true
         });
         this.props.createVideo(formData).then(function () {
-          console.log(formData);
-
+          // console.log(formData);
           _this2.setState({
             loading: false
           });
@@ -3246,7 +3245,7 @@ function (_React$Component) {
 
       var deleteButton = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null);
 
-      if (this.props.currentUser && this.state.video !== undefined) {
+      if (this.props.currentUser && this.state.video) {
         if (this.props.currentUser.id === this.state.video.author_id) {
           deleteButton = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
             onClick: this.handleDelete,
