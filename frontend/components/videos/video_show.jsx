@@ -68,9 +68,12 @@ class VideoShow extends React.Component {
       return null;
     }
     let deleteButton = <div></div>
+    let editButton = <div></div>
     if (this.props.currentUser && this.state.video){
       if (this.props.currentUser.id === this.state.video.author_id){
-        deleteButton = <button onClick={this.handleDelete} className="delete-button">DELETE VIDEO</button>
+        // deleteButton = <button onClick={this.handleDelete} className="delete-button">DELETE VIDEO</button>
+        editButton = <button onClick={this.handleEdit} className="edit-button"><Link to={`/video/${this.state.video.id}/edit`}
+        className="edit-link">EDIT VIDEO</Link></button>
       }
     }
     return(
@@ -110,7 +113,8 @@ class VideoShow extends React.Component {
                 <i className="fas fa-user-circle fa-3x"></i>
                 <span className="video-author">{this.props.video.author}</span>
                 <i className="fas fa-check-circle" id="username-check"></i>
-                <div className="delete-wrapper">{deleteButton}</div>
+                {/* <div className="delete-wrapper">{deleteButton}</div> */}
+                <div className="edit-wrapper">{editButton}</div>
               </div>
 
               <div className="vid-description">

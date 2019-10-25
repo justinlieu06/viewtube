@@ -15,7 +15,7 @@ class LogInForm extends React.Component {
   pressSignIn(){
     const user = Object.assign({}, this.state);
     this.props.logIn(user).then( () => (
-      this.props.history.push('/')
+      this.props.history.replace('/')
     ));
     
     // this.props.logIn(user).then( () => (

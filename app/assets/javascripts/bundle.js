@@ -471,9 +471,9 @@ var createVideo = function createVideo(video) {
     });
   };
 };
-var updateVideo = function updateVideo(video) {
+var updateVideo = function updateVideo(video, formData) {
   return function (dispatch) {
-    return _util_video_api_util__WEBPACK_IMPORTED_MODULE_0__["updateVideo"](video).then(function (video) {
+    return _util_video_api_util__WEBPACK_IMPORTED_MODULE_0__["updateVideo"](video, formData).then(function (video) {
       return dispatch(receiveVideo(video));
     }, function (err) {
       return dispatch(receiveErrors(err.responseJSON));
@@ -520,12 +520,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _videos_upload_form_container__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./videos/upload_form_container */ "./frontend/components/videos/upload_form_container.js");
 /* harmony import */ var _videos_video_show_container__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./videos/video_show_container */ "./frontend/components/videos/video_show_container.js");
 /* harmony import */ var _videos_search_container__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./videos/search_container */ "./frontend/components/videos/search_container.js");
+/* harmony import */ var _videos_update_container__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./videos/update_container */ "./frontend/components/videos/update_container.js");
 
 
 
 
 
  // import Modal from './nav_bar_side/modal';
+
 
 
 
@@ -544,6 +546,9 @@ var App = function App(_ref) {
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_utils__WEBPACK_IMPORTED_MODULE_5__["ProtectedRoute"], {
     path: "/upload",
     component: _videos_upload_form_container__WEBPACK_IMPORTED_MODULE_6__["default"]
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_utils__WEBPACK_IMPORTED_MODULE_5__["ProtectedRoute"], {
+    path: "/video/:videoId/edit",
+    component: _videos_update_container__WEBPACK_IMPORTED_MODULE_9__["default"]
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
     path: "/watch/:videoId",
     component: _videos_video_show_container__WEBPACK_IMPORTED_MODULE_7__["default"]
@@ -735,30 +740,26 @@ function (_React$Component) {
     key: "goToLogin",
     value: function goToLogin() {
       this.props.history.push('/login');
-    }
-  }, {
-    key: "componentDidUpdate",
-    value: function componentDidUpdate(prevProps, prevState) {
-      var equal = true;
-      var prevComments = prevProps.stateComments;
-      var currComments = this.props.stateComments; //check if arrays are equal
+    } // componentDidUpdate(prevProps, prevState){
+    //   let equal = true;
+    //   let prevComments = prevProps.stateComments;
+    //   let currComments = this.props.stateComments;
+    //   //check if arrays are equal
+    //   if (prevComments.length !== currComments.length){
+    //     equal = false;
+    //   }
+    //   for (let i = 0; i < prevComments.length; i++){
+    //     if (prevComments[i] !== currComments[i]){
+    //       equal = false;
+    //     }
+    //   }
+    //   //only update if the state comments are not equal
+    //   if (!equal){
+    //     this.state.comments.push(currComments[currComments.length-1]);
+    //     this.forceUpdate();
+    //   }
+    // }
 
-      if (prevComments.length !== currComments.length) {
-        equal = false;
-      }
-
-      for (var i = 0; i < prevComments.length; i++) {
-        if (prevComments[i] !== currComments[i]) {
-          equal = false;
-        }
-      } //only update if the state comments are not equal
-
-
-      if (!equal) {
-        this.state.comments.push(currComments[currComments.length - 1]);
-        this.forceUpdate();
-      }
-    }
   }, {
     key: "render",
     value: function render() {
@@ -783,16 +784,17 @@ function (_React$Component) {
       }, "Login to post a public comment..."));
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "comment-wrapper"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", null, commentFormCode), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", null, commentFormCode, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "com-buttons"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: this.handleCancel,
-        className: "cancel-button"
+        className: "cancel-button",
+        type: "button"
       }, "CANCEL"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: this.handleSubmit,
         className: "comment-button",
         type: "submit"
-      }, "COMMENT"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, this.state.comments.slice(0).reverse().map(function (comment, index) {
+      }, "COMMENT")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, this.props.comments.slice(0).reverse().map(function (comment, index) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_comment_item__WEBPACK_IMPORTED_MODULE_1__["default"], {
           comment: comment,
           key: index,
@@ -828,7 +830,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
   return {
-    comments: Object.values(ownProps.video.comments).filter(function (comment) {
+    comments: Object.values(state.entities.comments).filter(function (comment) {
       return comment.video_id === ownProps.videoId;
     }),
     currentUser: state.session.id ? state.entities.users[state.session.id] : null,
@@ -1440,7 +1442,7 @@ function (_React$Component) {
 
       var user = Object.assign({}, this.state);
       this.props.logIn(user).then(function () {
-        return _this2.props.history.push('/');
+        return _this2.props.history.replace('/');
       }); // this.props.logIn(user).then( () => (
       //   this.props.history.length <= 3 ? this.props.history.push('/') : this.props.history.goBack()
       // ));
@@ -1700,7 +1702,7 @@ function (_React$Component) {
       e.preventDefault();
       var user = lodash_merge__WEBPACK_IMPORTED_MODULE_1___default()({}, this.state);
       this.props.signUp(user).then(function () {
-        return _this3.props.history.push('/');
+        return _this3.props.history.replace('/');
       });
     }
   }, {
@@ -2603,6 +2605,241 @@ var SideIndexItem = function SideIndexItem(_ref) {
 
 /***/ }),
 
+/***/ "./frontend/components/videos/update_container.js":
+/*!********************************************************!*\
+  !*** ./frontend/components/videos/update_container.js ***!
+  \********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _actions_video_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../actions/video_actions */ "./frontend/actions/video_actions.js");
+/* harmony import */ var _update_form__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./update_form */ "./frontend/components/videos/update_form.jsx");
+
+
+
+
+var mapStateToProps = function mapStateToProps(state, ownProps) {
+  return {
+    currentUser: state.entities.users[state.session.id],
+    video: state.entities.videos[ownProps.match.params.videoId],
+    errors: state.errors.videoErrors
+  };
+};
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return {
+    fetchVideo: function fetchVideo(id) {
+      return dispatch(Object(_actions_video_actions__WEBPACK_IMPORTED_MODULE_1__["fetchVideo"])(id));
+    },
+    updateVideo: function updateVideo(video, formData) {
+      return dispatch(Object(_actions_video_actions__WEBPACK_IMPORTED_MODULE_1__["updateVideo"])(video, formData));
+    },
+    deleteVideo: function deleteVideo(id) {
+      return dispatch(Object(_actions_video_actions__WEBPACK_IMPORTED_MODULE_1__["deleteVideo"])(id));
+    },
+    clearErrors: function clearErrors() {
+      return dispatch(Object(_actions_video_actions__WEBPACK_IMPORTED_MODULE_1__["clearErrors"])());
+    }
+  };
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mapStateToProps, mapDispatchToProps)(_update_form__WEBPACK_IMPORTED_MODULE_2__["default"]));
+
+/***/ }),
+
+/***/ "./frontend/components/videos/update_form.jsx":
+/*!****************************************************!*\
+  !*** ./frontend/components/videos/update_form.jsx ***!
+  \****************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _nav_bar_top_nav_bar_top_container__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../nav_bar_top/nav_bar_top_container */ "./frontend/components/nav_bar_top/nav_bar_top_container.js");
+/* harmony import */ var _nav_bar_side_nav_bar_side_container__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../nav_bar_side/nav_bar_side_container */ "./frontend/components/nav_bar_side/nav_bar_side_container.js");
+/* harmony import */ var _nav_bar_side_modal__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../nav_bar_side/modal */ "./frontend/components/nav_bar_side/modal.jsx");
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+
+
+var UpdateForm =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(UpdateForm, _React$Component);
+
+  function UpdateForm(props) {
+    var _this;
+
+    _classCallCheck(this, UpdateForm);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(UpdateForm).call(this, props));
+    _this.state = _this.props.video;
+    _this.update = _this.update.bind(_assertThisInitialized(_this));
+    _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
+    _this.handleDelete = _this.handleDelete.bind(_assertThisInitialized(_this));
+    _this.handleCancel = _this.handleCancel.bind(_assertThisInitialized(_this));
+    return _this;
+  }
+
+  _createClass(UpdateForm, [{
+    key: "update",
+    value: function update(field) {
+      var _this2 = this;
+
+      return function (e) {
+        return _this2.setState(_defineProperty({}, field, e.currentTarget.value));
+      };
+    }
+  }, {
+    key: "renderErrors",
+    value: function renderErrors() {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, this.props.errors.map(function (error, i) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+          key: "error-".concat(i)
+        }, error);
+      }));
+    }
+  }, {
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.setState({
+        loading: false
+      });
+      this.props.fetchVideo(this.props.match.params.videoId);
+      this.props.clearErrors();
+    }
+  }, {
+    key: "handleSubmit",
+    value: function handleSubmit(e) {
+      var _this3 = this;
+
+      e.preventDefault();
+      var formData = new FormData();
+      formData.append('video[title]', this.state.title);
+      formData.append('video[description]', this.state.description);
+      formData.append('video[id', this.state.id);
+      this.props.updateVideo(this.state, formData).then(function () {
+        return _this3.props.history.replace("/watch/".concat(_this3.state.id));
+      });
+    }
+  }, {
+    key: "handleDelete",
+    value: function handleDelete(e) {
+      var _this4 = this;
+
+      e.preventDefault();
+      this.props.deleteVideo(this.state.id).then(function () {
+        return _this4.props.history.replace("/");
+      });
+    }
+  }, {
+    key: "handleCancel",
+    value: function handleCancel(e) {
+      e.preventDefault();
+      this.props.history.replace("/watch/".concat(this.state.id));
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      if (!this.props.video) {
+        this.props.history.replace("/");
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null);
+      }
+
+      ;
+      var updateButton = this.state.loading ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "loading-button",
+        onClick: this.handleSubmit,
+        disabled: true
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "loader"
+      })) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "upd-button",
+        onClick: this.handleSubmit
+      }, "Update");
+      var updateThumbnail = this.state.thumbnail ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: this.state.thumbnail,
+        width: "300px",
+        height: "200px"
+      }) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "update-thumbnail-placeholder"
+      }, "Thumbnail Placeholder");
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "upload-wrapper"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_nav_bar_top_nav_bar_top_container__WEBPACK_IMPORTED_MODULE_1__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_nav_bar_side_modal__WEBPACK_IMPORTED_MODULE_3__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "update-form"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "update-header"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "v"
+      }, "Edit Video Details")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "update-thumbnail"
+      }, updateThumbnail), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "title-update"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        className: "update-title-inp",
+        type: "text",
+        placeholder: "Video Title",
+        value: this.state.title,
+        onChange: this.update('title')
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "desc-update"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
+        className: "update-desc-inp",
+        type: "text",
+        placeholder: "Video Description",
+        value: this.state.description,
+        onChange: this.update('description')
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "update-buttons-wrapper"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        onClick: this.handleCancel,
+        className: "upd-button",
+        id: "cancel"
+      }, "Cancel"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "upd-buttons-inner-wrapper"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        onClick: this.handleDelete,
+        className: "upd-button",
+        id: "delete"
+      }, "Delete"), updateButton)))));
+    }
+  }]);
+
+  return UpdateForm;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+/* harmony default export */ __webpack_exports__["default"] = (UpdateForm);
+
+/***/ }),
+
 /***/ "./frontend/components/videos/upload_form.jsx":
 /*!****************************************************!*\
   !*** ./frontend/components/videos/upload_form.jsx ***!
@@ -3244,13 +3481,18 @@ function (_React$Component) {
       }
 
       var deleteButton = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null);
+      var editButton = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null);
 
       if (this.props.currentUser && this.state.video) {
         if (this.props.currentUser.id === this.state.video.author_id) {
-          deleteButton = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-            onClick: this.handleDelete,
-            className: "delete-button"
-          }, "DELETE VIDEO");
+          // deleteButton = <button onClick={this.handleDelete} className="delete-button">DELETE VIDEO</button>
+          editButton = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+            onClick: this.handleEdit,
+            className: "edit-button"
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+            to: "/video/".concat(this.state.video.id, "/edit"),
+            className: "edit-link"
+          }, "EDIT VIDEO"));
         }
       }
 
@@ -3296,8 +3538,8 @@ function (_React$Component) {
         className: "fas fa-check-circle",
         id: "username-check"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "delete-wrapper"
-      }, deleteButton)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "edit-wrapper"
+      }, editButton)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "vid-description"
       }, this.props.video.description), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_comments_comments_container__WEBPACK_IMPORTED_MODULE_5__["default"], {
         videoId: this.props.video.id,
@@ -3416,6 +3658,8 @@ document.addEventListener("DOMContentLoaded", function () {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _actions_comment_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/comment_actions */ "./frontend/actions/comment_actions.js");
+/* harmony import */ var _actions_video_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../actions/video_actions */ "./frontend/actions/video_actions.js");
+
  // import merge from 'lodash/merge';
 
 var commentsReducer = function commentsReducer() {
@@ -3425,10 +3669,15 @@ var commentsReducer = function commentsReducer() {
   var newState = Object.assign({}, oldState);
 
   switch (action.type) {
+    case _actions_video_actions__WEBPACK_IMPORTED_MODULE_1__["RECEIVE_ALL_VIDEOS"]:
+      return action.videos.comments ? action.videos.comments : newState;
+
+    case _actions_video_actions__WEBPACK_IMPORTED_MODULE_1__["RECEIVE_VIDEO"]:
+      return action.video.video.comments ? action.video.video.comments : {};
+
     case _actions_comment_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_COMMENT"]:
       newState[action.comment.id] = action.comment;
       return newState;
-    // return merge({}, oldState, { [action.comment.id]: action.comment });
 
     case _actions_comment_actions__WEBPACK_IMPORTED_MODULE_0__["DELETE_COMMENT"]:
       delete newState[action.commentId];
@@ -4098,13 +4347,13 @@ var createVideo = function createVideo(video) {
     processData: false
   });
 };
-var updateVideo = function updateVideo(video) {
+var updateVideo = function updateVideo(video, formData) {
   return $.ajax({
     url: "/api/videos/".concat(video.id),
     type: "PATCH",
-    data: {
-      video: video
-    }
+    data: formData,
+    contentType: false,
+    processData: false
   });
 };
 var deleteVideo = function deleteVideo(id) {

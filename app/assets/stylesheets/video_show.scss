@@ -58,15 +58,22 @@
   margin-left: 10px;
 }
 
-.delete-button {
+.delete-button, .edit-button {
   color: black;
   background-color: #3EA6FF;
   border: none;
   padding: 10px;
-  font-family: Arial, sans-serif;
+  font-family: sans-serif, Arial;
 }
 
-.delete-wrapper {
+.edit-link:visited, .edit-link:hover, .edit-link:active, .edit-link:link, .edit-link {
+  color: black;
+  font-family: sans-serif, Arial;
+
+  text-decoration: none;
+}
+
+.delete-wrapper, .edit-wrapper {
   float: right;
 }
 

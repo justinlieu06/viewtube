@@ -22,7 +22,7 @@ class SignUpForm extends React.Component {
     e.preventDefault();
     const user = merge({}, this.state);
     this.props.signUp(user).then( () => (
-      this.props.history.push('/')
+      this.props.history.replace('/')
     ));
   }
 

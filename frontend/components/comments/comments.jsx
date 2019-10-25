@@ -42,25 +42,25 @@ class Comments extends React.Component {
     this.props.history.push('/login')
   }
 
-  componentDidUpdate(prevProps, prevState){
-    let equal = true;
-    let prevComments = prevProps.stateComments;
-    let currComments = this.props.stateComments;
-    //check if arrays are equal
-    if (prevComments.length !== currComments.length){
-      equal = false;
-    }
-    for (let i = 0; i < prevComments.length; i++){
-      if (prevComments[i] !== currComments[i]){
-        equal = false;
-      }
-    }
-    //only update if the state comments are not equal
-    if (!equal){
-      this.state.comments.push(currComments[currComments.length-1]);
-      this.forceUpdate();
-    }
-  }
+  // componentDidUpdate(prevProps, prevState){
+  //   let equal = true;
+  //   let prevComments = prevProps.stateComments;
+  //   let currComments = this.props.stateComments;
+  //   //check if arrays are equal
+  //   if (prevComments.length !== currComments.length){
+  //     equal = false;
+  //   }
+  //   for (let i = 0; i < prevComments.length; i++){
+  //     if (prevComments[i] !== currComments[i]){
+  //       equal = false;
+  //     }
+  //   }
+  //   //only update if the state comments are not equal
+  //   if (!equal){
+  //     this.state.comments.push(currComments[currComments.length-1]);
+  //     this.forceUpdate();
+  //   }
+  // }
 
 
   render(){
@@ -87,15 +87,16 @@ class Comments extends React.Component {
         <div>
           <form>
             {commentFormCode}
-          </form>
           <div className="com-buttons">
-            <button onClick={this.handleCancel} className="cancel-button">CANCEL</button>        
+            <button onClick={this.handleCancel} className="cancel-button" type="button">CANCEL</button>        
             <button onClick={this.handleSubmit} className="comment-button" type="submit">COMMENT</button>
           </div>
+          </form>
+
         </div>
 
         <div>
-          {this.state.comments.slice(0).reverse().map((comment, index) => (
+          {this.props.comments.slice(0).reverse().map((comment, index) => (
             <CommentItem comment={comment} key={index} currentUser={this.props.currentUser} 
               deleteComment={this.props.deleteComment} />
           ))}

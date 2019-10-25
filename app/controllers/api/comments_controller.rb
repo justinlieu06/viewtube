@@ -10,6 +10,13 @@ class Api::CommentsController < ApplicationController
     end
   end
 
+  def index
+    video = Video.find(params[:id])
+    debugger
+    @comments = video.comments
+    render :index
+  end
+
   def destroy
     @comment = Comment.find(params[:id])
     @comment.destroy

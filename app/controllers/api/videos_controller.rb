@@ -15,7 +15,7 @@ class Api::VideosController < ApplicationController
   def create
     if params[:video][:video] == "null"
       render json: ["Please select video"], status: 406
-      return nil
+      return nil 
     elsif params[:video][:thumbnail] == "null"
       render json: ["Please select thumbnail"], status: 406
       return nil
@@ -34,7 +34,7 @@ class Api::VideosController < ApplicationController
   end
 
   def update
-    @video = current_user.videos.find(params[:id])
+    @video = Video.find(params[:id])
     if @video.update_attributes(video_params)
       render :show
     else

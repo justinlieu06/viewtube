@@ -9,6 +9,7 @@ import { AuthRoute, ProtectedRoute } from '../util/route_utils';
 import UploadFormContainer from './videos/upload_form_container'
 import VideoShowContainer from './videos/video_show_container';
 import SearchContainer from './videos/search_container';
+import UpdateFormContainer from './videos/update_container';
 
 const App = ({ children }) => (
   <div>
@@ -16,6 +17,7 @@ const App = ({ children }) => (
       <AuthRoute exact path='/signup' component={SignUpFormContainer} />
       <AuthRoute exact path='/login' component={LogInFormContainer} />
       <ProtectedRoute path="/upload" component={UploadFormContainer} />
+      <ProtectedRoute path="/video/:videoId/edit" component={UpdateFormContainer} />
       <Route path="/watch/:videoId" component={VideoShowContainer} />
       <Route exact path='/search/:query' component={SearchContainer} />
       <Route exact path='/' component={Splash} />

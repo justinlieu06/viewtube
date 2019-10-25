@@ -5,7 +5,7 @@ import Comments from './comments';
 
 const mapStateToProps = (state, ownProps) => {
   return({
-    comments: Object.values(ownProps.video.comments).filter(
+    comments: Object.values(state.entities.comments).filter(
       comment => {
         return comment.video_id === ownProps.videoId
       }
