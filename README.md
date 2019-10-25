@@ -25,41 +25,11 @@ The comments component state has access to all comments, but when mapping states
 ### Video Likes/Dislikes
 A logged in user can like or dislike each video. A like/dislike is created upon pressing either the like or dislike button, and the state of the like_dislike component keeps track of how many likes and dislikes there are for each video it is a child of. However, since users can only like or dislike once, if a user likes a video that they dislike, for example, the code destroys the dislike, creates a like, and manipulates the state's likes and dislikes appropriately.
 
-## Code Snippets
+## Video Editing
+A logged in user can edit his or her own video's details including the title and description. Furthermore, in the edit page, the user can delete his or her video.
 
-In the comments component, we want to rerender the comments component after a new comment is created for the current video. To check if a new comment has been created, the code checks the previous prop comments with the current prop comments, and if there is a new state comment, it will push such state comment into state comments, and finally, force a render now that the state has been properly updated.
+## Potential Future Features
 
-```
-componentDidUpdate(prevProps, prevState){
-    let equal = true;
-    let prevComments = prevProps.stateComments;
-    let currComments = this.props.stateComments;
-    //check if arrays are equal
-    if (prevComments.length !== currComments.length){
-      equal = false;
-    }
-    for (let i = 0; i < prevComments.length; i++){
-      if (prevComments[i] !== currComments[i]){
-        equal = false;
-      }
-    }
-    //only update if the state comments are not equal
-    if (!equal){
-      this.state.comments.push(currComments[currComments.length-1]);
-      this.forceUpdate();
-    }
-  }
-  ```
-  
-The delete video button is only available to the owner of the video so the code checks if the current user's id is the same as the video author's id. However, upon a refresh on the video show page, the state's video will initially be undefined, so the code must verify that the video is not undefined before it checks the author_id to prevent an error. 
-  ```
-  if (this.props.currentUser && this.state.video){
-    if (this.props.currentUser.id === this.state.video.author_id){
-      deleteButton = <button onClick={this.handleDelete} className="delete-button">DELETE VIDEO</button>
-    }
-  }
-  ```
-
-## Future Features
-
-* video updating
+* Video Views
+* Channels
+* Subscriptions
