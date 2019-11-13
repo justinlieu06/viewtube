@@ -4,6 +4,11 @@ import Comments from './comments';
 // import { fetchVideo } from '../../actions/video_actions';
 
 const mapStateToProps = (state, ownProps) => {
+  // console.log("msp");
+  // console.log("state");
+  // console.log(state);
+  // console.log("ownProps");
+  // console.log(ownProps);
   return({
     comments: Object.values(state.entities.comments).filter(
       comment => {

@@ -25,16 +25,11 @@ class LogInForm extends React.Component {
 
   demoLogIn(e){
     e.preventDefault();
-    //INSTANT DEMO LOGIN:
-    // this.state = {
-    //   username: 'DemoUser',
-    //   password: '123456'
-    // };
 
-    this.state = {
-      username: '',
-      password: ''
-    }
+    this.setState({ username: '', password: ''}, ()=> {
+      fillIn('DemoUser', 'username')();
+      fillIn('123456', 'password')();
+    });
 
     //Credit to Fue
     const fillIn = (string, field) => () => {
@@ -43,11 +38,8 @@ class LogInForm extends React.Component {
         setTimeout(fillIn(string.slice(1), field), 75);
       }
     }
-  
-    fillIn('DemoUser', 'username')();
-    fillIn('123456', 'password')();
 
-    setTimeout(this.pressSignIn, 1100);
+    setTimeout(this.pressSignIn, 800);
   }
 
   update(field) {

@@ -5,7 +5,6 @@ json.video url_for(video.video)
 json.thumbnail url_for(video.thumbnail)
 json.likes video.likes.length
 json.dislikes video.dislikes.length
-# json.userDislikes video.userDislikes.include?(current_user)
 json.comments video.comments.to_h if video.comments.empty?
 
 video.comments.each do |comment|

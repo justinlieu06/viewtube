@@ -36,19 +36,23 @@ export const clearErrors = () => ({
   type: CLEAR_ERRORS,
 });
 
-export const fetchVideos = () => dispatch => (
+export const fetchVideos = () => dispatch => {
+  return (
   VideoAPIUtil.fetchVideos().then(videos => (dispatch(receiveAllVideos(videos))
   ), err => (
     dispatch(receiveErrors(err.responseJSON))
   ))
-);
+  );
+};
 
-export const fetchVideo = id => dispatch => (
+export const fetchVideo = id => dispatch => {
+  return (
   VideoAPIUtil.fetchVideo(id).then(video => (dispatch(receiveVideo(video))
   ), err => (
     dispatch(receiveErrors(err.responseJSON))
   ))
-);
+  );
+};
 
 export const createVideo = video => dispatch => {
   return(

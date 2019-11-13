@@ -829,6 +829,11 @@ __webpack_require__.r(__webpack_exports__);
  // import { fetchVideo } from '../../actions/video_actions';
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
+  // console.log("msp");
+  // console.log("state");
+  // console.log(state);
+  // console.log("ownProps");
+  // console.log(ownProps);
   return {
     comments: Object.values(state.entities.comments).filter(function (comment) {
       return comment.video_id === ownProps.videoId;
@@ -903,10 +908,9 @@ function Modal(_ref) {
     case 'navbarside':
       component = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_nav_bar_side_container__WEBPACK_IMPORTED_MODULE_3__["default"], null);
       break;
-
-    case 'navbartop':
-      component = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_nav_bar_top_nav_bar_top_container__WEBPACK_IMPORTED_MODULE_4__["default"], null);
-      break;
+    // case 'navbartop':
+    //   component = <NavBarTopContainer />;
+    //   break;
 
     default:
       return null;
@@ -1452,16 +1456,14 @@ function (_React$Component) {
     value: function demoLogIn(e) {
       var _this3 = this;
 
-      e.preventDefault(); //INSTANT DEMO LOGIN:
-      // this.state = {
-      //   username: 'DemoUser',
-      //   password: '123456'
-      // };
-
-      this.state = {
+      e.preventDefault();
+      this.setState({
         username: '',
         password: ''
-      }; //Credit to Fue
+      }, function () {
+        fillIn('DemoUser', 'username')();
+        fillIn('123456', 'password')();
+      }); //Credit to Fue
 
       var fillIn = function fillIn(string, field) {
         return function () {
@@ -1473,9 +1475,7 @@ function (_React$Component) {
         };
       };
 
-      fillIn('DemoUser', 'username')();
-      fillIn('123456', 'password')();
-      setTimeout(this.pressSignIn, 1100);
+      setTimeout(this.pressSignIn, 800);
     }
   }, {
     key: "update",
@@ -2496,19 +2496,15 @@ function (_React$Component) {
           key: index,
           video: video
         });
-      });
-
-      for (var i = videos.length - 1; i > 0; i--) {
-        var j = Math.floor(Math.random() * (i + 1));
-        var _ref = [videos[j], videos[i]];
-        videos[i] = _ref[0];
-        videos[j] = _ref[1];
-      }
+      }); // for (let i = videos.length - 1; i > 0; i--){
+      //   const j = Math.floor(Math.random() * (i+1));
+      //   [videos[i], videos[j]] = [videos[j], videos[i]];
+      // }
 
       var filteredVideos = new Array(25);
 
-      for (var _i = 0; _i < 25; _i++) {
-        filteredVideos[_i] = videos[_i];
+      for (var i = 0; i < 25; i++) {
+        filteredVideos[i] = videos[i];
       }
 
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -3253,14 +3249,10 @@ function (_React$Component) {
           key: index,
           video: video
         });
-      });
-
-      for (var i = videos.length - 1; i > 0; i--) {
-        var j = Math.floor(Math.random() * (i + 1));
-        var _ref = [videos[j], videos[i]];
-        videos[i] = _ref[0];
-        videos[j] = _ref[1];
-      }
+      }); // for (let i = videos.length - 1; i > 0; i--){
+      //   const j = Math.floor(Math.random() * (i+1));
+      //   [videos[i], videos[j]] = [videos[j], videos[i]];
+      // }
 
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "video-index-outer-wrapper"

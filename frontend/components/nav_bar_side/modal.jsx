@@ -13,9 +13,9 @@ function Modal({modal, closeModal}) {
     case 'navbarside':
       component = <NavBarSideContainer />;
       break;
-    case 'navbartop':
-      component = <NavBarTopContainer />;
-      break;
+    // case 'navbartop':
+    //   component = <NavBarTopContainer />;
+    //   break;
     default:
       return null;
   }

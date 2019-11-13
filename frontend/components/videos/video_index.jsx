@@ -12,10 +12,10 @@ class VideoIndex extends React.Component {
       <VideoIndexItem key={index} video={video} />
     ));
 
-    for (let i = videos.length - 1; i > 0; i--){
-      const j = Math.floor(Math.random() * (i+1));
-      [videos[i], videos[j]] = [videos[j], videos[i]];
-    }
+    // for (let i = videos.length - 1; i > 0; i--){
+    //   const j = Math.floor(Math.random() * (i+1));
+    //   [videos[i], videos[j]] = [videos[j], videos[i]];
+    // }
     
     return (
       <div className="video-index-outer-wrapper">
