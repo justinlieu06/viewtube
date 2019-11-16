@@ -3139,11 +3139,11 @@ function (_React$Component) {
         className: "upload-errors"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, this.state.titleError), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, this.state.descriptionError), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, this.state.videoError), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, this.state.thumbnailError)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "upload-button-wrapper"
-      }, uploadButton)))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, uploadButton), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "video-preview"
       }, videoPreview), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "thumbnail-preview"
-      }, thumbnailPreview));
+      }, thumbnailPreview)))));
     }
   }]);
 
@@ -37686,7 +37686,7 @@ function warning(message) {
 /*!***************************************************************!*\
   !*** ./node_modules/react-router-dom/esm/react-router-dom.js ***!
   \***************************************************************/
-/*! exports provided: MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext, BrowserRouter, HashRouter, Link, NavLink */
+/*! exports provided: BrowserRouter, HashRouter, Link, NavLink, MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

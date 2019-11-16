@@ -214,14 +214,14 @@ class UploadForm extends React.Component {
             <div className="upload-button-wrapper">{uploadButton}</div>
 
             {/* <img src={window.uploadArtURL} className="upload-art"/> */}
-            
+            <div className="video-preview">{videoPreview}</div>
+            <div className="thumbnail-preview">{thumbnailPreview}</div>
           </div>
 
         </div>
         </form>
 
-        <div className="video-preview">{videoPreview}</div>
-        <div className="thumbnail-preview">{thumbnailPreview}</div>
+        
       </div>
     )
   }

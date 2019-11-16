@@ -123,9 +123,13 @@
 }
 
 .upload-button-wrapper {
-  margin-left: 100px;
+  // margin-left: 100px;
   width: 100px;
-  transform: translate(0px, -110px);
+  // transform: translate(0px, -110px);
+  position: absolute;
+  left: 50%;
+  top: 88%;
+
 }
 
 .upload-button {
@@ -187,12 +191,18 @@
 }
 
 .video-preview {
-  transform: translate(950px, -150px);
-  margin-bottom: 5px;
+  // transform: translate(950px, -150px);
+  // margin-bottom: 5px;
+  position: absolute;
+  left: 73%;
+  top: 50%;
 }
 
 .thumbnail-preview {
-  transform: translate(950px, -150px);
+  // transform: translate(950px, -150px);
+  position: absolute;
+  left: 73%;
+  top: calc(50% + 120px);
 }
 
 .preview-placeholder {
