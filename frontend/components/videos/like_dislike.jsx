@@ -52,6 +52,7 @@ class LikeDislike extends React.Component {
           })
       } 
       else if (!userLikes && userDislikes) {
+        //if not liked, but disliked, destroy dislike, and like it
         this.props.destroyDislike(this.state.videoId);
         this.props.createLike(this.state.videoId).then(result => {
           this.setState({
@@ -90,6 +91,7 @@ class LikeDislike extends React.Component {
           })
       } 
       else if (!userDislikes && userLikes) {
+        //if not disliked, but liked, destroy like and dislike video
         this.props.destroyLike(this.state.videoId);
         this.props.createDislike(this.state.videoId).then(result => {
           this.setState({
