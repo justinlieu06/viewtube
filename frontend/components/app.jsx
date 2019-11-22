@@ -29,9 +29,9 @@ import UpdateFormContainer from './videos/update_container';
 class App extends Component {
 
   keepAwake = () => {
-    var http = require("http");
+    var https = require("https");
     setInterval(function() {
-        http.get("http://viewtube-fsp.herokuapp.com");
+        https.get("https://viewtube-fsp.herokuapp.com");
         // console.log("keep awake");
     }, 300); // every 5 minutes (300000)
   }
