@@ -33,7 +33,7 @@ class App extends Component {
     setInterval(function() {
         https.get("https://viewtube-fsp.herokuapp.com");
         // console.log("keep awake");
-    }, 300); // every 5 minutes (300000)
+    }, 300000); // every 5 minutes (300000)
   }
 
   render() {
