@@ -57,9 +57,9 @@ const NavBarSide = props => {
       </a>
 
       <br />
-      <br />
+      {/* <br /> */}
 
-      <a href="https://www.youtube.com/" className="side-a" target="_blank">
+      {/* <a href="https://www.youtube.com/" className="side-a" target="_blank">
         <div className="side-link-wrapper">
           <div className="side-icon-text">
             <i className="fab fa-youtube"></i>
@@ -69,7 +69,7 @@ const NavBarSide = props => {
       </a>
 
       <br/>
-      <br/>
+      <br/> */}
       <hr />
       <br/>
       <div className="side-title">SUBSCRIPTIONS</div>
