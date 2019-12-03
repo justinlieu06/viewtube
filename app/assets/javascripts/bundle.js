@@ -3386,8 +3386,8 @@ var VideoIndexItem = function VideoIndexItem(_ref) {
     className: "vid-index-item-link"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
     src: video.thumbnail,
-    width: "210",
-    height: "118",
+    width: "288",
+    height: "160",
     alt: "Viewtube Thumbnail"
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "video-description"
@@ -41547,7 +41547,7 @@ function warning(message) {
 /*!***************************************************************!*\
   !*** ./node_modules/react-router-dom/esm/react-router-dom.js ***!
   \***************************************************************/
-/*! exports provided: BrowserRouter, HashRouter, Link, NavLink, MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext */
+/*! exports provided: MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext, BrowserRouter, HashRouter, Link, NavLink */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

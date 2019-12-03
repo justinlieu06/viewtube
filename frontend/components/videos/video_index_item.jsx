@@ -6,7 +6,7 @@ const VideoIndexItem = ({ video }) => {
     <div className="index-item-wrapper">
       <Link to={`/watch/${video.id}`} className="vid-index-item-link">
         <div>
-          <img src={video.thumbnail} width="210" height="118" alt="Viewtube Thumbnail" />
+          <img src={video.thumbnail} width="288" height="160" alt="Viewtube Thumbnail" />
           <div className="video-description">
             <div className="vid-index-item-title">{video.title}</div>
             
