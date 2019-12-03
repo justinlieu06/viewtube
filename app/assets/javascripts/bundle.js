@@ -588,7 +588,7 @@ function (_Component) {
       var https = __webpack_require__(/*! https */ "./node_modules/https-browserify/index.js");
 
       setInterval(function () {
-        https.get("https://viewtube-fsp.herokuapp.com"); // console.log("keep awake");
+        https.get("https://viewtube-fsp.herokuapp.com");
       }, 300000); // every 5 minutes (300000)
     });
 
@@ -626,9 +626,7 @@ function (_Component) {
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Redirect"], {
         to: "/",
         component: _splash__WEBPACK_IMPORTED_MODULE_4__["default"]
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        onClick: this.keepAwake()
-      }));
+      })));
     }
   }]);
 

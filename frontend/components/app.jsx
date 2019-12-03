@@ -32,7 +32,6 @@ class App extends Component {
     var https = require("https");
     setInterval(function() {
         https.get("https://viewtube-fsp.herokuapp.com");
-        // console.log("keep awake");
     }, 300000); // every 5 minutes (300000)
   }
 
@@ -49,7 +48,7 @@ class App extends Component {
             <Route exact path='/' component={Splash} />
             <Redirect to='/' component={Splash} />
           </Switch>
-          <button onClick={this.keepAwake()}></button>
+          {/* <button onClick={this.keepAwake()}></button> */}
         </div>
     );
   }
