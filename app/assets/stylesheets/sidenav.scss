@@ -5,7 +5,7 @@
 
 .modal-background {
   position: fixed;
-  top: 56px;
+  top: 68px;
   bottom: 0;
   right: 0;
   left: 0;
@@ -14,8 +14,7 @@
 }
 
 .modal-child {
-  top: 0;
-  // z-index: 5;
+  top: 0px;
   transform: translate(0px, -56px);
   width: 240px;
   height: 120%;
@@ -23,7 +22,7 @@
 }
 
 .close-hamburger {
-  padding-top: 20px;
+  padding-top: 8px;
   padding-left: 20px;
   color: white;
   background-color: #282828;

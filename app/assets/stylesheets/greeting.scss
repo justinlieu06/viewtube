@@ -1,6 +1,7 @@
 .greeting-login-signup {
   display: flex;
   justify-content: flex-end;
+  padding-top: 6px;
 }
 
 .greeting-header {
@@ -18,6 +19,21 @@
   padding: 9px;
   margin: 10px;
   text-decoration: none;
+  height: 15px;
+}
+
+.greeting-button {
+  color: #3EA6FF;
+  background-color: #232323;
+  border: 1px solid #3EA6FF;
+  font-size: 14px;
+  font-family: roboto, arial, sans-serif;
+  padding: 9px;
+  margin: 10px;
+  margin-top: 18px;
+  margin-right: 15px;
+  text-decoration: none;
+  height: 35px;
 }
 
 .greeting-link:hover, .greeting-link:active, .greeting-button:hover {
@@ -30,7 +46,7 @@
 }
 
 .upload-wrap {
-  margin-top: 19px;
+  margin-top: 26px;
   margin-right: 20px;
   position: relative;
   height: 0px;
@@ -64,7 +80,7 @@
 
 .greeting-profile {
   color: white;
-  padding-top: 12px;
+  padding-top: 20px;
   padding-right: 15px;
 }
  

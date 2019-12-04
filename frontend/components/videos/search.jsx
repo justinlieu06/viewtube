@@ -22,11 +22,13 @@ class Search extends React.Component {
         <NavBarTopContainer />
         <ModalContainer />
         <div className="search-outer-wrapper">
-          <div className="search-header">
-            {result}
-            <hr style={{ color: 'blue' }}/>
+          <div className="search-wrapper">
+            <div className="search-header">
+              {result}
+              <hr style={{ color: 'blue' }}/>
+            </div>
+            {videos}
           </div>
-          {videos}
         </div>
       </div>
     );
