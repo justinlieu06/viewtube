@@ -4,7 +4,7 @@
 
 ViewTube is a clone of the popular streaming site known as YouTube made with Ruby on Rails, PostgreSQL, React, Redux, CSS, Webpack, AWS, and Heroku. Users can watch videos, search for videos, and create accounts to upload and delete videos.
 
-<img src="read_me_imgs/splash.png" >
+<img src="read_me_imgs/splash.gif" >
 
 [Check Out the Live Site Here!](https://viewtube-fsp.herokuapp.com/#/)
 
